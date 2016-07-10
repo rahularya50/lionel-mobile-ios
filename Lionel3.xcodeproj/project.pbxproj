@@ -216,7 +216,6 @@
 				33A611D11D32C3F900605552 /* Calendar-50@2x.png */,
 				33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */,
 				33A611D31D32C3F900605552 /* News-50@2x.png */,
-				33FE99681C91A552004F7907 /* ViewControllers */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -303,6 +302,7 @@
 		33FE98C11C91A486004F7907 /* Lionel3 */ = {
 			isa = PBXGroup;
 			children = (
+				33FE99681C91A552004F7907 /* ViewControllers */,
 				3353B92C1C9993DF009E48A4 /* Miscellaneous */,
 				3353B9251C9990EF009E48A4 /* Images */,
 				33FE98C61C91A486004F7907 /* AppDelegate.h */,

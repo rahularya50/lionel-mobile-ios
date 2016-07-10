@@ -32,6 +32,9 @@
     [self parseHomework];
     [super viewDidLoad];
     
+    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
     
@@ -260,6 +263,7 @@
     
     
     [self.navigationController pushViewController:hevc animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 /*
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

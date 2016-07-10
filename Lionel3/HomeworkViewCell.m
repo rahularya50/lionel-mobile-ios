@@ -28,8 +28,11 @@
 {
     [self.cardView setAlpha:1];
     self.cardView.layer.masksToBounds = NO;
+    
+    self.cardView.layer.borderColor = [UIColor clearColor].CGColor;
+    
     //self.cardView.layer.borderWidth = 1;
-    //self.cardView.layer.borderColor = [UIColor grayColor].CGColor;
+    //self.cardView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.cardView.layer.cornerRadius = 2; // if you like rounded corners
     self.cardView.layer.shadowOffset = CGSizeMake(-.2f, .2f); //%%% this shadow will hang slightly down and to the right
     self.cardView.layer.shadowRadius = 1; //%%% I prefer thinner, subtler shadows, but you can play with this
