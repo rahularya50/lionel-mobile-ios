@@ -182,6 +182,8 @@
         //tempDescription = [[tempDescription stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"] mutableCopy];
         
         //NSLog(@"Received HTML: %@",tempDescription);
+        NSArray *splitString0 = [[tempDescription componentsSeparatedByString:@"\n"]mutableCopy];
+        tempDescription = [[splitString0 componentsJoinedByString:@""]mutableCopy];
         NSArray *splitString = [[tempDescription componentsSeparatedByString:@"<br/>"]mutableCopy];
         tempDescription = [[splitString componentsJoinedByString:@"\n"]mutableCopy];
         NSArray *ss2 = [tempDescription componentsSeparatedByString:@"<p>"];
@@ -193,7 +195,7 @@
         NSData *tempData = [tempDescription dataUsingEncoding:NSUTF8StringEncoding];
         TFHpple *temp = [[TFHpple alloc] initWithHTMLData:tempData];
         tempDescription = [[[[temp searchWithXPathQuery:@"//*"]objectAtIndex:0]content]mutableCopy];
-        //NSLog(@"New: %@",tempDescription);
+        NSLog(@"New: %@",tempDescription);
          
         
         [descriptions addObject:tempDescription];
