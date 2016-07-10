@@ -69,7 +69,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    int index = indexPath.row;
+    NSInteger index = indexPath.row;
     
     TimetableExpandedViewController *tevc = [[TimetableExpandedViewController alloc] initWithNibName:@"TimetableExpandedViewController" bundle:nil];
     

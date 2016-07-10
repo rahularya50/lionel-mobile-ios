@@ -83,7 +83,7 @@
     
     Sync *syncer = [[Sync alloc] init];
     
-    [syncer login];
+    //[syncer login];
     
     NSLog(@"Initial synchronization concluded");
     

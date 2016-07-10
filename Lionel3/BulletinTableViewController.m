@@ -65,9 +65,12 @@
     
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"bulletin.txt"];
+    
+    NSLog(filepath);
+    
     NSString *bulletinString = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
     NSData *bulletinData = [bulletinString dataUsingEncoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",bulletinData);
+    NSLog(@"%@",bulletinString);
     //Parsing bulletin
     
     TFHpple *bulletin = [[TFHpple alloc] initWithHTMLData:bulletinData];

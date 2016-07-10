@@ -123,12 +123,12 @@
         }
     }
     for(TFHppleElement *ite in span3){
-        NSLog(@"Span3: %@",[ite content]);
+        //NSLog(@"Span3: %@",[ite content]);
     }
     int j;
     int k;
     for(int i=0;i<span3.count/3;i++){
-        NSLog(@"i = %d",i);
+        //NSLog(@"i = %d",i);
         [classCodes addObject:[[span3 objectAtIndex:i*3]content]];
         j = 0;
         k = 0;
@@ -143,10 +143,10 @@
             }
             k+=1;
         }
-        NSLog(@"j = %d",j);
-        NSLog(@"classes.count = %lu",(unsigned long)classes.count);
+        //NSLog(@"j = %d",j);
+        //NSLog(@"classes.count = %lu",(unsigned long)classes.count);
         if(j<classes.count){
-            NSLog(@"%d < %lu",j, (unsigned long)classes.count);
+            //NSLog(@"%d < %lu",j, (unsigned long)classes.count);
             [classNames addObject:[[classes objectAtIndex:j]objectAtIndex:1]];
         }else{
             [classNames addObject:@"SELF"];
@@ -217,18 +217,23 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    item++;
+    
+    int item = indexPath.row;
+    
+    //NSLog(@"%@", item);
+    
     //NSLog(@"Creating row %d",item);
     HomeworkViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeworkViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
     //NSLog(@"%@",classNames);
-    cell.classLabel.text = [classNames objectAtIndex:item-1];
-    cell.codeLabel.text = [classCodes objectAtIndex:item-1];
-    cell.teacherLabel.text = [teachers objectAtIndex:item-1];
-    cell.descriptionLabel.text = [descriptions objectAtIndex:item-1];
-    cell.timeLabel.text = [times objectAtIndex:item-1];
-    cell.dueLabel.text = [dueDates objectAtIndex:item-1];
+    
+    cell.classLabel.text = [classNames objectAtIndex:item];
+    cell.codeLabel.text = [classCodes objectAtIndex:item];
+    cell.teacherLabel.text = [teachers objectAtIndex:item];
+    cell.descriptionLabel.text = [descriptions objectAtIndex:item];
+    cell.timeLabel.text = [times objectAtIndex:item];
+    cell.dueLabel.text = [dueDates objectAtIndex:item];
     
     //cell.descriptionLabel.numberOfLines = 0;
     
