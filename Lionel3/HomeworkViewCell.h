@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+
 @end

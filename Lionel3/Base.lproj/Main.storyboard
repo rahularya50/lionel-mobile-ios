@@ -136,7 +136,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="UDE-zw-IQc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeworkViewCell" rowHeight="180" id="Zi8-FX-Q0o" customClass="HomeworkViewCell">
@@ -149,19 +149,19 @@
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qq-yq-9Ka">
                                             <rect key="frame" x="5" y="5" width="307" height="166"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Class" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwj-7k-p1g">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Class" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwj-7k-p1g">
                                                     <rect key="frame" x="8" y="57" width="290" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Due" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obR-kN-EnD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Due" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obR-kN-EnD">
                                                     <rect key="frame" x="8" y="7" width="172" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ue-27U">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ue-27U">
                                                     <rect key="frame" x="8" y="29" width="189" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -179,7 +179,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-2g-s3h">
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" scrollEnabled="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-2g-s3h">
                                                     <rect key="frame" x="8" y="91" width="291" height="67"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -206,7 +206,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="2Qq-yq-9Ka" firstAttribute="trailing" secondItem="Qg1-ZN-lUV" secondAttribute="trailingMargin" id="6tl-ct-fLX"/>
                                         <constraint firstItem="2Qq-yq-9Ka" firstAttribute="leading" secondItem="Qg1-ZN-lUV" secondAttribute="leadingMargin" id="KCQ-4e-DlF"/>
@@ -215,6 +215,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cardView" destination="2Qq-yq-9Ka" id="mag-Dk-OCB"/>
                                     <outlet property="classLabel" destination="Wwj-7k-p1g" id="kXx-bD-zos"/>
                                     <outlet property="codeLabel" destination="O6E-Wq-rmI" id="gwd-yE-TAj"/>
                                     <outlet property="descriptionLabel" destination="Dq1-2g-s3h" id="sW0-j5-01P"/>
@@ -305,7 +306,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="Xgu-BT-ARF" secondAttribute="bottom" id="DA3-PY-8bL"/>
                                         <constraint firstItem="Xgu-BT-ARF" firstAttribute="trailing" secondItem="IdV-2o-jmf" secondAttribute="trailingMargin" id="NSj-Yr-7MI"/>
@@ -316,6 +317,7 @@
                                 <color key="backgroundColor" red="0.7589285714285714" green="0.7589285714285714" blue="0.7589285714285714" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="authorLabel" destination="xvF-pL-d4P" id="ECW-Vy-Pxi"/>
+                                    <outlet property="cardView" destination="Xgu-BT-ARF" id="Qao-lc-NgO"/>
                                     <outlet property="datesLabel" destination="53s-Xy-KQ5" id="PaK-E4-5GZ"/>
                                     <outlet property="previewLabel" destination="oeh-Wf-xUL" id="Abc-lb-wwh"/>
                                     <outlet property="textsLabel" destination="qez-WE-aF1" id="hTy-de-hQy"/>
@@ -339,7 +341,7 @@
         <scene sceneID="wBH-fz-a8B">
             <objects>
                 <navigationController title="Bulletin" id="70L-Pv-EaD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bulletin" id="dEl-9N-RgM"/>
+                    <tabBarItem key="tabBarItem" title="Bulletin" image="News-50.png" id="dEl-9N-RgM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="frO-xq-XGp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -356,10 +358,11 @@
         <scene sceneID="GNY-Lu-Id4">
             <objects>
                 <navigationController id="5YX-Vs-nim" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Homework" id="hHP-11-Xrd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H8p-es-mex">
+                    <tabBarItem key="tabBarItem" title="Homework" image="Desk Lamp-50.png" id="hHP-11-Xrd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="H8p-es-mex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="YOw-aT-2Or" kind="relationship" relationship="rootViewController" id="I49-bU-yYj"/>
@@ -373,7 +376,7 @@
         <scene sceneID="I7W-vG-Fh4">
             <objects>
                 <navigationController title="Timetable" id="ybr-NQ-DXX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timetable" id="sNd-P5-zrh"/>
+                    <tabBarItem key="tabBarItem" title="Timetable" image="Calendar-50.png" id="sNd-P5-zrh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3KK-6q-Xlk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -472,4 +475,9 @@
             <point key="canvasLocation" x="1525" y="-373"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Calendar-50.png" width="25" height="25"/>
+        <image name="Desk Lamp-50.png" width="50" height="50"/>
+        <image name="News-50.png" width="50" height="50"/>
+    </resources>
 </document>

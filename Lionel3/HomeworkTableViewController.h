@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeworkTableViewController : UITableViewController
+@property(nonatomic, strong) UIColor *tintColor;
 
 @end

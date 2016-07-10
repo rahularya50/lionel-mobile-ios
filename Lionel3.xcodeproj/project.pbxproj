@@ -34,6 +34,9 @@
 		33A611C91D3266FA00605552 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611C51D3266FA00605552 /* TFHppleElement.m */; };
 		33A611CA1D3266FA00605552 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611C71D3266FA00605552 /* XPathQuery.m */; };
 		33A611CF1D3267A900605552 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611CE1D3267A900605552 /* Reachability.m */; };
+		33A611D41D32C3F900605552 /* Calendar-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D11D32C3F900605552 /* Calendar-50@2x.png */; };
+		33A611D51D32C3F900605552 /* Desk Lamp-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */; };
+		33A611D61D32C3F900605552 /* News-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D31D32C3F900605552 /* News-50@2x.png */; };
 		33BBE1311CA6B56100BA70F4 /* HomeworkExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */; };
 		33BBE1321CA6B56100BA70F4 /* HomeworkExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */; };
 		33BBE1351CA9200700BA70F4 /* BulletinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE1341CA9200700BA70F4 /* BulletinTableViewController.m */; };
@@ -113,6 +116,9 @@
 		33A611C71D3266FA00605552 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Classes/XPathQuery.m; sourceTree = SOURCE_ROOT; };
 		33A611CD1D3267A900605552 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Lionel3/Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
 		33A611CE1D3267A900605552 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Lionel3/Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
+		33A611D11D32C3F900605552 /* Calendar-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-50@2x.png"; sourceTree = "<group>"; };
+		33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Desk Lamp-50@2x.png"; sourceTree = "<group>"; };
+		33A611D31D32C3F900605552 /* News-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "News-50@2x.png"; sourceTree = "<group>"; };
 		33BBE12E1CA6B56100BA70F4 /* HomeworkExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkExpandedViewController.h; sourceTree = "<group>"; };
 		33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkExpandedViewController.m; sourceTree = "<group>"; };
 		33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeworkExpandedViewController.xib; sourceTree = "<group>"; };
@@ -207,6 +213,10 @@
 		3353B9251C9990EF009E48A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				33A611D11D32C3F900605552 /* Calendar-50@2x.png */,
+				33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */,
+				33A611D31D32C3F900605552 /* News-50@2x.png */,
+				33FE99681C91A552004F7907 /* ViewControllers */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -295,7 +305,6 @@
 			children = (
 				3353B92C1C9993DF009E48A4 /* Miscellaneous */,
 				3353B9251C9990EF009E48A4 /* Images */,
-				33FE99681C91A552004F7907 /* ViewControllers */,
 				33FE98C61C91A486004F7907 /* AppDelegate.h */,
 				33FE98C71C91A486004F7907 /* AppDelegate.m */,
 				33FE98CC1C91A486004F7907 /* Main.storyboard */,
@@ -458,6 +467,7 @@
 			files = (
 				33A611BD1D3266D100605552 /* .travis.yml in Resources */,
 				33BBE13D1CB17D2900BA70F4 /* BulletinExpandedViewController.xib in Resources */,
+				33A611D51D32C3F900605552 /* Desk Lamp-50@2x.png in Resources */,
 				33A611C01D3266D100605552 /* LICENSE.txt in Resources */,
 				335266961CCC7DFB005641A2 /* TimetableExpandedViewController.xib in Resources */,
 				33BBE1321CA6B56100BA70F4 /* HomeworkExpandedViewController.xib in Resources */,
@@ -468,6 +478,8 @@
 				33FE98D01C91A486004F7907 /* Images.xcassets in Resources */,
 				33A611BC1D3266D100605552 /* .gitignore in Resources */,
 				33A611BB1D3266D100605552 /* .gitattributes in Resources */,
+				33A611D41D32C3F900605552 /* Calendar-50@2x.png in Resources */,
+				33A611D61D32C3F900605552 /* News-50@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

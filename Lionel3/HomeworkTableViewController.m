@@ -34,6 +34,7 @@
     
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -179,7 +180,7 @@
         
         //NSLog(@"Received HTML: %@",tempDescription);
         NSArray *splitString = [[tempDescription componentsSeparatedByString:@"<br/>"]mutableCopy];
-        tempDescription = [[splitString componentsJoinedByString:@"\n\n"]mutableCopy];
+        tempDescription = [[splitString componentsJoinedByString:@"\n"]mutableCopy];
         NSArray *ss2 = [tempDescription componentsSeparatedByString:@"<p>"];
         tempDescription = [[ss2 componentsJoinedByString:@"\n"]mutableCopy];
         NSArray *ss3 = [tempDescription componentsSeparatedByString:@"</p>"];
