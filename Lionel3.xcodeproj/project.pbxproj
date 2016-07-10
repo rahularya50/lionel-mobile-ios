@@ -14,18 +14,26 @@
 		335266951CCC7DFB005641A2 /* TimetableExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335266931CCC7DFB005641A2 /* TimetableExpandedViewController.m */; };
 		335266961CCC7DFB005641A2 /* TimetableExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */; };
 		335266991CD5D345005641A2 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335266981CD5D345005641A2 /* LoadingViewController.m */; };
-		3353B9061C971494009E48A4 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 3353B8E01C971494009E48A4 /* .gitattributes */; };
-		3353B9071C971494009E48A4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3353B8E11C971494009E48A4 /* .gitignore */; };
-		3353B9081C971494009E48A4 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3353B8E21C971494009E48A4 /* .travis.yml */; };
-		3353B9161C971494009E48A4 /* Hpple.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3353B8FB1C971494009E48A4 /* Hpple.podspec */; };
-		3353B9171C971494009E48A4 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3353B8FC1C971494009E48A4 /* LICENSE.txt */; };
-		3353B9181C971494009E48A4 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B9001C971494009E48A4 /* TFHpple.m */; };
-		3353B9191C971494009E48A4 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B9021C971494009E48A4 /* TFHppleElement.m */; };
-		3353B91A1C971494009E48A4 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B9041C971494009E48A4 /* XPathQuery.m */; };
 		3353B9281C99935F009E48A4 /* TimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B9271C99935F009E48A4 /* TimetableViewController.m */; };
 		3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B92E1C99940F009E48A4 /* TimetableViewCell.m */; };
 		336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A081C91C51200C8C40A /* libxml2.2.dylib */; };
 		336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A091C91C51300C8C40A /* libxml2.dylib */; };
+		33A611AC1D32662000605552 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6119E1D32662000605552 /* ASIAuthenticationDialog.m */; };
+		33A611AD1D32662000605552 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A01D32662000605552 /* ASIFormDataRequest.m */; };
+		33A611AE1D32662000605552 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A21D32662000605552 /* ASIHTTPRequest.m */; };
+		33A611AF1D32662000605552 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A61D32662000605552 /* ASIInputStream.m */; };
+		33A611B01D32662000605552 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A81D32662000605552 /* ASINetworkQueue.m */; };
+		33A611B11D32662000605552 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611AA1D32662000605552 /* ASINSStringAdditions.m */; };
+		33A611BB1D3266D100605552 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B41D3266D100605552 /* .gitattributes */; };
+		33A611BC1D3266D100605552 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B51D3266D100605552 /* .gitignore */; };
+		33A611BD1D3266D100605552 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B61D3266D100605552 /* .travis.yml */; };
+		33A611BE1D3266D100605552 /* Example in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B71D3266D100605552 /* Example */; };
+		33A611BF1D3266D100605552 /* Hpple.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B81D3266D100605552 /* Hpple.podspec */; };
+		33A611C01D3266D100605552 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33A611B91D3266D100605552 /* LICENSE.txt */; };
+		33A611C81D3266FA00605552 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611C31D3266FA00605552 /* TFHpple.m */; };
+		33A611C91D3266FA00605552 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611C51D3266FA00605552 /* TFHppleElement.m */; };
+		33A611CA1D3266FA00605552 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611C71D3266FA00605552 /* XPathQuery.m */; };
+		33A611CF1D3267A900605552 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611CE1D3267A900605552 /* Reachability.m */; };
 		33BBE1311CA6B56100BA70F4 /* HomeworkExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */; };
 		33BBE1321CA6B56100BA70F4 /* HomeworkExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */; };
 		33BBE1351CA9200700BA70F4 /* BulletinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE1341CA9200700BA70F4 /* BulletinTableViewController.m */; };
@@ -44,13 +52,6 @@
 		33FE99651C91A537004F7907 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FE99641C91A537004F7907 /* CoreGraphics.framework */; };
 		33FE99671C91A53E004F7907 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FE99661C91A53E004F7907 /* libz.dylib */; };
 		33FE996B1C91A56D004F7907 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE996A1C91A56D004F7907 /* LoginViewController.m */; };
-		33FE9C2E1C91AF2F004F7907 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C2D1C91AF2F004F7907 /* Reachability.m */; };
-		33FE9C3E1C91BBC9004F7907 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C301C91BBC9004F7907 /* ASIAuthenticationDialog.m */; };
-		33FE9C3F1C91BBC9004F7907 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C321C91BBC9004F7907 /* ASIFormDataRequest.m */; };
-		33FE9C401C91BBC9004F7907 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C341C91BBC9004F7907 /* ASIHTTPRequest.m */; };
-		33FE9C411C91BBC9004F7907 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C381C91BBC9004F7907 /* ASIInputStream.m */; };
-		33FE9C421C91BBC9004F7907 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C3A1C91BBC9004F7907 /* ASINetworkQueue.m */; };
-		33FE9C431C91BBC9004F7907 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE9C3C1C91BBC9004F7907 /* ASINSStringAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,23 +78,41 @@
 		335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimetableExpandedViewController.xib; sourceTree = "<group>"; };
 		335266971CD5D345005641A2 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		335266981CD5D345005641A2 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
-		3353B8E01C971494009E48A4 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
-		3353B8E11C971494009E48A4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		3353B8E21C971494009E48A4 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		3353B8FB1C971494009E48A4 /* Hpple.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hpple.podspec; sourceTree = "<group>"; };
-		3353B8FC1C971494009E48A4 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		3353B8FF1C971494009E48A4 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
-		3353B9001C971494009E48A4 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
-		3353B9011C971494009E48A4 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
-		3353B9021C971494009E48A4 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
-		3353B9031C971494009E48A4 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
-		3353B9041C971494009E48A4 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		3353B9261C99935F009E48A4 /* TimetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableViewController.h; sourceTree = "<group>"; };
 		3353B9271C99935F009E48A4 /* TimetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableViewController.m; sourceTree = "<group>"; };
 		3353B92D1C99940F009E48A4 /* TimetableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimetableViewCell.h; path = ../TimetableViewCell.h; sourceTree = "<group>"; };
 		3353B92E1C99940F009E48A4 /* TimetableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimetableViewCell.m; path = ../TimetableViewCell.m; sourceTree = "<group>"; };
 		336B0A081C91C51200C8C40A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		336B0A091C91C51300C8C40A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		33A6119D1D32662000605552 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = Classes/ASIAuthenticationDialog.h; sourceTree = SOURCE_ROOT; };
+		33A6119E1D32662000605552 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = Classes/ASIAuthenticationDialog.m; sourceTree = SOURCE_ROOT; };
+		33A6119F1D32662000605552 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = Classes/ASIFormDataRequest.h; sourceTree = SOURCE_ROOT; };
+		33A611A01D32662000605552 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = Classes/ASIFormDataRequest.m; sourceTree = SOURCE_ROOT; };
+		33A611A11D32662000605552 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequest.h; path = Classes/ASIHTTPRequest.h; sourceTree = SOURCE_ROOT; };
+		33A611A21D32662000605552 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIHTTPRequest.m; path = Classes/ASIHTTPRequest.m; sourceTree = SOURCE_ROOT; };
+		33A611A31D32662000605552 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestConfig.h; path = Classes/ASIHTTPRequestConfig.h; sourceTree = SOURCE_ROOT; };
+		33A611A41D32662000605552 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = Classes/ASIHTTPRequestDelegate.h; sourceTree = SOURCE_ROOT; };
+		33A611A51D32662000605552 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIInputStream.h; path = Classes/ASIInputStream.h; sourceTree = SOURCE_ROOT; };
+		33A611A61D32662000605552 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIInputStream.m; path = Classes/ASIInputStream.m; sourceTree = SOURCE_ROOT; };
+		33A611A71D32662000605552 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINetworkQueue.h; path = Classes/ASINetworkQueue.h; sourceTree = SOURCE_ROOT; };
+		33A611A81D32662000605552 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = Classes/ASINetworkQueue.m; sourceTree = SOURCE_ROOT; };
+		33A611A91D32662000605552 /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINSStringAdditions.h; path = Classes/ASINSStringAdditions.h; sourceTree = SOURCE_ROOT; };
+		33A611AA1D32662000605552 /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINSStringAdditions.m; path = Classes/ASINSStringAdditions.m; sourceTree = SOURCE_ROOT; };
+		33A611AB1D32662000605552 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = Classes/ASIProgressDelegate.h; sourceTree = SOURCE_ROOT; };
+		33A611B41D3266D100605552 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitattributes; path = "Lionel3/hpple-master/.gitattributes"; sourceTree = SOURCE_ROOT; };
+		33A611B51D3266D100605552 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = "Lionel3/hpple-master/.gitignore"; sourceTree = SOURCE_ROOT; };
+		33A611B61D3266D100605552 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = "Lionel3/hpple-master/.travis.yml"; sourceTree = SOURCE_ROOT; };
+		33A611B71D3266D100605552 /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Example; path = "Lionel3/hpple-master/Example"; sourceTree = SOURCE_ROOT; };
+		33A611B81D3266D100605552 /* Hpple.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hpple.podspec; path = "Lionel3/hpple-master/Hpple.podspec"; sourceTree = SOURCE_ROOT; };
+		33A611B91D3266D100605552 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = "Lionel3/hpple-master/LICENSE.txt"; sourceTree = SOURCE_ROOT; };
+		33A611C21D3266FA00605552 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Classes/TFHpple.h; sourceTree = SOURCE_ROOT; };
+		33A611C31D3266FA00605552 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Classes/TFHpple.m; sourceTree = SOURCE_ROOT; };
+		33A611C41D3266FA00605552 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Classes/TFHppleElement.h; sourceTree = SOURCE_ROOT; };
+		33A611C51D3266FA00605552 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Classes/TFHppleElement.m; sourceTree = SOURCE_ROOT; };
+		33A611C61D3266FA00605552 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Classes/XPathQuery.h; sourceTree = SOURCE_ROOT; };
+		33A611C71D3266FA00605552 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Classes/XPathQuery.m; sourceTree = SOURCE_ROOT; };
+		33A611CD1D3267A900605552 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Lionel3/Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
+		33A611CE1D3267A900605552 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Lionel3/Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
 		33BBE12E1CA6B56100BA70F4 /* HomeworkExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkExpandedViewController.h; sourceTree = "<group>"; };
 		33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkExpandedViewController.m; sourceTree = "<group>"; };
 		33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeworkExpandedViewController.xib; sourceTree = "<group>"; };
@@ -123,23 +142,6 @@
 		33FE99661C91A53E004F7907 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		33FE99691C91A56D004F7907 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		33FE996A1C91A56D004F7907 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		33FE9C2C1C91AF2F004F7907 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		33FE9C2D1C91AF2F004F7907 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		33FE9C2F1C91BBC9004F7907 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
-		33FE9C301C91BBC9004F7907 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
-		33FE9C311C91BBC9004F7907 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
-		33FE9C321C91BBC9004F7907 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
-		33FE9C331C91BBC9004F7907 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
-		33FE9C341C91BBC9004F7907 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
-		33FE9C351C91BBC9004F7907 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
-		33FE9C361C91BBC9004F7907 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
-		33FE9C371C91BBC9004F7907 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
-		33FE9C381C91BBC9004F7907 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
-		33FE9C391C91BBC9004F7907 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
-		33FE9C3A1C91BBC9004F7907 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
-		33FE9C3B1C91BBC9004F7907 /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
-		33FE9C3C1C91BBC9004F7907 /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
-		33FE9C3D1C91BBC9004F7907 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,11 +171,12 @@
 		3353B8DF1C971494009E48A4 /* hpple-master */ = {
 			isa = PBXGroup;
 			children = (
-				3353B8E01C971494009E48A4 /* .gitattributes */,
-				3353B8E11C971494009E48A4 /* .gitignore */,
-				3353B8E21C971494009E48A4 /* .travis.yml */,
-				3353B8FB1C971494009E48A4 /* Hpple.podspec */,
-				3353B8FC1C971494009E48A4 /* LICENSE.txt */,
+				33A611B41D3266D100605552 /* .gitattributes */,
+				33A611B51D3266D100605552 /* .gitignore */,
+				33A611B61D3266D100605552 /* .travis.yml */,
+				33A611B71D3266D100605552 /* Example */,
+				33A611B81D3266D100605552 /* Hpple.podspec */,
+				33A611B91D3266D100605552 /* LICENSE.txt */,
 				3353B8FD1C971494009E48A4 /* Pod */,
 			);
 			name = "hpple-master";
@@ -191,12 +194,12 @@
 		3353B8FE1C971494009E48A4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3353B8FF1C971494009E48A4 /* TFHpple.h */,
-				3353B9001C971494009E48A4 /* TFHpple.m */,
-				3353B9011C971494009E48A4 /* TFHppleElement.h */,
-				3353B9021C971494009E48A4 /* TFHppleElement.m */,
-				3353B9031C971494009E48A4 /* XPathQuery.h */,
-				3353B9041C971494009E48A4 /* XPathQuery.m */,
+				33A611C21D3266FA00605552 /* TFHpple.h */,
+				33A611C31D3266FA00605552 /* TFHpple.m */,
+				33A611C41D3266FA00605552 /* TFHppleElement.h */,
+				33A611C51D3266FA00605552 /* TFHppleElement.m */,
+				33A611C61D3266FA00605552 /* XPathQuery.h */,
+				33A611C71D3266FA00605552 /* XPathQuery.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -332,21 +335,21 @@
 		33FE98E81C91A4A3004F7907 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				33FE9C2F1C91BBC9004F7907 /* ASIAuthenticationDialog.h */,
-				33FE9C301C91BBC9004F7907 /* ASIAuthenticationDialog.m */,
-				33FE9C311C91BBC9004F7907 /* ASIFormDataRequest.h */,
-				33FE9C321C91BBC9004F7907 /* ASIFormDataRequest.m */,
-				33FE9C331C91BBC9004F7907 /* ASIHTTPRequest.h */,
-				33FE9C341C91BBC9004F7907 /* ASIHTTPRequest.m */,
-				33FE9C351C91BBC9004F7907 /* ASIHTTPRequestConfig.h */,
-				33FE9C361C91BBC9004F7907 /* ASIHTTPRequestDelegate.h */,
-				33FE9C371C91BBC9004F7907 /* ASIInputStream.h */,
-				33FE9C381C91BBC9004F7907 /* ASIInputStream.m */,
-				33FE9C391C91BBC9004F7907 /* ASINetworkQueue.h */,
-				33FE9C3A1C91BBC9004F7907 /* ASINetworkQueue.m */,
-				33FE9C3B1C91BBC9004F7907 /* ASINSStringAdditions.h */,
-				33FE9C3C1C91BBC9004F7907 /* ASINSStringAdditions.m */,
-				33FE9C3D1C91BBC9004F7907 /* ASIProgressDelegate.h */,
+				33A6119D1D32662000605552 /* ASIAuthenticationDialog.h */,
+				33A6119E1D32662000605552 /* ASIAuthenticationDialog.m */,
+				33A6119F1D32662000605552 /* ASIFormDataRequest.h */,
+				33A611A01D32662000605552 /* ASIFormDataRequest.m */,
+				33A611A11D32662000605552 /* ASIHTTPRequest.h */,
+				33A611A21D32662000605552 /* ASIHTTPRequest.m */,
+				33A611A31D32662000605552 /* ASIHTTPRequestConfig.h */,
+				33A611A41D32662000605552 /* ASIHTTPRequestDelegate.h */,
+				33A611A51D32662000605552 /* ASIInputStream.h */,
+				33A611A61D32662000605552 /* ASIInputStream.m */,
+				33A611A71D32662000605552 /* ASINetworkQueue.h */,
+				33A611A81D32662000605552 /* ASINetworkQueue.m */,
+				33A611A91D32662000605552 /* ASINSStringAdditions.h */,
+				33A611AA1D32662000605552 /* ASINSStringAdditions.m */,
+				33A611AB1D32662000605552 /* ASIProgressDelegate.h */,
 			);
 			name = Classes;
 			path = "../../Downloads/pokeb-asi-http-request-9051a33/Classes";
@@ -364,8 +367,8 @@
 		33FE9C2B1C91AF2F004F7907 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				33FE9C2C1C91AF2F004F7907 /* Reachability.h */,
-				33FE9C2D1C91AF2F004F7907 /* Reachability.m */,
+				33A611CD1D3267A900605552 /* Reachability.h */,
+				33A611CE1D3267A900605552 /* Reachability.m */,
 			);
 			name = Reachability;
 			path = "../../Downloads/pokeb-asi-http-request-9051a33/External/Reachability";
@@ -453,17 +456,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3353B9081C971494009E48A4 /* .travis.yml in Resources */,
-				3353B9171C971494009E48A4 /* LICENSE.txt in Resources */,
+				33A611BD1D3266D100605552 /* .travis.yml in Resources */,
 				33BBE13D1CB17D2900BA70F4 /* BulletinExpandedViewController.xib in Resources */,
-				3353B9071C971494009E48A4 /* .gitignore in Resources */,
+				33A611C01D3266D100605552 /* LICENSE.txt in Resources */,
 				335266961CCC7DFB005641A2 /* TimetableExpandedViewController.xib in Resources */,
 				33BBE1321CA6B56100BA70F4 /* HomeworkExpandedViewController.xib in Resources */,
 				33FE98CE1C91A486004F7907 /* Main.storyboard in Resources */,
+				33A611BF1D3266D100605552 /* Hpple.podspec in Resources */,
+				33A611BE1D3266D100605552 /* Example in Resources */,
 				33FE98D31C91A486004F7907 /* LaunchScreen.xib in Resources */,
 				33FE98D01C91A486004F7907 /* Images.xcassets in Resources */,
-				3353B9161C971494009E48A4 /* Hpple.podspec in Resources */,
-				3353B9061C971494009E48A4 /* .gitattributes in Resources */,
+				33A611BC1D3266D100605552 /* .gitignore in Resources */,
+				33A611BB1D3266D100605552 /* .gitattributes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,28 +489,28 @@
 				3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */,
 				33BBE13C1CB17D2900BA70F4 /* BulletinExpandedViewController.m in Sources */,
 				335266991CD5D345005641A2 /* LoadingViewController.m in Sources */,
-				33FE9C3F1C91BBC9004F7907 /* ASIFormDataRequest.m in Sources */,
-				33FE9C421C91BBC9004F7907 /* ASINetworkQueue.m in Sources */,
+				33A611AE1D32662000605552 /* ASIHTTPRequest.m in Sources */,
+				33A611B11D32662000605552 /* ASINSStringAdditions.m in Sources */,
 				33FE98C81C91A486004F7907 /* AppDelegate.m in Sources */,
-				33FE9C2E1C91AF2F004F7907 /* Reachability.m in Sources */,
+				33A611AD1D32662000605552 /* ASIFormDataRequest.m in Sources */,
+				33A611C91D3266FA00605552 /* TFHppleElement.m in Sources */,
 				33BBE1381CA9220700BA70F4 /* BulletinViewCell.m in Sources */,
 				3353B9281C99935F009E48A4 /* TimetableViewController.m in Sources */,
 				33BBE1311CA6B56100BA70F4 /* HomeworkExpandedViewController.m in Sources */,
 				335266951CCC7DFB005641A2 /* TimetableExpandedViewController.m in Sources */,
 				33FE996B1C91A56D004F7907 /* LoginViewController.m in Sources */,
-				3353B9191C971494009E48A4 /* TFHppleElement.m in Sources */,
-				33FE9C431C91BBC9004F7907 /* ASINSStringAdditions.m in Sources */,
+				33A611CA1D3266FA00605552 /* XPathQuery.m in Sources */,
+				33A611B01D32662000605552 /* ASINetworkQueue.m in Sources */,
 				3314D4B31C9EEB73003AE6CD /* HomeworkTableViewController.m in Sources */,
 				33F186F01CA0CE920094ED9A /* HomeworkViewCell.m in Sources */,
-				33FE9C411C91BBC9004F7907 /* ASIInputStream.m in Sources */,
 				33FE98C51C91A486004F7907 /* main.m in Sources */,
-				3353B9181C971494009E48A4 /* TFHpple.m in Sources */,
-				3353B91A1C971494009E48A4 /* XPathQuery.m in Sources */,
 				33BBE1351CA9200700BA70F4 /* BulletinTableViewController.m in Sources */,
+				33A611C81D3266FA00605552 /* TFHpple.m in Sources */,
+				33A611AC1D32662000605552 /* ASIAuthenticationDialog.m in Sources */,
 				3314D4AD1C9C2830003AE6CD /* TimetableTableViewController.m in Sources */,
+				33A611AF1D32662000605552 /* ASIInputStream.m in Sources */,
+				33A611CF1D3267A900605552 /* Reachability.m in Sources */,
 				3314D4B01C9CFBCD003AE6CD /* TabBarController.m in Sources */,
-				33FE9C401C91BBC9004F7907 /* ASIHTTPRequest.m in Sources */,
-				33FE9C3E1C91BBC9004F7907 /* ASIAuthenticationDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
