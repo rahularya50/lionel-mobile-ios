@@ -417,10 +417,17 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daycode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8t-lo-sXX">
+                                            <rect key="frame" x="200" y="5" width="79" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="classLabel" destination="aeT-4Z-Kp0" id="ygz-PZ-aht"/>
+                                    <outlet property="daycodeLabel" destination="W8t-lo-sXX" id="7te-WE-kov"/>
                                     <outlet property="periodLabel" destination="POH-cK-OyV" id="1gA-Ww-Hza"/>
                                 </connections>
                             </tableViewCell>

@@ -11,5 +11,6 @@
 @interface TimetableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *classLabel;
 @property (weak, nonatomic) IBOutlet UILabel *periodLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daycodeLabel;
 
 @end

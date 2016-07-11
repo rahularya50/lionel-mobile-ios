@@ -74,6 +74,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.classLabel.text = [[_classes objectAtIndex:item]objectAtIndex:2];
     cell.classLabel.numberOfLines = 0;
+    //cell.daycodeLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)_pageIndex];
     
     return cell;
 }

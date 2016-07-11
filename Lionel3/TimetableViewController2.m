@@ -131,9 +131,6 @@
                 NSLog(@"PROBLEM Error: %@",e);
             }
         }
-        if(classes.count == 0 || classes.count==10){
-            [classes addObject:temp];
-        }
         [classes addObject:temp];
     }
     
@@ -142,28 +139,17 @@
 
 - (TimetableTableViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (index >= 12) {
+    if (index >= 10) {
         return nil;
     }
     
     NSMutableString *pageName;
-    if(index==0){
-        pageName = [pageNames objectAtIndex:9];
-    }else if(index==11){
-        pageName = [pageNames objectAtIndex:0];
-    }else{
-        pageName =[pageNames objectAtIndex:index-1];
-    }
+    
+    pageName =[pageNames objectAtIndex:index];
     
     TimetableTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableTableViewController"];
     
-    if(index==0){
-        tvc.classes = [classes objectAtIndex:10];
-    }else if(index==11){
-        tvc.classes = [classes objectAtIndex:0];
-    }else{
-        tvc.classes = [classes objectAtIndex:index];
-    }
+    tvc.classes = [classes objectAtIndex:index];
     tvc.day = pageName;
     tvc.pageIndex = index;
     
@@ -176,11 +162,12 @@
 {
     NSUInteger index = ((TimetableTableViewController*) viewController).pageIndex;
     
-    if ((index == 0) || (index == NSNotFound)) {
+    if (index == NSNotFound) {
         return nil;
     }
     
-    index--;
+    index = (index + 9) % 10;
+    
     return [self viewControllerAtIndex:index];
 }
 
@@ -193,9 +180,8 @@
     }
     
     index++;
-    if (index == 12) {
-        return nil;
-    }
+    
+    index = index % 10;
     
     return [self viewControllerAtIndex:index];
 }
@@ -203,7 +189,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return 12;
+    return 10;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
