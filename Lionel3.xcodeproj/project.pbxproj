@@ -37,6 +37,8 @@
 		33A611D41D32C3F900605552 /* Calendar-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D11D32C3F900605552 /* Calendar-50@2x.png */; };
 		33A611D51D32C3F900605552 /* Desk Lamp-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */; };
 		33A611D61D32C3F900605552 /* News-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A611D31D32C3F900605552 /* News-50@2x.png */; };
+		33A611D91D33B5EC00605552 /* TimetablePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611D81D33B5EC00605552 /* TimetablePageViewController.m */; };
+		33A611DC1D33D4E700605552 /* TimetableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611DB1D33D4E700605552 /* TimetableViewController2.m */; };
 		33BBE1311CA6B56100BA70F4 /* HomeworkExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */; };
 		33BBE1321CA6B56100BA70F4 /* HomeworkExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */; };
 		33BBE1351CA9200700BA70F4 /* BulletinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE1341CA9200700BA70F4 /* BulletinTableViewController.m */; };
@@ -119,6 +121,10 @@
 		33A611D11D32C3F900605552 /* Calendar-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-50@2x.png"; sourceTree = "<group>"; };
 		33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Desk Lamp-50@2x.png"; sourceTree = "<group>"; };
 		33A611D31D32C3F900605552 /* News-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "News-50@2x.png"; sourceTree = "<group>"; };
+		33A611D71D33B5EC00605552 /* TimetablePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetablePageViewController.h; sourceTree = "<group>"; };
+		33A611D81D33B5EC00605552 /* TimetablePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetablePageViewController.m; sourceTree = "<group>"; };
+		33A611DA1D33D4E700605552 /* TimetableViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableViewController2.h; sourceTree = "<group>"; };
+		33A611DB1D33D4E700605552 /* TimetableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableViewController2.m; sourceTree = "<group>"; };
 		33BBE12E1CA6B56100BA70F4 /* HomeworkExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkExpandedViewController.h; sourceTree = "<group>"; };
 		33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkExpandedViewController.m; sourceTree = "<group>"; };
 		33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeworkExpandedViewController.xib; sourceTree = "<group>"; };
@@ -236,6 +242,10 @@
 		33BBE12C1CA6B4EB00BA70F4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				33A611DA1D33D4E700605552 /* TimetableViewController2.h */,
+				33A611DB1D33D4E700605552 /* TimetableViewController2.m */,
+				33A611D71D33B5EC00605552 /* TimetablePageViewController.h */,
+				33A611D81D33B5EC00605552 /* TimetablePageViewController.m */,
 				33143F751D1C2297004E4B83 /* Sync.h */,
 				33143F761D1C2297004E4B83 /* Sync.m */,
 				335266971CD5D345005641A2 /* LoadingViewController.h */,
@@ -498,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33143F771D1C2297004E4B83 /* Sync.m in Sources */,
+				33A611D91D33B5EC00605552 /* TimetablePageViewController.m in Sources */,
 				3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */,
 				33BBE13C1CB17D2900BA70F4 /* BulletinExpandedViewController.m in Sources */,
 				335266991CD5D345005641A2 /* LoadingViewController.m in Sources */,
@@ -513,6 +524,7 @@
 				33FE996B1C91A56D004F7907 /* LoginViewController.m in Sources */,
 				33A611CA1D3266FA00605552 /* XPathQuery.m in Sources */,
 				33A611B01D32662000605552 /* ASINetworkQueue.m in Sources */,
+				33A611DC1D33D4E700605552 /* TimetableViewController2.m in Sources */,
 				3314D4B31C9EEB73003AE6CD /* HomeworkTableViewController.m in Sources */,
 				33F186F01CA0CE920094ED9A /* HomeworkViewCell.m in Sources */,
 				33FE98C51C91A486004F7907 /* main.m in Sources */,

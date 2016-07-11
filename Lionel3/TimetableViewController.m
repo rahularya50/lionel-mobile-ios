@@ -118,6 +118,8 @@
         [classes addObject:temp];
     }
     
+    NSLog(@"%@", classes);
+    
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
     //NSLog(@"%f",self.view.frame.size.width);
@@ -127,6 +129,7 @@
     _scrollView.contentSize = CGSizeMake(12*_scrollView.bounds.size.width,_scrollView.frame.size.height);
     int i = 1;
     while(i<13){
+        NSLog(@"%d", i);
         [self loadPage:i];
         i++;
     }
@@ -157,14 +160,9 @@
     
     //CGRect tableFrame = CGRectMake(page*_scrollView.frame.size.width,0,_scrollView.frame.size.width,_scrollView.frame.size.height);
     
-    //NSLog(@"%f",_scrollView.frame.size.width);
-    //NSLog(@"%f",self.view.frame.size.width);
-    
     TimetableTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableTableViewController"];
     CGFloat pageWidth = _scrollView.bounds.size.width;
-    tvc.view.frame = CGRectMake((pageWidth)*(page-1),0,pageWidth,_scrollView.bounds.size.height);
-    //NSLog(@"%f",tvc.view.bounds.size.width);
-    //NSLog(@"%f",tvc.view.bounds.origin.x);
+    //tvc.view.bounds = CGRectMake((pageWidth)*(page-1),0,pageWidth,_scrollView.bounds.size.height);
     if(page==1){
         tvc.classes = [classes objectAtIndex:10];
     }else if(page==12){
@@ -174,10 +172,17 @@
     }
     tvc.day = pageName;
     
+    NSLog(@"%ld", (long)page);
+    
     [self addChildViewController:tvc];
     [_scrollView addSubview:tvc.view];
     [tvc didMoveToParentViewController:self];
-    /*
+    
+    //tvc.view.bounds = CGRectMake((pageWidth)*(page-1),0,pageWidth,_scrollView.bounds.size.height);
+    //tvc.view.frame = CGRectMake((pageWidth)*(page-1),0,pageWidth,_scrollView.bounds.size.height);
+    NSLog(@"%f",tvc.view.center.x);
+    
+       /*
     if(page<12){
         [self loadPage:page+1];
     }else if(page==12){
@@ -197,9 +202,9 @@
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x)/pageWidth)+1;
     if(page==1){
-        [_scrollView scrollRectToVisible:CGRectMake(pageWidth*10,0,pageWidth,_scrollView.frame.size.height) animated:NO];
+        //[_scrollView scrollRectToVisible:CGRectMake(pageWidth*10,0,pageWidth,_scrollView.frame.size.height) animated:NO];
     }else if(page==12){
-        [_scrollView scrollRectToVisible:CGRectMake(pageWidth,0,pageWidth,_scrollView.frame.size.height) animated:NO];
+        //[_scrollView scrollRectToVisible:CGRectMake(pageWidth,0,pageWidth,_scrollView.frame.size.height) animated:NO];
     }
     int p2 = floor((_scrollView.contentOffset.x-(pageWidth/2))/pageWidth)+1;
     _pageControl.currentPage = p2-1;

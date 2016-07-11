@@ -21,13 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    item = 0;
+    
     table.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     if(table.contentSize.height < table.frame.size.height){
         table.scrollEnabled = NO;
     }else{
         table.scrollEnabled = YES;
     }
+    
+    NSLog(@"%d", _pageIndex);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -60,14 +63,16 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    item++;
+    
+    int item = indexPath.row;
+    
     tableView.rowHeight = 100;
     TimetableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimetableViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.periodLabel.text = [@"Period " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)item]];
+    cell.periodLabel.text = [@"Period " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)item+1]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.classLabel.text = [[_classes objectAtIndex:item-1]objectAtIndex:2];
+    cell.classLabel.text = [[_classes objectAtIndex:item]objectAtIndex:2];
     cell.classLabel.numberOfLines = 0;
     
     return cell;

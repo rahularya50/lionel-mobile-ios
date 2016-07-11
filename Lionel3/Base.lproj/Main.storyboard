@@ -375,15 +375,13 @@
         <!--Timetable-->
         <scene sceneID="I7W-vG-Fh4">
             <objects>
-                <navigationController title="Timetable" id="ybr-NQ-DXX" sceneMemberID="viewController">
+                <navigationController title="Timetable" id="ybr-NQ-DXX" customClass="TimetableViewController2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timetable" image="Calendar-50.png" id="sNd-P5-zrh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3KK-6q-Xlk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="3KK-6q-Xlk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="CBb-vr-sEb" kind="relationship" relationship="rootViewController" id="Hlu-o0-8iA"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLv-9n-BPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -437,7 +435,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isz-Jj-5bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="-1035"/>
+            <point key="canvasLocation" x="2069" y="-371"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="84E-vr-BGc">
@@ -448,14 +446,14 @@
                         <viewControllerLayoutGuide type="bottom" id="O9y-Sv-tam"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Rw-mr-5ph">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-fx-iHJ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="455"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-fx-iHJ">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-nK-VZr">
-                                        <rect key="frame" x="35" y="426" width="251" height="37"/>
+                                        <rect key="frame" x="82" y="578" width="251" height="37"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </pageControl>
@@ -465,6 +463,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Timetable" id="gZr-kR-H5x"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="pageControl" destination="FGS-nK-VZr" id="EfR-vd-H2y"/>
                         <outlet property="scrollView" destination="Abb-fx-iHJ" id="Q4v-eg-kMY"/>
@@ -472,7 +471,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q3-Zq-7gJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1525" y="-373"/>
+            <point key="canvasLocation" x="563" y="-1481"/>
+        </scene>
+        <!--Timetable Page View Controller-->
+        <scene sceneID="lPq-ek-GkK">
+            <objects>
+                <pageViewController storyboardIdentifier="TimetablePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qqc-3Z-uMH" customClass="TimetablePageViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8IM-Dp-MWR"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vLC-2K-1FR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1591" y="-371"/>
         </scene>
     </scenes>
     <resources>
