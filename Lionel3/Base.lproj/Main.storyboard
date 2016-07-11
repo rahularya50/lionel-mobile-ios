@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5p-q4-0zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-708"/>
+            <point key="canvasLocation" x="93" y="-668"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -113,9 +113,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ybr-NQ-DXX" kind="relationship" relationship="viewControllers" id="VMZ-BQ-hUl"/>
-                        <segue destination="5YX-Vs-nim" kind="relationship" relationship="viewControllers" id="lkb-2h-f2k"/>
-                        <segue destination="70L-Pv-EaD" kind="relationship" relationship="viewControllers" id="uWN-W1-unw"/>
+                        <segue destination="w3b-pr-aKF" kind="relationship" relationship="viewControllers" id="7xM-5V-IMc"/>
+                        <segue destination="5YX-Vs-nim" kind="relationship" relationship="viewControllers" id="Pw9-KN-fGt"/>
+                        <segue destination="70L-Pv-EaD" kind="relationship" relationship="viewControllers" id="a4e-Lh-fbR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLQ-5T-OuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -375,9 +375,11 @@
         <!--Timetable-->
         <scene sceneID="I7W-vG-Fh4">
             <objects>
-                <navigationController title="Timetable" id="ybr-NQ-DXX" customClass="TimetableViewController2" sceneMemberID="viewController">
+                <navigationController title="Timetable" extendedLayoutIncludesOpaqueBars="YES" id="ybr-NQ-DXX" customClass="TimetableViewController2" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Timetable" image="Calendar-50.png" id="sNd-P5-zrh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="3KK-6q-Xlk">
+                    <navigationItem key="navigationItem" title="Timetable" id="4AZ-nY-qjn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="3KK-6q-Xlk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -385,7 +387,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLv-9n-BPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="-371"/>
+            <point key="canvasLocation" x="1623" y="-277"/>
         </scene>
         <!--Timetable Table View Controller-->
         <scene sceneID="TeH-UZ-0gB">
@@ -435,7 +437,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isz-Jj-5bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069" y="-371"/>
+            <point key="canvasLocation" x="2469" y="-277"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="84E-vr-BGc">
@@ -462,6 +464,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Tz3-Dg-rF7"/>
                     <navigationItem key="navigationItem" title="Timetable" id="gZr-kR-H5x"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -471,17 +474,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q3-Zq-7gJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="563" y="-1481"/>
+            <point key="canvasLocation" x="1047" y="-1079"/>
         </scene>
         <!--Timetable Page View Controller-->
         <scene sceneID="lPq-ek-GkK">
             <objects>
                 <pageViewController storyboardIdentifier="TimetablePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qqc-3Z-uMH" customClass="TimetablePageViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8IM-Dp-MWR"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLC-2K-1FR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591" y="-371"/>
+            <point key="canvasLocation" x="2049" y="-277"/>
+        </scene>
+        <!--Timetable-->
+        <scene sceneID="LDD-ki-Qen">
+            <objects>
+                <navigationController title="Timetable" automaticallyAdjustsScrollViewInsets="NO" id="w3b-pr-aKF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timetable" image="Calendar-50.png" id="f9Q-Zj-qZS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Oh0-Zc-2Xi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ybr-NQ-DXX" kind="relationship" relationship="rootViewController" id="F5h-by-gvG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E79-w1-wja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1083" y="-277"/>
         </scene>
     </scenes>
     <resources>

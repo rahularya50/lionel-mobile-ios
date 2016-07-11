@@ -13,6 +13,6 @@
 @property (nonatomic) NSArray *classes;
 @property (nonatomic) NSString *day;
 @property (weak, nonatomic) IBOutlet UITableView *table;
-@property NSUInteger *pageIndex;
+@property NSUInteger pageIndex;
 
 @end

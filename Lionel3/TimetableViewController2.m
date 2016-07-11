@@ -27,12 +27,13 @@
     [super viewDidLoad];
     
     [self parseTimetable];
-    
+        
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
+    self.navigationItem.title = @"Home";
     
     // Create page view controller
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableViewController"];
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetablePageViewController"];
     self.pageViewController.dataSource = self;
     
     TimetableTableViewController *startingViewController = [self viewControllerAtIndex:0];
@@ -40,7 +41,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -164,7 +165,7 @@
         tvc.classes = [classes objectAtIndex:index];
     }
     tvc.day = pageName;
-    tvc.pageIndex = &(index);
+    tvc.pageIndex = index;
     
     return tvc;
 }
@@ -173,7 +174,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = *(((TimetableTableViewController*) viewController).pageIndex);
+    NSUInteger index = ((TimetableTableViewController*) viewController).pageIndex;
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -185,7 +186,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = *(((TimetableTableViewController*) viewController).pageIndex);
+    NSUInteger index = ((TimetableTableViewController*) viewController).pageIndex;
     
     if (index == NSNotFound) {
         return nil;
@@ -197,6 +198,17 @@
     }
     
     return [self viewControllerAtIndex:index];
+}
+
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 12;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
 }
 
 @end

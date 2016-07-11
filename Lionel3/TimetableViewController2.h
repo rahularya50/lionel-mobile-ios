@@ -10,4 +10,5 @@
 
 @interface TimetableViewController2 : UIViewController <UIPageViewControllerDataSource>
     @property (strong, nonatomic) UIPageViewController *pageViewController;
+    @property (strong, nonatomic) UINavigationItem *navItem;
 @end

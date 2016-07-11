@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  Lionel3
+//  HppleDemo
 //
-//  Created by Rahul Arya on 10/3/16.
-//  Copyright (c) 2016 No Empty Promises. All rights reserved.
+//  Created by Vytautas Galaunia on 11/25/14.
+//
 //
 
 #import "AppDelegate.h"
@@ -17,15 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    self.window.tintColor = [UIColor redColor];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-    pageControl.backgroundColor = [UIColor whiteColor];
-    
     return YES;
 }
 
