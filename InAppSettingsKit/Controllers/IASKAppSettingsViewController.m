@@ -167,7 +167,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 - (void)configure {
 	_reloadDisabled = NO;
 	_showDoneButton = YES;
-	_showCreditsFooter = YES; // display credits for InAppSettingsKit creators
+	_showCreditsFooter = NO; // display credits for InAppSettingsKit creators
 	self.rowHeights = [NSMutableDictionary dictionary];
 }
 

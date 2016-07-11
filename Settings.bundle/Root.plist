@@ -7,54 +7,78 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Title</key>
+			<string>Notifications</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Group</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>Name</string>
-			<key>Key</key>
-			<string>name_preference</string>
-			<key>DefaultValue</key>
-			<string></string>
-			<key>IsSecure</key>
-			<false/>
-			<key>KeyboardType</key>
-			<string>Alphabet</string>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
-			<key>AutocorrectionType</key>
-			<string>No</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Enabled</string>
+			<string>Notify when homework is due</string>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>notify</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSSliderSpecifier</string>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vibrate</string>
 			<key>Key</key>
-			<string>slider_preference</string>
+			<string>notifyVibrate</string>
 			<key>DefaultValue</key>
-			<real>0.5</real>
-			<key>MinimumValue</key>
-			<integer>0</integer>
-			<key>MaximumValue</key>
-			<integer>1</integer>
-			<key>MinimumValueImage</key>
-			<string></string>
-			<key>MaximumValueImage</key>
-			<string></string>
+			<true/>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Synchronization</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Sync at key times</string>
+			<key>Key</key>
+			<string>syncKeyTimes</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Sync frequency</string>
+			<key>Key</key>
+			<string>syncFrequency</string>
+			<key>DefaultValue</key>
+			<string>15 minutes</string>
+			<key>Titles</key>
+			<array>
+				<string>15 minutes</string>
+				<string>30 minutes</string>
+				<string>1 hour</string>
+				<string>3 hours</string>
+				<string>6 hours</string>
+				<string>12 hours</string>
+				<string>24 hours</string>
+				<string>Never</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>15</integer>
+				<integer>30</integer>
+				<integer>60</integer>
+				<integer>180</integer>
+				<integer>360</integer>
+				<integer>720</integer>
+				<integer>1440</integer>
+				<integer>-1</integer>
+			</array>
 		</dict>
 	</array>
 </dict>
