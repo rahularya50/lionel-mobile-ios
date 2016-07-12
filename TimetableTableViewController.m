@@ -9,12 +9,12 @@
 #import "TimetableTableViewController.h"
 #import "TimetableViewCell.h"
 #import "TimetableExpandedViewController.h"
+#import "Sync.h"
 
-@interface TimetableTableViewController (){
-    NSInteger item;
-}
-
+@interface TimetableTableViewController ()
+//- (IBAction)refresh:(UIRefreshControl *)sender;
 @end
+
 
 @implementation TimetableTableViewController
 @synthesize table;
@@ -24,12 +24,12 @@
     
     table.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     if(table.contentSize.height < table.frame.size.height){
-        table.scrollEnabled = NO;
+        //table.scrollEnabled = NO;
     }else{
         table.scrollEnabled = YES;
     }
     
-    NSLog(@"%d", _pageIndex);
+    NSLog(@"%lu", (unsigned long)_pageIndex);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,6 +79,16 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	[[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextAlignment:NSTextAlignmentCenter];
+	return _day;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	return 40.0f;
+}
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger index = indexPath.row;
@@ -90,65 +100,29 @@
     tevc.className = [[_classes objectAtIndex:index]objectAtIndex:2];
     tevc.classroom = [[_classes objectAtIndex:index]objectAtIndex:1];
     tevc.classCode = [[_classes objectAtIndex:index]objectAtIndex:0];
-    tevc.teacher = [[_classes objectAtIndex:index]objectAtIndex:3];
-    
+	tevc.teacher = [[_classes objectAtIndex:index]objectAtIndex:3];
+	tevc.email = [[_classes objectAtIndex:index]objectAtIndex:4];
+	tevc.period = [@"Period " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)indexPath.row+1]];
+	
     [self.navigationController pushViewController:tevc animated:YES];
 }
 
-/*- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@",indexPath);
-    NSLog(@"%d",item);
-    if([[[_classes objectAtIndex:indexPath.row-1]objectAtIndex:2] isEqualToString:@"Liberal and Personal Studies"]){
-    //if(true){
-        return 120;
-    }else{
-        return 100;
-    }
-}*/
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (IBAction)refresh:(UIRefreshControl *)sender {
+	NSLog(@"Reloading");
+	
+	Sync *syncer = [[Sync alloc] init];
+	
+	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
+	dispatch_async(queue, ^{
+		[syncer login];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.tableView reloadData];
+			
+			[sender endRefreshing];
+			//Reload TableView
+		});
+	});
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

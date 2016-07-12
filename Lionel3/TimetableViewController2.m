@@ -117,11 +117,13 @@
                     NSString *classRoom = [b objectAtIndex:0];
                     NSString *className = [b objectAtIndex:1];
                     NSString *classTeacher = [[[b objectAtIndex:2]componentsSeparatedByString:@" <a"]objectAtIndex:0];
+					NSString *email = [[[[[[[b objectAtIndex:2]componentsSeparatedByString:@" <a"]objectAtIndex:1]componentsSeparatedByString:@"mailto:"]objectAtIndex:1]componentsSeparatedByString:@"\" class="]objectAtIndex:0];
                     
                     [classDetails addObject:classCode];
                     [classDetails addObject:classRoom];
                     [classDetails addObject:className];
-                    [classDetails addObject:classTeacher];
+					[classDetails addObject:classTeacher];
+					[classDetails addObject:email];
                 }
                 //NSLog(@"%@",classDetails);
                 

@@ -11,6 +11,7 @@
 #import "HomeworkViewCell.h"
 #import "HomeworkExpandedViewController.h"
 #import "LoginViewController.h"
+#import "Sync.h"
 
 @interface HomeworkTableViewController ()
 {
@@ -318,4 +319,21 @@
 }
 */
 
+- (IBAction)refresh:(UIRefreshControl *)sender {
+	NSLog(@"Reloading");
+	
+	Sync *syncer = [[Sync alloc] init];
+	
+	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
+	dispatch_async(queue, ^{
+		[syncer login];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.tableView reloadData];
+			
+			[sender endRefreshing];
+			[self parseHomework];
+			[self.tableView reloadData];
+		});
+	});
+}
 @end

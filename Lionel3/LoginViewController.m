@@ -37,18 +37,20 @@
 - (void)viewDidAppear:(BOOL)animated{
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-    //NSLog(@"%@",filepath);
+    NSLog(@"%@",filepath);
     
     @try{
-    NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
-    
+		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+		NSLog(@"%@", userData);
+		
     //if(userData.length>500){
-    if(userData.length>5){
-        username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-        password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
-        TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-        [self presentViewController:tabBar animated:YES completion:nil];
-    }
+        if(userData.length>5)
+        {
+            username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+            password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+            TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+            [self presentViewController:tabBar animated:YES completion:nil];
+        }
     }
     @catch(NSException *e){
         [[NSFileManager defaultManager] createFileAtPath:filepath contents:NULL attributes:nil];
@@ -80,11 +82,12 @@
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSString *userData = [NSString stringWithFormat:@"%@^%@",username,password];
     [userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
+	NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
+	
     Sync *syncer = [[Sync alloc] init];
     
     //[syncer login];
-    
+	
     NSLog(@"Initial synchronization concluded");
     
     [self presentTabBar];
