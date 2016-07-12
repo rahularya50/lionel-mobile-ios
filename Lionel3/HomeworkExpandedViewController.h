@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *homeworkLabel;
+@property (weak, nonatomic) IBOutlet UITextView *homeworkLabel;
 
 @property NSMutableString *className;
 @property NSMutableString *teacher;

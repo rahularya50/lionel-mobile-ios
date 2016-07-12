@@ -32,6 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -85,10 +90,10 @@
 	NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
 	
     Sync *syncer = [[Sync alloc] init];
-    
-    //[syncer login];
 	
-    NSLog(@"Initial synchronization concluded");
+	[syncer login];
+	
+	NSLog(@"Initial synchronization concluded");
     
     [self presentTabBar];
 }

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimetableExpandedViewController">
@@ -17,14 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Class" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-xq-X32">
-                    <rect key="frame" x="0.0" y="93" width="414" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-xq-X32">
+                    <rect key="frame" x="0.0" y="18" width="414" height="43"/>
                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-5a-Vli">
-                    <rect key="frame" x="8" y="154" width="398" height="584"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-5a-Vli">
+                    <rect key="frame" x="8" y="75" width="398" height="584"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="qhU-Tk-UDy"/>
@@ -34,15 +35,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="nBZ-xq-X32" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="73" id="Dn7-lT-Xnp"/>
-                <constraint firstAttribute="trailing" secondItem="zvs-5a-Vli" secondAttribute="trailing" constant="8" id="e0J-wX-iGt"/>
-                <constraint firstItem="zvs-5a-Vli" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="jvu-mq-Ba9"/>
-                <constraint firstAttribute="trailing" secondItem="nBZ-xq-X32" secondAttribute="trailing" id="rYu-QK-zLG"/>
-                <constraint firstItem="nBZ-xq-X32" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u6I-Ko-ter"/>
-                <constraint firstItem="zvs-5a-Vli" firstAttribute="top" secondItem="nBZ-xq-X32" secondAttribute="bottom" constant="24" id="uIQ-uw-FxG"/>
+                <constraint firstItem="zvs-5a-Vli" firstAttribute="top" secondItem="nBZ-xq-X32" secondAttribute="bottom" constant="14" id="5FG-du-v2A"/>
+                <constraint firstAttribute="bottom" secondItem="zvs-5a-Vli" secondAttribute="bottom" constant="77" id="6SP-dG-uIx"/>
+                <constraint firstItem="nBZ-xq-X32" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="18" id="Npj-Lh-2i5"/>
+                <constraint firstItem="nBZ-xq-X32" firstAttribute="centerX" secondItem="zvs-5a-Vli" secondAttribute="centerX" id="U7k-Ov-ESP"/>
+                <constraint firstAttribute="trailing" secondItem="nBZ-xq-X32" secondAttribute="trailing" id="WLD-4x-thO"/>
+                <constraint firstItem="zvs-5a-Vli" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="WTA-AF-Hgi"/>
+                <constraint firstItem="nBZ-xq-X32" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sN2-eR-eAv"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="203" y="318"/>
         </view>

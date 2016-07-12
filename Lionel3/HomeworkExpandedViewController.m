@@ -20,6 +20,9 @@
     [super viewDidLoad];
     
     self.classLabel.text = self.className;
+	
+	self.classLabel.textAlignment = NSTextAlignmentCenter;
+	
     self.dueLabel.text = self.dueDate;
     self.teacherLabel.text = self.teacher;
     self.timeLabel.text = self.time;
@@ -34,6 +37,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	//[self.homeworkLabel sizeToFit];
 }
 
 /*

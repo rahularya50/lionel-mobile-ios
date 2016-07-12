@@ -45,31 +45,21 @@
 - (void)login{
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-    //NSLog(@"%@",filepath);
+    NSLog(@"%@",filepath);
     
-    @try{
-        NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
-        
-        //if(userData.length>500){
-        if(userData.length>5){
-            username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-            password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
-            TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-            [self presentViewController:tabBar animated:YES completion:nil];
-        }else{
-            NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-            NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-            [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-            
-            LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-            [self presentViewController:lvc animated:YES completion:nil];
-            return;
-        }
-    }
-    @catch(NSException *e){
-        [[NSFileManager defaultManager] createFileAtPath:filepath contents:NULL attributes:nil];
-    }
-    
+	NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+	
+	NSLog(@"User credentials acquired");
+	
+	NSLog(@"%@",userData);
+	
+	username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+	password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+	
+	NSLog(@"User credentials parsed");
+	
+
+	
     NSLog(@"Login function called.");
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
@@ -126,7 +116,8 @@
 
     NSLog(@"Lionel 2 works!!!!!!!");
     l2Data = [l2Request responseData];
-    //NSLog(@"%@",[[NSString alloc] initWithData:l2Data encoding:NSUTF8StringEncoding]);
+    //NSLog(@"%@",[[NSString alloc] initWithData:l2Data encoding:NSUTF8StringEncoding]);ß
+	
     //Parsing to get user ID
     TFHpple *l1doc = [[TFHpple alloc] initWithHTMLData:l1Data];
     NSArray *menus = [l1doc searchWithXPathQuery:@"//div[contains(@class, 'menu clearfix')]"];

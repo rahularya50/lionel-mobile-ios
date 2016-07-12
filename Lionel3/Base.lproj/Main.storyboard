@@ -108,12 +108,12 @@
             <objects>
                 <tableViewController id="PML-Ts-GZc" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QvA-TF-QO5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vFf-Gi-Ecj">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFf-Gi-Ecj" id="Xth-yh-rAN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -137,7 +137,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarViewController" id="42d-lX-PhN" customClass="TabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="CGD-O4-SNs">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="CGD-O4-SNs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -165,16 +165,16 @@
             <objects>
                 <tableViewController id="YOw-aT-2Or" customClass="HomeworkTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="UDE-zw-IQc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeworkViewCell" rowHeight="180" id="Zi8-FX-Q0o" customClass="HomeworkViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="180"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zi8-FX-Q0o" id="Qg1-ZN-lUV">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qq-yq-9Ka">
@@ -262,6 +262,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Homework" id="wg9-0k-Bdz"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kSJ-mq-B9k">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
@@ -279,20 +280,20 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FY9-hr-V8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621" y="382"/>
+            <point key="canvasLocation" x="1623" y="382"/>
         </scene>
         <!--Bulletin-->
         <scene sceneID="fae-4o-zAY">
             <objects>
                 <tableViewController title="Bulletin" id="XZf-9V-1A8" customClass="BulletinTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="9an-R6-L1S">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="BulletinViewCell" rowHeight="200" id="WPX-GE-RN2" customClass="BulletinViewCell">
-                                <rect key="frame" x="0.0" y="92" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="WPX-GE-RN2" id="IdV-2o-jmf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
@@ -401,7 +402,7 @@
             <objects>
                 <navigationController title="Bulletin" id="70L-Pv-EaD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bulletin" image="News-50.png" id="dEl-9N-RgM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="frO-xq-XGp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="frO-xq-XGp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -419,7 +420,7 @@
             <objects>
                 <navigationController id="5YX-Vs-nim" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Homework" image="Desk Lamp-50.png" id="hHP-11-Xrd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="H8p-es-mex">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="H8p-es-mex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -576,7 +577,7 @@
                 <navigationController title="Timetable" automaticallyAdjustsScrollViewInsets="NO" id="w3b-pr-aKF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timetable" image="Calendar-50.png" id="f9Q-Zj-qZS"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Oh0-Zc-2Xi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="Oh0-Zc-2Xi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -596,7 +597,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eyL-1G-Dd3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings-50.png" selectedImage="Settings-50.png" id="6Wk-aX-TLe"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="812-gA-D3n">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="812-gA-D3n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
