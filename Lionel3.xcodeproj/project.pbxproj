@@ -65,6 +65,7 @@
 		33E51F3C1D341D32008365DA /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E51F291D341D32008365DA /* IASKTextField.m */; };
 		33E51F3D1D341D32008365DA /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E51F2B1D341D32008365DA /* IASKTextView.m */; };
 		33E51F3E1D341D32008365DA /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E51F2D1D341D32008365DA /* IASKTextViewCell.m */; };
+		33E51F401D3548E5008365DA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E51F3F1D3548E4008365DA /* Logo.png */; };
 		33F186F01CA0CE920094ED9A /* HomeworkViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F186EF1CA0CE920094ED9A /* HomeworkViewCell.m */; };
 		33FE98C51C91A486004F7907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE98C41C91A486004F7907 /* main.m */; };
 		33FE98C81C91A486004F7907 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FE98C71C91A486004F7907 /* AppDelegate.m */; };
@@ -207,6 +208,7 @@
 		33E51F2B1D341D32008365DA /* IASKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKTextView.m; sourceTree = "<group>"; };
 		33E51F2C1D341D32008365DA /* IASKTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKTextViewCell.h; sourceTree = "<group>"; };
 		33E51F2D1D341D32008365DA /* IASKTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKTextViewCell.m; sourceTree = "<group>"; };
+		33E51F3F1D3548E4008365DA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		33F186EE1CA0CE920094ED9A /* HomeworkViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkViewCell.h; sourceTree = "<group>"; };
 		33F186EF1CA0CE920094ED9A /* HomeworkViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkViewCell.m; sourceTree = "<group>"; };
 		33FE98BF1C91A486004F7907 /* Lionel3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lionel3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 		3353B9251C9990EF009E48A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				33E51F3F1D3548E4008365DA /* Logo.png */,
 				33A611D11D32C3F900605552 /* Calendar-50@2x.png */,
 				33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */,
 				33A611D31D32C3F900605552 /* News-50@2x.png */,
@@ -649,6 +652,7 @@
 				33E51EF01D341A50008365DA /* Settings.bundle in Resources */,
 				33A611BF1D3266D100605552 /* Hpple.podspec in Resources */,
 				33FE98D31C91A486004F7907 /* LaunchScreen.xib in Resources */,
+				33E51F401D3548E5008365DA /* Logo.png in Resources */,
 				33FE98D01C91A486004F7907 /* Images.xcassets in Resources */,
 				33A611BC1D3266D100605552 /* .gitignore in Resources */,
 				33A611BB1D3266D100605552 /* .gitattributes in Resources */,

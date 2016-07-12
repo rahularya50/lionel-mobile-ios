@@ -45,28 +45,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCw-qI-sph">
-                                <rect key="frame" x="112" y="132" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCw-qI-sph">
+                                <rect key="frame" x="20" y="232" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYj-R4-0XS">
-                                <rect key="frame" x="112" y="219" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYj-R4-0XS">
+                                <rect key="frame" x="20" y="284" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nq-kJ-agV">
-                                <rect key="frame" x="20" y="302" width="280" height="30"/>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.27179066581282668" blue="0.21253447085761162" alpha="0.0" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nq-kJ-agV">
+                                <rect key="frame" x="20" y="346" width="280" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xcP-CT-YV4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb1-T7-Xmf">
+                                <rect key="frame" x="0.0" y="-18" width="320" height="154"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="24"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-3K-IFS">
+                                <rect key="frame" x="40" y="96" width="241" height="104"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lb1-T7-Xmf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0dA-W6-Pdi"/>
+                            <constraint firstItem="LCw-qI-sph" firstAttribute="top" secondItem="lb1-T7-Xmf" secondAttribute="bottom" constant="96" id="7IO-oO-m9z"/>
+                            <constraint firstItem="1nq-kJ-agV" firstAttribute="top" secondItem="eYj-R4-0XS" secondAttribute="bottom" constant="32" id="81P-ao-tzh"/>
+                            <constraint firstItem="MkX-3K-IFS" firstAttribute="top" secondItem="cdP-qI-Nn0" secondAttribute="bottom" constant="76" id="IAH-2k-Oxt"/>
+                            <constraint firstItem="1nq-kJ-agV" firstAttribute="leading" secondItem="eYj-R4-0XS" secondAttribute="leading" id="Or3-SA-Owz"/>
+                            <constraint firstItem="lb1-T7-Xmf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="-18" id="PJb-Pk-sDn"/>
+                            <constraint firstItem="eYj-R4-0XS" firstAttribute="trailing" secondItem="LCw-qI-sph" secondAttribute="trailing" id="RvE-uL-Rkd"/>
+                            <constraint firstItem="lb1-T7-Xmf" firstAttribute="centerX" secondItem="MkX-3K-IFS" secondAttribute="centerX" id="bQ0-tr-4yh"/>
+                            <constraint firstItem="LCw-qI-sph" firstAttribute="top" secondItem="MkX-3K-IFS" secondAttribute="bottom" constant="32" id="bW3-nM-YRu"/>
+                            <constraint firstItem="LCw-qI-sph" firstAttribute="centerX" secondItem="MkX-3K-IFS" secondAttribute="centerX" id="hQK-qP-r5l"/>
+                            <constraint firstItem="LCw-qI-sph" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="mib-Fh-F4X"/>
+                            <constraint firstItem="LCw-qI-sph" firstAttribute="leading" secondItem="eYj-R4-0XS" secondAttribute="leading" id="oOn-va-fmG"/>
+                            <constraint firstAttribute="trailing" secondItem="lb1-T7-Xmf" secondAttribute="trailing" id="q7W-3O-wjt"/>
+                            <constraint firstItem="eYj-R4-0XS" firstAttribute="top" secondItem="LCw-qI-sph" secondAttribute="bottom" constant="22" id="saE-4W-ECs"/>
+                            <constraint firstItem="1nq-kJ-agV" firstAttribute="trailing" secondItem="eYj-R4-0XS" secondAttribute="trailing" id="udh-2o-AJi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="eYj-R4-0XS" id="KhL-uF-8hf"/>
@@ -588,6 +614,7 @@
     <resources>
         <image name="Calendar-50.png" width="25" height="25"/>
         <image name="Desk Lamp-50.png" width="25" height="25"/>
+        <image name="Logo.png" width="241" height="104"/>
         <image name="News-50.png" width="25" height="25"/>
         <image name="Settings-50.png" width="25" height="25"/>
     </resources>
