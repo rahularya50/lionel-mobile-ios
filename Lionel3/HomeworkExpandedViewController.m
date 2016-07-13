@@ -29,21 +29,17 @@
     self.codeLabel.text = self.classCode;
     self.homeworkLabel.text = self.desc;
     
-    [self.homeworkLabel sizeToFit];
-    
+	[self.homeworkLabel sizeToFit];
+	//[self.cardView resizeToFitSubviews];
+	
+	self.textViewHeightConstraint.constant = [self.homeworkLabel sizeThatFits:CGSizeMake(self.homeworkLabel.frame.size.width, CGFLOAT_MAX)].height;
+	
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	//[self.homeworkLabel sizeToFit];
 }
 
 /*

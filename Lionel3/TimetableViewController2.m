@@ -32,7 +32,7 @@
     self.navigationItem.leftBarButtonItem = logOut;
     self.navigationItem.title = @"Home";
 
-	UIBarButtonItem *today = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStylePlain target:self action:@selector(today:)];
+	UIBarButtonItem *today = [[UIBarButtonItem alloc] initWithTitle:@"Upcoming" style:UIBarButtonItemStylePlain target:self action:@selector(today:)];
 	self.navigationItem.rightBarButtonItem = today;
 	
     // Create page view controller

@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *homeworkLabel;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
 @property NSMutableString *className;
 @property NSMutableString *teacher;
