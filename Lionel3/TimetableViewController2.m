@@ -31,7 +31,10 @@
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
     self.navigationItem.title = @"Home";
-    
+
+	UIBarButtonItem *today = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStylePlain target:self action:@selector(today:)];
+	self.navigationItem.rightBarButtonItem = today;
+	
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetablePageViewController"];
     self.pageViewController.dataSource = self;
@@ -56,13 +59,70 @@
 }
 
 -(IBAction)logOut:(id)sender{
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-    [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self presentViewController:lvc animated:YES completion:nil];
+	NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
+	[@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	
+	LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+	[self presentViewController:lvc animated:YES completion:nil];
 }
+
+-(IBAction)today:(id)sender{
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+	int weekday = (int)[comps weekday]-1;
+	NSLog(@"Day is %d",weekday);
+	if(weekday>5 || weekday==0){
+		weekday = 1;
+	}
+	//[NSInteger] *targetPage = [NSInteger numberWithInt:((week-1)*5 + weekday)];
+	
+	NSUInteger targetPage = (NSUInteger)((week-1)*5 + weekday);
+	
+	[self flipToPage: targetPage];
+	
+	/*__weak UIPageViewController* pvcw = self.pageViewController;
+	[self.pageViewController setViewControllers:@[targetPage]
+				  direction:UIPageViewControllerNavigationDirectionForward
+				   animated:YES completion:^(BOOL finished) {
+					   UIPageViewController* pvcs = pvcw;
+					   if (!pvcs) return;
+					   dispatch_async(dispatch_get_main_queue(), ^{
+						   [pvcs setViewControllers:@[targetPage]
+										  direction:UIPageViewControllerNavigationDirectionForward
+										   animated:NO completion:nil];
+					   });
+				   }];*/
+}
+
+-(void) flipToPage:(NSUInteger)index {
+	
+	
+	TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers   objectAtIndex:0];
+	
+	NSUInteger retrievedIndex = theCurrentViewController.pageIndex;
+	
+	TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
+	
+	
+	NSArray *viewControllers = nil;
+	
+	viewControllers = [NSArray arrayWithObjects:viewController, nil];
+	
+	
+	if (retrievedIndex < index){
+		
+		[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
+		
+	} else {
+		
+		if (retrievedIndex > index){
+			
+			[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];
+		} 
+	}
+} 
+
 
 - (void)parseTimetable{
     pageNames = [NSArray arrayWithObjects:@"Monday (Week 1)", @"Tuesday (Week 1)",@"Wednesday (Week 1)",@"Thursday (Week 1)", @"Friday (Week 1)", @"Monday (Week 2)", @"Tuesday (Week 2)", @"Wednesday (Week 2)", @"Thursday (Week 2)", @"Friday (Week 2)", nil];
@@ -196,7 +256,8 @@
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
-    return 0;
+	TimetableTableViewController *currentVC = (pageViewController.viewControllers)[0];
+	return currentVC.pageIndex;
 }
 
 @end
