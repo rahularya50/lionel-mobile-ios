@@ -49,7 +49,7 @@
 		NSLog(@"%@", userData);
 		
     //if(userData.length>500){
-        if(userData.length>5)
+        if(userData.length>5 && false)
         {
             username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
             password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
@@ -72,7 +72,7 @@
 
 - (void)presentTabBar {
     TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-    [loading presentViewController:tabBar animated:YES completion:nil];
+    [self presentViewController:tabBar animated:YES completion:nil];
     NSLog(@"Presented tab bar");
 }
 
@@ -80,21 +80,29 @@
     username = _usernameField.text;
     password = _passwordField.text;
     
-    loading = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadingViewController"];
-    [self presentViewController:loading animated:NO completion:nil];
-    
+    //loading = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadingViewController"];
+    //[self presentViewController:loading animated:NO completion:nil];
+	
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSString *userData = [NSString stringWithFormat:@"%@^%@",username,password];
-    [userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-	NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
 	
     Sync *syncer = [[Sync alloc] init];
 	
-	[syncer login];
-	
+	@try{
+		NSLog(@"%@", username);
+		[syncer login:username andPassword: password];
+	}
+	@catch(NSException *e){
+		NSLog(@"Wrong pw!");
+		NSLog(@"%@",e);
+		return;
+	}
 	NSLog(@"Initial synchronization concluded");
-    
+	
+	[userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
+	
     [self presentTabBar];
 }
 @end

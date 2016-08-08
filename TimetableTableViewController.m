@@ -115,7 +115,7 @@
 	
 	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
 	dispatch_async(queue, ^{
-		[syncer login];
+		//[syncer login];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.tableView reloadData];
 			

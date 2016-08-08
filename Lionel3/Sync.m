@@ -16,8 +16,6 @@
 #import "LoginViewController.h"
 
 @interface Sync (){
-    NSString *username;
-    NSString *password;
     NSData *connData;
     NSData *l1Data;
     NSData *l2Data;
@@ -42,7 +40,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)login{
+- (void)login:(NSString*)username andPassword:(NSString*)password{
+	connData = nil;
+	l1Data = nil;
+	l2Data = nil;
+	connCookies = nil;
+	l1Cookies = nil;
+	l2Cookies = nil;
+	uid = nil;
+	loading = nil;
+	
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSLog(@"%@",filepath);
@@ -52,12 +59,14 @@
 	NSLog(@"User credentials acquired");
 	
 	NSLog(@"%@",userData);
+	NSLog(@"%@", username);
+	NSLog(@"%@", password);
 	
-	username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+	/*username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
 	password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
 	
 	NSLog(@"User credentials parsed");
-	
+	*/
 
 	
     NSLog(@"Login function called.");
@@ -85,6 +94,9 @@
     
     connData = [connRequest responseData];
     connCookies = [connRequest responseCookies];
+	
+	NSLog(@"%@",[[NSString alloc] initWithData:connData encoding:NSUTF8StringEncoding]);
+	
     //Send second request
     //NSLog(@"Request 2 sending.");
     NSURL *temp = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
@@ -124,12 +136,12 @@
     TFHppleElement *l1menu = [menus objectAtIndex:0];
     NSString *a = [l1menu text];
     if(a.length < 13){
-        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        /*NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-        [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-        
-        LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        [self presentViewController:lvc animated:YES completion:nil];
+        [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];*/
+		
+		[NSException raise:@"Invalid user id" format:@"UID or PW likely incorrect"];
+
         return;
     }
     
