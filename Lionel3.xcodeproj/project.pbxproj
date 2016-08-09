@@ -308,8 +308,8 @@
 				3353B92E1C99940F009E48A4 /* TimetableViewCell.m */,
 				33F186EE1CA0CE920094ED9A /* HomeworkViewCell.h */,
 				33F186EF1CA0CE920094ED9A /* HomeworkViewCell.m */,
-				33BBE1361CA9220700BA70F4 /* BulletinViewCell.h */,
 				33BBE1371CA9220700BA70F4 /* BulletinViewCell.m */,
+				33BBE1361CA9220700BA70F4 /* BulletinViewCell.h */,
 			);
 			name = Miscellaneous;
 			sourceTree = "<group>";
@@ -348,13 +348,13 @@
 				335266931CCC7DFB005641A2 /* TimetableExpandedViewController.m */,
 				335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */,
 				33BBE12E1CA6B56100BA70F4 /* HomeworkExpandedViewController.h */,
+				33BBE1391CB17D2900BA70F4 /* BulletinExpandedViewController.h */,
 				33BBE12F1CA6B56100BA70F4 /* HomeworkExpandedViewController.m */,
+				33BBE13A1CB17D2900BA70F4 /* BulletinExpandedViewController.m */,
 				33BBE1301CA6B56100BA70F4 /* HomeworkExpandedViewController.xib */,
+				33BBE13B1CB17D2900BA70F4 /* BulletinExpandedViewController.xib */,
 				3314D4AB1C9C2830003AE6CD /* TimetableTableViewController.h */,
 				3314D4AC1C9C2830003AE6CD /* TimetableTableViewController.m */,
-				33BBE1391CB17D2900BA70F4 /* BulletinExpandedViewController.h */,
-				33BBE13A1CB17D2900BA70F4 /* BulletinExpandedViewController.m */,
-				33BBE13B1CB17D2900BA70F4 /* BulletinExpandedViewController.xib */,
 			);
 			name = Expanded;
 			sourceTree = "<group>";

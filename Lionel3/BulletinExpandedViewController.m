@@ -24,6 +24,8 @@
     self.previewLabel.text = self.preview;
     
     [self.textLabel sizeToFit];
+	
+	self.textViewHeightConstraint.constant = [self.textLabel sizeThatFits:CGSizeMake(self.textLabel.frame.size.width, CGFLOAT_MAX)].height;
     
     // Do any additional setup after loading the view from its nib.
 }

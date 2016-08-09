@@ -30,11 +30,9 @@
     [self parseBulletin];
     [super viewDidLoad];
     
-    self.tableView.separatorColor = [UIColor clearColor];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
-    
+	self.tableView.separatorColor = [UIColor clearColor];
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
     // Do any additional setup after loading the view.
@@ -176,6 +174,8 @@
     
     
     [self.navigationController pushViewController:bevc animated:YES];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 /*

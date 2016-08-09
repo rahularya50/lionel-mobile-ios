@@ -14,12 +14,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *previewLabel;
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textLabel;
 
 @property NSMutableString *header;
 @property NSMutableString *date;
 @property NSMutableString *author;
 @property NSMutableString *preview;
 @property NSMutableString *desc;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
 @end

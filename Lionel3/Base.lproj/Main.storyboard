@@ -173,13 +173,13 @@
         <scene sceneID="oCy-iz-6qc">
             <objects>
                 <tableViewController id="YOw-aT-2Or" customClass="HomeworkTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="UDE-zw-IQc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="UDE-zw-IQc">
                         <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeworkViewCell" rowHeight="180" id="Zi8-FX-Q0o" customClass="HomeworkViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeworkViewCell" rowHeight="180" id="Zi8-FX-Q0o" customClass="HomeworkViewCell">
                                 <rect key="frame" x="0.0" y="22" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zi8-FX-Q0o" id="Qg1-ZN-lUV">
@@ -255,6 +255,7 @@
                                         <constraint firstItem="2Qq-yq-9Ka" firstAttribute="bottom" secondItem="Qg1-ZN-lUV" secondAttribute="bottomMargin" id="Y3K-WN-dc6"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="cardView" destination="2Qq-yq-9Ka" id="mag-Dk-OCB"/>
                                     <outlet property="classLabel" destination="Wwj-7k-p1g" id="kXx-bD-zos"/>
@@ -296,17 +297,17 @@
         <scene sceneID="fae-4o-zAY">
             <objects>
                 <tableViewController title="Bulletin" id="XZf-9V-1A8" customClass="BulletinTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="9an-R6-L1S">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="9an-R6-L1S">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="BulletinViewCell" rowHeight="200" id="WPX-GE-RN2" customClass="BulletinViewCell">
-                                <rect key="frame" x="0.0" y="28" width="320" height="200"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BulletinViewCell" rowHeight="200" id="WPX-GE-RN2" customClass="BulletinViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="WPX-GE-RN2" id="IdV-2o-jmf">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WPX-GE-RN2" id="IdV-2o-jmf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-BT-ARF">
@@ -362,7 +363,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="Xgu-BT-ARF" secondAttribute="bottom" id="DA3-PY-8bL"/>
                                         <constraint firstItem="Xgu-BT-ARF" firstAttribute="trailing" secondItem="IdV-2o-jmf" secondAttribute="trailingMargin" id="NSj-Yr-7MI"/>
@@ -370,7 +371,7 @@
                                         <constraint firstItem="Xgu-BT-ARF" firstAttribute="leading" secondItem="IdV-2o-jmf" secondAttribute="leadingMargin" constant="2" id="zMa-ji-hhQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="authorLabel" destination="xvF-pL-d4P" id="ECW-Vy-Pxi"/>
                                     <outlet property="cardView" destination="Xgu-BT-ARF" id="Qao-lc-NgO"/>
