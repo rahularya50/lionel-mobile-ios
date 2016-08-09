@@ -143,11 +143,11 @@
     //Parsing
     TFHpple *timetable = [[TFHpple alloc] initWithHTMLData:timetableData];
     NSMutableArray *classByPeriod = [[NSMutableArray alloc] init];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c1']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c2']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c3']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c4']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c5']"]];
+    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c1'] | //tr/td[@class='empty cell c1']"]];
+    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c2'] | //tr/td[@class='empty cell c2']"]];
+    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c3'] | //tr/td[@class='empty cell c3']"]];
+    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c4'] | //tr/td[@class='empty cell c4']"]];
+    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c5'] | //tr/td[@class='empty cell c5']"]];
     
     TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
     NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='smallcal']/div"] objectAtIndex:0] content];
@@ -155,7 +155,7 @@
     week = [cWeek intValue];
     NSLog(@"This is Week %d",week);
     for(int i = 0; i<10;i++){
-        //NSLog(@"Creating day %d classes.",i);
+        NSLog(@"Creating day %d classes.",i);
         NSMutableArray *temp = [[NSMutableArray alloc] init];
         
         for(int j = 0; j<5;j++){
@@ -163,11 +163,16 @@
                 NSArray *periodClasses = [classByPeriod objectAtIndex:j];
                 TFHppleElement *tempElement = [periodClasses objectAtIndex:i];
                 NSMutableArray *classDetails = [[NSMutableArray alloc]init];
-                if([[tempElement content]isEqualToString:@"&nbsp"]){
+				
+				NSLog(@"%lu", (unsigned long)[[tempElement content] length]);
+				
+                if([[tempElement content] length] < 5){
+					NSLog(@"Free Period!");
                     [classDetails addObject:@""];
-                    [classDetails addObject:@""];
-                    [classDetails addObject:@"Free"];
-                    [classDetails addObject:@""];
+                    [classDetails addObject:@"Wherever you want!"];
+                    [classDetails addObject:@"Free Period"];
+					[classDetails addObject:@"No one!"];
+					[classDetails addObject:@"emails!"];
                 }else{
                     NSString *classString = [tempElement raw];
                     NSString *c = [classString substringFromIndex:29];

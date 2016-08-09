@@ -92,9 +92,11 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger index = indexPath.row;
-    
+	
+	
+	
     TimetableExpandedViewController *tevc = [[TimetableExpandedViewController alloc] initWithNibName:@"TimetableExpandedViewController" bundle:nil];
-    
+	
     //NSLog(@"Class Name: %@",[classNames objectAtIndex:index]);
     
     tevc.className = [[_classes objectAtIndex:index]objectAtIndex:2];
