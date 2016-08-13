@@ -23,10 +23,14 @@
     self.textLabel.text = self.desc;
     self.previewLabel.text = self.preview;
     
-    [self.textLabel sizeToFit];
+	[self.previewLabel sizeToFit];
+	self.previewLabelHeightConstraint.constant = [self.previewLabel sizeThatFits:CGSizeMake(self.previewLabel.frame.size.width, CGFLOAT_MAX)].height;
+
+	[self.textLabel sizeToFit];
+	//self.textViewHeightConstraint.constant = [self.textLabel sizeThatFits:CGSizeMake(self.textLabel.frame.size.width, CGFLOAT_MAX)].height;
 	
-	self.textViewHeightConstraint.constant = [self.textLabel sizeThatFits:CGSizeMake(self.textLabel.frame.size.width, CGFLOAT_MAX)].height;
-    
+	//[self.view setNeedsLayout];
+	
     // Do any additional setup after loading the view from its nib.
 }
 

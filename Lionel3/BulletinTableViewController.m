@@ -135,8 +135,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    item++;
-    //NSLog(@"Creating row %d",item);
+    //item++;
+	
+	int index = indexPath.row;
+	
+	NSLog(@"Creating row %d",item);
     BulletinViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BulletinViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
@@ -144,11 +147,11 @@
     
     //NSLog(@"%@",[texts objectAtIndex:item-1]);
     //cell.textsLabel.numberOfLines = 1;
-    cell.titleLabel.text = [titles objectAtIndex:item-1];
-    cell.authorLabel.text = [authors objectAtIndex:item-1];
-    cell.datesLabel.text = [dates objectAtIndex:item-1];
-    cell.previewLabel.text = [previews objectAtIndex:item-1];
-    NSString *tempDesc = [[texts objectAtIndex:item-1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    cell.titleLabel.text = [titles objectAtIndex:index];
+    cell.authorLabel.text = [authors objectAtIndex:index];
+    cell.datesLabel.text = [dates objectAtIndex:index];
+    cell.previewLabel.text = [previews objectAtIndex:index];
+    NSString *tempDesc = [[texts objectAtIndex:index] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [cell.textsLabel setText:tempDesc];
 // texts objectAtIndex:item-1]];
     
@@ -158,18 +161,16 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    int index = indexPath.row;
-    
+	
     BulletinExpandedViewController *bevc = [[BulletinExpandedViewController alloc] initWithNibName:@"BulletinExpandedViewController" bundle:nil];
     
     //NSLog(@"Class Name: %@",[classNames objectAtIndex:index]);
-    bevc.header = [titles objectAtIndex:index];
-    bevc.date = [dates objectAtIndex:index];
-    bevc.author = [authors objectAtIndex:index];
-    bevc.preview = [previews objectAtIndex:index];
-    bevc.desc = [texts objectAtIndex:index];
-    
+    bevc.header = [titles objectAtIndex:indexPath.row];
+    bevc.date = [dates objectAtIndex:indexPath.row];
+    bevc.author = [authors objectAtIndex:indexPath.row];
+    bevc.preview = [previews objectAtIndex:indexPath.row];
+	bevc.desc = [[texts objectAtIndex:indexPath.row] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
     //NSLog(@"Pushing %@",hevc.className);
     
     
@@ -229,7 +230,26 @@
 	
 	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
 	dispatch_async(queue, ^{
-		//[syncer login];
+		
+		NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+		NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
+		NSLog(@"%@",filepath);
+		
+		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+		
+		NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+		NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+		
+		@try{
+			NSLog(@"%@", username);
+			[syncer login:username andPassword: password];
+		}
+		@catch(NSException *e){
+			NSLog(@"Wrong pw!");
+			NSLog(@"%@",e);
+			return;
+		}
+		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.tableView reloadData];
 			

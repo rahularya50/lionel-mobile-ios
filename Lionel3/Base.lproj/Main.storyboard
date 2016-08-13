@@ -182,7 +182,7 @@
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeworkViewCell" rowHeight="180" id="Zi8-FX-Q0o" customClass="HomeworkViewCell">
                                 <rect key="frame" x="0.0" y="22" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zi8-FX-Q0o" id="Qg1-ZN-lUV">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="Zi8-FX-Q0o" id="Qg1-ZN-lUV">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -306,7 +306,7 @@
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BulletinViewCell" rowHeight="200" id="WPX-GE-RN2" customClass="BulletinViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WPX-GE-RN2" id="IdV-2o-jmf">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="WPX-GE-RN2" id="IdV-2o-jmf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>

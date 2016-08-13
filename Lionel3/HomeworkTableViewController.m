@@ -127,9 +127,6 @@
             l+=1;
         }
     }
-    for(TFHppleElement *ite in span3){
-        //NSLog(@"Span3: %@",[ite content]);
-    }
     int j;
     int k;
     for(int i=0;i<span3.count/3;i++){
@@ -224,23 +221,21 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    int item = indexPath.row;
-    
+	
     //NSLog(@"%@", item);
     
-    //NSLog(@"Creating row %d",item);
+    NSLog(@"Creating row %d",item);
     HomeworkViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeworkViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
     //NSLog(@"%@",classNames);
     
-    cell.classLabel.text = [classNames objectAtIndex:item];
-    cell.codeLabel.text = [classCodes objectAtIndex:item];
-    cell.teacherLabel.text = [teachers objectAtIndex:item];
-    cell.descriptionLabel.text = [descriptions objectAtIndex:item];
-    cell.timeLabel.text = [times objectAtIndex:item];
-    cell.dueLabel.text = [dueDates objectAtIndex:item];
+    cell.classLabel.text = [classNames objectAtIndex:indexPath.row];
+    cell.codeLabel.text = [classCodes objectAtIndex:indexPath.row];
+    cell.teacherLabel.text = [teachers objectAtIndex:indexPath.row];
+    cell.descriptionLabel.text = [descriptions objectAtIndex:indexPath.row];
+    cell.timeLabel.text = [times objectAtIndex:indexPath.row];
+    cell.dueLabel.text = [dueDates objectAtIndex:indexPath.row];
     
     //cell.descriptionLabel.numberOfLines = 0;
     
@@ -249,19 +244,17 @@
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    int index = indexPath.row;
-    
+	
     HomeworkExpandedViewController *hevc = [[HomeworkExpandedViewController alloc] initWithNibName:@"HomeworkExpandedViewController" bundle:nil];
     
     //NSLog(@"Class Name: %@",[classNames objectAtIndex:index]);
 
-    hevc.className = [classNames objectAtIndex:index];
-    hevc.dueDate = [dueDates objectAtIndex:index];
-    hevc.teacher = [teachers objectAtIndex:index];
-    hevc.time = [times objectAtIndex:index];
-    hevc.classCode = [classCodes objectAtIndex:index];
-    hevc.desc = [descriptions objectAtIndex:index];
+    hevc.className = [classNames objectAtIndex:indexPath.row];
+    hevc.dueDate = [dueDates objectAtIndex:indexPath.row];
+    hevc.teacher = [teachers objectAtIndex:indexPath.row];
+    hevc.time = [times objectAtIndex:indexPath.row];
+    hevc.classCode = [classCodes objectAtIndex:indexPath.row];
+    hevc.desc = [descriptions objectAtIndex:indexPath.row];
     //NSLog(@"Pushing %@",hevc.className);
     
     
@@ -326,7 +319,26 @@
 	
 	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
 	dispatch_async(queue, ^{
-		//[syncer login];
+		
+		NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+		NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
+		NSLog(@"%@",filepath);
+		
+		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+		
+		NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+		NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+		
+		@try{
+			NSLog(@"%@", username);
+			[syncer login:username andPassword: password];
+		}
+		@catch(NSException *e){
+			NSLog(@"Wrong pw!");
+			NSLog(@"%@",e);
+			return;
+		}
+		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.tableView reloadData];
 			
