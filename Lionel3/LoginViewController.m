@@ -49,7 +49,7 @@
 		NSLog(@"%@", userData);
 		
     //if(userData.length>500){
-        if(userData.length>5)
+        if(userData.length>5 && false)
         {
             username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
             password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];

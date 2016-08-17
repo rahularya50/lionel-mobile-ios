@@ -147,7 +147,7 @@
     }
     */
     
-    uid = @"7346";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
+    uid = @"7253";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
     
     NSLog(@"Your student id is #%@",uid);
     

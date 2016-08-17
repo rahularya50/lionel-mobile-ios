@@ -17,6 +17,9 @@
     NSArray *pageNames;
     NSArray *periodStrings;
     NSMutableArray *classes;
+	
+	NSMutableArray *preloads;
+	
     int week;
 }
 @end
@@ -27,6 +30,8 @@
     [super viewDidLoad];
     
     [self parseTimetable];
+	
+	[self genpreloads];
         
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
@@ -67,6 +72,26 @@
 	[self presentViewController:lvc animated:YES completion:nil];
 }
 
+- (void)genpreloads {
+	for (int i = 0; i <= 9; i++)
+	{
+		NSMutableString *pageName;
+		
+		pageName =[pageNames objectAtIndex:i];
+		
+		TimetableTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableTableViewController"];
+		
+		tvc.classes = [classes objectAtIndex:i];
+		tvc.day = pageName;
+		tvc.pageIndex = i;
+	
+		NSLog(@"tvc generated %d", tvc==nil);
+	
+		[preloads addObject:tvc];
+	}
+	NSLog(@"Preload complete");
+}
+
 -(IBAction)today:(id)sender{
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
@@ -96,8 +121,6 @@
 }
 
 -(void) flipToPage:(NSUInteger)index {
-	
-	
 	TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers   objectAtIndex:0];
 	
 	NSUInteger retrievedIndex = theCurrentViewController.pageIndex;
@@ -206,21 +229,13 @@
 
 - (TimetableTableViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (index >= 10) {
-        return nil;
-    }
-    
-    NSMutableString *pageName;
-    
-    pageName =[pageNames objectAtIndex:index];
-    
-    TimetableTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableTableViewController"];
-    
-    tvc.classes = [classes objectAtIndex:index];
-    tvc.day = pageName;
-    tvc.pageIndex = index;
-    
-    return tvc;
+	if (index >= 10) {
+		return nil;
+	}
+	
+	NSLog(@"Loading %lu", (unsigned long)index);
+	
+	return preloads[index];
 }
 
 #pragma mark - Timetable Page View Controller Data Source
