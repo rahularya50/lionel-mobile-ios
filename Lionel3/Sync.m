@@ -128,24 +128,26 @@
 
     NSLog(@"Lionel 2 works!!!!!!!");
     l2Data = [l2Request responseData];
-    //NSLog(@"%@",[[NSString alloc] initWithData:l2Data encoding:NSUTF8StringEncoding]);ß
+    NSLog(@"%@",[[NSString alloc] initWithData:l2Data encoding:NSUTF8StringEncoding]);
 	
     //Parsing to get user ID
-    TFHpple *l1doc = [[TFHpple alloc] initWithHTMLData:l1Data];
+    
+    /*TFHpple *l1doc = [[TFHpple alloc] initWithHTMLData:l1Data];
     NSArray *menus = [l1doc searchWithXPathQuery:@"//div[contains(@class, 'menu clearfix')]"];
     TFHppleElement *l1menu = [menus objectAtIndex:0];
     NSString *a = [l1menu text];
     if(a.length < 13){
-        /*NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-        [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];*/
+        [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 		
 		[NSException raise:@"Invalid user id" format:@"UID or PW likely incorrect"];
 
         return;
     }
+    */
     
-    uid =[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
+    uid = @"7346";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
     
     NSLog(@"Your student id is #%@",uid);
     

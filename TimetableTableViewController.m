@@ -26,7 +26,7 @@
     if(table.contentSize.height < table.frame.size.height){
         table.scrollEnabled = NO;
     }else{
-        table.scrollEnabled = YES;
+        table.scrollEnabled = NO;
     }
     
     NSLog(@"%lu", (unsigned long)_pageIndex);
