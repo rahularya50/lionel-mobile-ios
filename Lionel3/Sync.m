@@ -58,9 +58,9 @@
 	
 	NSLog(@"User credentials acquired");
 	
-	NSLog(@"%@",userData);
+	//NSLog(@"%@",userData);
 	NSLog(@"%@", username);
-	NSLog(@"%@", password);
+	//NSLog(@"%@", password);
 	
 	/*username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
 	password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
@@ -128,8 +128,15 @@
 
     NSLog(@"Lionel 2 works!!!!!!!");
     l2Data = [l2Request responseData];
-    NSLog(@"%@",[[NSString alloc] initWithData:l2Data encoding:NSUTF8StringEncoding]);
+    NSString* l1raw = [[NSString alloc] initWithData:l1Data encoding:NSUTF8StringEncoding];
 	
+    NSLog(@"%@",l1raw);
+    
+    NSRange range = [l1raw rangeOfString:@"http://lionel.kgv.edu.hk/user/view.php?id="];
+    uid = [[l1raw substringWithRange:NSMakeRange(range.location+42, 4)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    
+    
     //Parsing to get user ID
     
     /*TFHpple *l1doc = [[TFHpple alloc] initWithHTMLData:l1Data];
@@ -147,7 +154,7 @@
     }
     */
     
-    uid = @"7253";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
+    //uid = @"8522";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
     
     NSLog(@"Your student id is #%@",uid);
     

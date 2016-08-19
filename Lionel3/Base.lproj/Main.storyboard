@@ -437,7 +437,7 @@
         <!--Timetable Table View Controller-->
         <scene sceneID="TeH-UZ-0gB">
             <objects>
-                <tableViewController storyboardIdentifier="TimetableTableViewController" id="8nL-VS-lBP" customClass="TimetableTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TimetableTableViewController" modalPresentationStyle="currentContext" id="8nL-VS-lBP" customClass="TimetableTableViewController" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eFy-Mb-FGi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

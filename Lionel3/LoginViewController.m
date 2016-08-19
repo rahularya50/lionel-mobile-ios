@@ -46,10 +46,10 @@
     
     @try{
 		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
-		NSLog(@"%@", userData);
+		//NSLog(@"%@", userData);
 		
     //if(userData.length>500){
-        if(userData.length>5 && false)
+        if(userData.length>5)
         {
             username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
             password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
@@ -101,7 +101,7 @@
 	NSLog(@"Initial synchronization concluded");
 	
 	[userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-	NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
+	//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
 	
     [self presentTabBar];
 }
