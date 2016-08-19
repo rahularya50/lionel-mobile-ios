@@ -61,6 +61,8 @@
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+    [self today:self];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -103,15 +105,36 @@
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
 	int weekday = (int)[comps weekday]-1;
+    
+    weekday = weekday % 7;
+    
 	NSLog(@"Day is %d",weekday);
-	if(weekday>5 || weekday==0){
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
+    
+    NSInteger hour = [components hour];
+    NSInteger minute = [components minute];
+    
+    if (weekday >= 1 && weekday < 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
+    {
+        weekday += 1;
+    }
+    else if (weekday == 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
+    {
+        weekday = 1;
+    }
+	else if (weekday == 6 || weekday == 0)
+    {
 		weekday = 1;
 	}
+    
+    NSLog(@"Real day is %d",weekday);
+    
 	//[NSInteger] *targetPage = [NSInteger numberWithInt:((week-1)*5 + weekday)];
 	
 	NSUInteger targetPage = (NSUInteger)((week-1)*5 + weekday);
-	
-	[self flipToPage: targetPage];
+    
+	[self flipToPage: targetPage - 1];
 	
 	/*__weak UIPageViewController* pvcw = self.pageViewController;
 	[self.pageViewController setViewControllers:@[targetPage]
