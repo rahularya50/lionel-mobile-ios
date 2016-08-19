@@ -14,7 +14,6 @@
 		335266951CCC7DFB005641A2 /* TimetableExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335266931CCC7DFB005641A2 /* TimetableExpandedViewController.m */; };
 		335266961CCC7DFB005641A2 /* TimetableExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */; };
 		335266991CD5D345005641A2 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335266981CD5D345005641A2 /* LoadingViewController.m */; };
-		3353B9281C99935F009E48A4 /* TimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B9271C99935F009E48A4 /* TimetableViewController.m */; };
 		3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B92E1C99940F009E48A4 /* TimetableViewCell.m */; };
 		336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A081C91C51200C8C40A /* libxml2.2.dylib */; };
 		336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A091C91C51300C8C40A /* libxml2.dylib */; };
@@ -104,8 +103,6 @@
 		335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimetableExpandedViewController.xib; sourceTree = "<group>"; };
 		335266971CD5D345005641A2 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		335266981CD5D345005641A2 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
-		3353B9261C99935F009E48A4 /* TimetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableViewController.h; sourceTree = "<group>"; };
-		3353B9271C99935F009E48A4 /* TimetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableViewController.m; sourceTree = "<group>"; };
 		3353B92D1C99940F009E48A4 /* TimetableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimetableViewCell.h; path = ../TimetableViewCell.h; sourceTree = "<group>"; };
 		3353B92E1C99940F009E48A4 /* TimetableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimetableViewCell.m; path = ../TimetableViewCell.m; sourceTree = "<group>"; };
 		336B0A081C91C51200C8C40A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -329,9 +326,7 @@
 				335266981CD5D345005641A2 /* LoadingViewController.m */,
 				3314D4AE1C9CFBCD003AE6CD /* TabBarController.h */,
 				3314D4AF1C9CFBCD003AE6CD /* TabBarController.m */,
-				3353B9271C99935F009E48A4 /* TimetableViewController.m */,
 				33FE99691C91A56D004F7907 /* LoginViewController.h */,
-				3353B9261C99935F009E48A4 /* TimetableViewController.h */,
 				33FE996A1C91A56D004F7907 /* LoginViewController.m */,
 				3314D4B11C9EEB73003AE6CD /* HomeworkTableViewController.h */,
 				3314D4B21C9EEB73003AE6CD /* HomeworkTableViewController.m */,
@@ -595,7 +590,7 @@
 				TargetAttributes = {
 					33FE98BE1C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = F8KCZZNLQJ;
+						DevelopmentTeam = 54WBDZS9C3;
 					};
 					33FE98D71C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
@@ -697,7 +692,6 @@
 				33E51F341D341D32008365DA /* IASKSettingsStoreFile.m in Sources */,
 				33E51F381D341D32008365DA /* IASKPSSliderSpecifierViewCell.m in Sources */,
 				33BBE1381CA9220700BA70F4 /* BulletinViewCell.m in Sources */,
-				3353B9281C99935F009E48A4 /* TimetableViewController.m in Sources */,
 				33E51F301D341D32008365DA /* IASKMultipleValueSelection.m in Sources */,
 				33E51F311D341D32008365DA /* IASKSpecifierValuesViewController.m in Sources */,
 				33BBE1311CA6B56100BA70F4 /* HomeworkExpandedViewController.m in Sources */,
@@ -880,7 +874,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -900,7 +894,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -64,7 +64,7 @@
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"bulletin.txt"];
     
-    NSLog(filepath);
+    NSLog(@"%@", filepath);
     
     NSString *bulletinString = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
     NSData *bulletinData = [bulletinString dataUsingEncoding:NSUTF8StringEncoding];
@@ -137,7 +137,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //item++;
 	
-	int index = indexPath.row;
+	int index = (int)indexPath.row;
 	
 	NSLog(@"Creating row %d",item);
     BulletinViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BulletinViewCell" forIndexPath:indexPath];
