@@ -24,9 +24,9 @@
     
     table.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     if(table.contentSize.height < table.frame.size.height){
-        table.scrollEnabled = NO;
+        table.scrollEnabled = YES;
     }else{
-        table.scrollEnabled = NO;
+        table.scrollEnabled = YES;
     }
     
     NSLog(@"%lu", (unsigned long)_pageIndex);

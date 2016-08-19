@@ -19,20 +19,26 @@
     NSMutableArray *classes;
 	
 	NSMutableArray *preloads;
+    
+    bool firstPageLoad;
 	
     int week;
 }
 @end
 
 @implementation TimetableViewController2
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self parseTimetable];
 	
-	[self genpreloads];
-        
+	//[self genpreloads];
+    
+    firstPageLoad = false;
+    
+    
+    preloads = [[NSMutableArray alloc] init];
+    
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
     self.navigationItem.title = @"Home";
@@ -77,7 +83,7 @@
 	{
 		NSMutableString *pageName;
 		
-		pageName =[pageNames objectAtIndex:i];
+		pageName = [pageNames objectAtIndex:i];
 		
 		TimetableTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetableTableViewController"];
 		
@@ -90,6 +96,7 @@
 		[preloads addObject:tvc];
 	}
 	NSLog(@"Preload complete");
+    NSLog(@"%@",preloads);
 }
 
 -(IBAction)today:(id)sender{
@@ -232,6 +239,12 @@
 	if (index >= 10) {
 		return nil;
 	}
+    
+    if (!firstPageLoad)
+    {
+        [self genpreloads];
+        firstPageLoad = true;
+    }
 	
 	NSLog(@"Loading %lu", (unsigned long)index);
 	
