@@ -25,6 +25,9 @@
     NSArray *l1Cookies;
     NSArray *l2Cookies;
     NSString *uid;
+    
+    int keyboardHeight;
+    
     LoadingViewController *loading;
 }@end
 
@@ -32,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        
 	[self setNeedsStatusBarAppearanceUpdate];
 }
 
@@ -105,4 +109,91 @@
 	
     [self presentTabBar];
 }
+
+-(void)keyboardWillShow:(NSNotification*)notification {
+    // Animate the current view out of the way
+    
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+
+    keyboardHeight = keyboardFrameBeginRect.size.height;
+    
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES andDHeight:keyboardHeight];
+    }
+}
+
+-(void)keyboardWillHide {
+    
+    if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO andDHeight:keyboardHeight];
+    }
+}
+
+
+//method to move the view up/down whenever the keyboard is shown/dismissed
+-(void)setViewMovedUp:(BOOL)movedUp andDHeight:(int)dHeight
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    CGRect rect = self.view.frame;
+    
+    NSLog(@"%d", dHeight);
+    
+    int dist = MAX(450 - self.view.frame.size.height + dHeight, 0);
+    
+    if (movedUp)
+    {
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        
+        NSLog(@"kDown!");
+        rect.origin.y -= dist;
+//        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else
+    {
+        // revert back to the normal state.
+        NSLog(@"kUp!");
+        rect.origin.y += dist;
+//        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow :)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
 @end
