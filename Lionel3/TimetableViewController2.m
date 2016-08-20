@@ -20,7 +20,7 @@
 	
 	NSMutableArray *preloads;
     
-    bool firstPageLoad;
+    bool firstPageLoaded;
 	
     int week;
 }
@@ -29,12 +29,14 @@
 @implementation TimetableViewController2
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     [self parseTimetable];
 	
-	//[self genpreloads];
+	[self genpreloads];
     
-    firstPageLoad = false;
+    [[self view] setBackgroundColor:[UIColor whiteColor]];
+    
+    firstPageLoaded = false;
     
     
     preloads = [[NSMutableArray alloc] init];
@@ -50,18 +52,19 @@
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetablePageViewController"];
     self.pageViewController.dataSource = self;
     
-    TimetableTableViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    //TimetableTableViewController *startingViewController = [self viewControllerAtIndex:0];
+    
+    //NSArray *viewControllers = @[startingViewController];
+    //[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    //self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self today:self];
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    [self today:self];
     
     // Do any additional setup after loading the view.
 }
@@ -92,10 +95,15 @@
 		tvc.classes = [classes objectAtIndex:i];
 		tvc.day = pageName;
 		tvc.pageIndex = i;
-	
+        
+        [tvc view];
+        [tvc.table reloadData];
+        
 		NSLog(@"tvc generated %d", tvc==nil);
 	
 		[preloads addObject:tvc];
+        
+        [self.view addSubview:tvc.view];
 	}
 	NSLog(@"Preload complete");
     NSLog(@"%@",preloads);
@@ -151,14 +159,27 @@
 }
 
 -(void) flipToPage:(NSUInteger)index {
-	TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers   objectAtIndex:0];
+    NSArray *viewControllers = nil;
+    
+    if (!firstPageLoaded)
+    {
+        TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
+
+        viewControllers = [NSArray arrayWithObjects:viewController, nil];
+        
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
+        
+        return;
+    }
+    
+    
+    TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers   objectAtIndex:0];
 	
 	NSUInteger retrievedIndex = theCurrentViewController.pageIndex;
 	
 	TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
 	
 	
-	NSArray *viewControllers = nil;
 	
 	viewControllers = [NSArray arrayWithObjects:viewController, nil];
 	
@@ -167,13 +188,13 @@
 		
 		[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
 		
-	} else {
-		
-		if (retrievedIndex > index){
-			
-			[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];
-		} 
+	} else if (retrievedIndex > index)
+    {
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];
 	}
+    else
+    {
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];    }
 } 
 
 
@@ -263,14 +284,19 @@
 		return nil;
 	}
     
-    if (!firstPageLoad)
+    if (!firstPageLoaded)
     {
         [self genpreloads];
-        firstPageLoad = true;
+        firstPageLoaded = true;
+    }
+    else
+    {
+        NSLog(@"Preparing TableView");
+        [[preloads[index] view] removeFromSuperview];
     }
 	
 	NSLog(@"Loading %lu", (unsigned long)index);
-	
+    
 	return preloads[index];
 }
 

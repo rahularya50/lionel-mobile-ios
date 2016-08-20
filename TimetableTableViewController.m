@@ -22,12 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    table.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    if(table.contentSize.height < table.frame.size.height){
-        table.scrollEnabled = YES;
-    }else{
-        table.scrollEnabled = YES;
-    }
+    NSLog(@"TimetableDayLoaded");
+    
+    table.alwaysBounceVertical = NO;
     
     NSLog(@"%lu", (unsigned long)_pageIndex);
     
@@ -41,7 +38,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[self view] setFrame:[[UIScreen mainScreen] bounds]];
+    //[[self view] setFrame:[[UIScreen mainScreen] bounds]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +61,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    int item = indexPath.row;
+    int item = (int)indexPath.row;
     
     tableView.rowHeight = 100;
     TimetableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimetableViewCell" forIndexPath:indexPath];
@@ -79,9 +76,21 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    
+    view.tintColor = [UIColor colorWithRed:0.984 green:0.686 blue:0.247 alpha:1];
+    
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor whiteColor]];
+
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	[[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextAlignment:NSTextAlignmentCenter];
+    
 	return _day;
 }
 
@@ -113,7 +122,7 @@
 - (IBAction)refresh:(UIRefreshControl *)sender {
 	NSLog(@"Reloading");
 	
-	Sync *syncer = [[Sync alloc] init];
+	//Sync *syncer = [[Sync alloc] init];
 	
 	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
 	dispatch_async(queue, ^{

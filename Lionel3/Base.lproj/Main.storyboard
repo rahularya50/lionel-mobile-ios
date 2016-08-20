@@ -91,7 +91,7 @@
             <objects>
                 <tableViewController id="PML-Ts-GZc" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QvA-TF-QO5">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -129,6 +129,7 @@
                         <segue destination="w3b-pr-aKF" kind="relationship" relationship="viewControllers" id="7xM-5V-IMc"/>
                         <segue destination="5YX-Vs-nim" kind="relationship" relationship="viewControllers" id="Pw9-KN-fGt"/>
                         <segue destination="70L-Pv-EaD" kind="relationship" relationship="viewControllers" id="a4e-Lh-fbR"/>
+                        <segue destination="eyL-1G-Dd3" kind="relationship" relationship="viewControllers" id="pyk-UU-8V1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLQ-5T-OuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,8 +438,8 @@
         <!--Timetable Table View Controller-->
         <scene sceneID="TeH-UZ-0gB">
             <objects>
-                <tableViewController storyboardIdentifier="TimetableTableViewController" modalPresentationStyle="currentContext" id="8nL-VS-lBP" customClass="TimetableTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eFy-Mb-FGi">
+                <tableViewController storyboardIdentifier="TimetableTableViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="8nL-VS-lBP" customClass="TimetableTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="1" id="eFy-Mb-FGi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -492,50 +493,13 @@
             </objects>
             <point key="canvasLocation" x="2469" y="-277"/>
         </scene>
-        <!--Timetable-->
-        <scene sceneID="84E-vr-BGc">
-            <objects>
-                <viewController storyboardIdentifier="TimetableViewController" title="Timetable" id="CBb-vr-sEb" customClass="TimetableViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bJc-L3-9F0"/>
-                        <viewControllerLayoutGuide type="bottom" id="O9y-Sv-tam"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Rw-mr-5ph">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-fx-iHJ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-nK-VZr">
-                                        <rect key="frame" x="82" y="578" width="251" height="37"/>
-                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    </pageControl>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Tz3-Dg-rF7"/>
-                    <navigationItem key="navigationItem" title="Timetable" id="gZr-kR-H5x"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="pageControl" destination="FGS-nK-VZr" id="EfR-vd-H2y"/>
-                        <outlet property="scrollView" destination="Abb-fx-iHJ" id="Q4v-eg-kMY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Q3-Zq-7gJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1047" y="-1079"/>
-        </scene>
         <!--Timetable Page View Controller-->
         <scene sceneID="lPq-ek-GkK">
             <objects>
-                <pageViewController storyboardIdentifier="TimetablePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qqc-3Z-uMH" customClass="TimetablePageViewController" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="TimetablePageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qqc-3Z-uMH" customClass="TimetablePageViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8IM-Dp-MWR"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLC-2K-1FR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

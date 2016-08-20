@@ -590,7 +590,7 @@
 				TargetAttributes = {
 					33FE98BE1C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 54WBDZS9C3;
+						DevelopmentTeam = RQ3Q258PV4;
 					};
 					33FE98D71C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
@@ -874,7 +874,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -894,7 +894,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

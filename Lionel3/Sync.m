@@ -54,7 +54,7 @@
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSLog(@"%@",filepath);
     
-	NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+	//NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
 	
 	NSLog(@"User credentials acquired");
 	
