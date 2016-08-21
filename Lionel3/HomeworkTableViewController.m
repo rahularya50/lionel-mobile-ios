@@ -12,6 +12,7 @@
 #import "HomeworkExpandedViewController.h"
 #import "LoginViewController.h"
 #import "Sync.h"
+#import "KeychainWrapper.h"
 
 @interface HomeworkTableViewController ()
 {
@@ -43,9 +44,9 @@
 }
 
 -(IBAction)logOut:(id)sender{
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-    [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+    [keychainItem resetKeychainItem];
+
     
     LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self presentViewController:lvc animated:YES completion:nil];
@@ -319,15 +320,18 @@
 	
 	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
 	dispatch_async(queue, ^{
-		
-		NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-		NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-		NSLog(@"%@",filepath);
-		
-		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+        NSString *username;
+        NSString *password;
+        
+        /*NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
 		
 		NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-		NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+		NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];*/
+        
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+        
+        username = [keychainItem objectForKey:(__bridge id)kSecAttrAccount];
+        password = [keychainItem objectForKey:(__bridge id)kSecValueData];
 		
 		@try{
 			NSLog(@"%@", username);

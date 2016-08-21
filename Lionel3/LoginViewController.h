@@ -14,4 +14,5 @@
 - (IBAction)loginButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 - (void)presentTabBar;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @end

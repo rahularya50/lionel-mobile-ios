@@ -14,6 +14,7 @@
 #import "TabBarController.h"
 #import "LoadingViewController.h"
 #import "Sync.h"
+#import "KeychainWrapper.h"
 
 @interface LoginViewController (){
     NSString *username;
@@ -25,6 +26,9 @@
     NSArray *l1Cookies;
     NSArray *l2Cookies;
     NSString *uid;
+    
+    int direction;
+    int shakes;
     
     int keyboardHeight;
     
@@ -49,14 +53,18 @@
     NSLog(@"%@",filepath);
     
     @try{
-		NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+		//NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
 		//NSLog(@"%@", userData);
 		
     //if(userData.length>500){
-        if(userData.length>5)
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+        
+        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil)
         {
-            username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-            password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+            NSLog(@"Auto-login of user:");
+            NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
+            //username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+            //password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
             TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
             [self presentViewController:tabBar animated:YES completion:nil];
         }
@@ -86,27 +94,38 @@
     
     //loading = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadingViewController"];
     //[self presentViewController:loading animated:NO completion:nil];
-	
+	/*
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSString *userData = [NSString stringWithFormat:@"%@^%@",username,password];
-	
+	*/
+    
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+    
     Sync *syncer = [[Sync alloc] init];
 	
 	@try{
 		NSLog(@"%@", username);
+        _loginButton.titleLabel.text = @"Loading...";
 		[syncer login:username andPassword: password];
 	}
 	@catch(NSException *e){
+        _loginButton.titleLabel.text = @"Login";
 		NSLog(@"Wrong pw!");
-		NSLog(@"%@",e);
+        shakes = 5;
+        direction = 1;
+        [self shake:_loginButton];
+        NSLog(@"%@",e);
 		return;
 	}
 	NSLog(@"Initial synchronization concluded");
 	
-	[userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	//[userData writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
 	
+    [keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
+    [keychainItem setObject:password forKey:(__bridge id)kSecValueData];
+    
     [self presentTabBar];
 }
 
@@ -194,6 +213,25 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
+}
+
+-(void)shake:(UIView *)shakee
+{
+    [UIView animateWithDuration:0.03 animations:^
+     {
+         shakee.transform = CGAffineTransformMakeTranslation(5*direction, 0);
+     }
+                     completion:^(BOOL finished)
+     {
+         if(shakes >= 10)
+         {
+             shakee.transform = CGAffineTransformIdentity;
+             return;
+         }
+         shakes++;
+         direction = direction * -1;
+         [self shake:shakee];
+     }];
 }
 
 @end

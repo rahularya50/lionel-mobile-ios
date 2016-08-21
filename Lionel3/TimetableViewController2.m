@@ -12,6 +12,8 @@
 #import "TFHpple.h"
 #import "LoginViewController.h"
 
+#import "KeychainWrapper.h"
+
 @interface TimetableViewController2 ()
 {
     NSArray *pageNames;
@@ -75,9 +77,9 @@
 }
 
 -(IBAction)logOut:(id)sender{
-	NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-	[@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+    [keychainItem resetKeychainItem];
 	
 	LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 	[self presentViewController:lvc animated:YES completion:nil];

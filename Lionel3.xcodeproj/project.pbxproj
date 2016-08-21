@@ -17,6 +17,8 @@
 		3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B92E1C99940F009E48A4 /* TimetableViewCell.m */; };
 		336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A081C91C51200C8C40A /* libxml2.2.dylib */; };
 		336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A091C91C51300C8C40A /* libxml2.dylib */; };
+		339133FA1D69A6D3005F95D0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 339133F91D69A6D3005F95D0 /* Security.framework */; };
+		339134001D69A9CC005F95D0 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 339133FF1D69A9CC005F95D0 /* KeychainWrapper.m */; };
 		33A611AC1D32662000605552 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6119E1D32662000605552 /* ASIAuthenticationDialog.m */; };
 		33A611AD1D32662000605552 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A01D32662000605552 /* ASIFormDataRequest.m */; };
 		33A611AE1D32662000605552 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A611A21D32662000605552 /* ASIHTTPRequest.m */; };
@@ -107,6 +109,9 @@
 		3353B92E1C99940F009E48A4 /* TimetableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimetableViewCell.m; path = ../TimetableViewCell.m; sourceTree = "<group>"; };
 		336B0A081C91C51200C8C40A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		336B0A091C91C51300C8C40A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		339133F91D69A6D3005F95D0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		339133FE1D69A9CC005F95D0 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		339133FF1D69A9CC005F95D0 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		33A6119D1D32662000605552 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = Classes/ASIAuthenticationDialog.h; sourceTree = SOURCE_ROOT; };
 		33A6119E1D32662000605552 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = Classes/ASIAuthenticationDialog.m; sourceTree = SOURCE_ROOT; };
 		33A6119F1D32662000605552 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = Classes/ASIFormDataRequest.h; sourceTree = SOURCE_ROOT; };
@@ -232,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				339133FA1D69A6D3005F95D0 /* Security.framework in Frameworks */,
 				336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */,
 				336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */,
 				33FE99671C91A53E004F7907 /* libz.dylib in Frameworks */,
@@ -430,6 +436,9 @@
 		33FE98B61C91A486004F7907 = {
 			isa = PBXGroup;
 			children = (
+				339133FE1D69A9CC005F95D0 /* KeychainWrapper.h */,
+				339133FF1D69A9CC005F95D0 /* KeychainWrapper.m */,
+				339133F91D69A6D3005F95D0 /* Security.framework */,
 				33E51EF81D341D32008365DA /* InAppSettingsKit */,
 				33E51EEF1D341A50008365DA /* Settings.bundle */,
 				3353B8DF1C971494009E48A4 /* hpple-master */,
@@ -681,6 +690,7 @@
 				33BBE13C1CB17D2900BA70F4 /* BulletinExpandedViewController.m in Sources */,
 				33E51F2F1D341D32008365DA /* IASKAppSettingsWebViewController.m in Sources */,
 				33E51F391D341D32008365DA /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
+				339134001D69A9CC005F95D0 /* KeychainWrapper.m in Sources */,
 				335266991CD5D345005641A2 /* LoadingViewController.m in Sources */,
 				33A611AE1D32662000605552 /* ASIHTTPRequest.m in Sources */,
 				33E51F3E1D341D32008365DA /* IASKTextViewCell.m in Sources */,
