@@ -114,7 +114,7 @@
             <objects>
                 <tableViewController id="PML-Ts-GZc" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QvA-TF-QO5">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -152,7 +152,6 @@
                         <segue destination="w3b-pr-aKF" kind="relationship" relationship="viewControllers" id="7xM-5V-IMc"/>
                         <segue destination="5YX-Vs-nim" kind="relationship" relationship="viewControllers" id="Pw9-KN-fGt"/>
                         <segue destination="70L-Pv-EaD" kind="relationship" relationship="viewControllers" id="a4e-Lh-fbR"/>
-                        <segue destination="eyL-1G-Dd3" kind="relationship" relationship="viewControllers" id="pyk-UU-8V1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLQ-5T-OuB" userLabel="First Responder" sceneMemberID="firstResponder"/>

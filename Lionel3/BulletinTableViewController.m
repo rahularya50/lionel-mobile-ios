@@ -241,8 +241,10 @@
 		
 		@try{
 			NSLog(@"%@", username);
-			[syncer login:username andPassword: password];
-		}
+            if (![syncer login:username andPassword: password])
+            {
+                @throw([NSException alloc]);
+            }		}
 		@catch(NSException *e){
 			NSLog(@"Wrong pw!");
 			NSLog(@"%@",e);

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface Sync : UIViewController
-- (void)login:(NSString*)username andPassword:(NSString*)password;
+- (BOOL)login:(NSString*)username andPassword:(NSString*)password;
 @end

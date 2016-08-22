@@ -40,7 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)login:(NSString*)username andPassword:(NSString*)password{
+- (BOOL)login:(NSString*)username andPassword:(NSString*)password{
 	connData = nil;
 	l1Data = nil;
 	l2Data = nil;
@@ -73,7 +73,9 @@
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if(networkStatus == NotReachable){
-        NSLog(@"No internet connection.");
+        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        return NO;
+        //NSLog(@"No internet connection.");
     }
     
     NSData *n = [@"" dataUsingEncoding:NSUTF8StringEncoding];
@@ -110,6 +112,8 @@
     [l1Request setDelegate:self];
     [l1Request setTimeOutSeconds:60];
     [l1Request startSynchronous];
+    
+    
     
     l1Data = [l1Request responseData];
     NSLog(@"Received Lionel 1.");
@@ -178,6 +182,12 @@
     
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"timetable.txt"];
+    
+    if (tString.length < 100)
+    {
+        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        return NO;
+    }
     NSError *error = nil;
     [tString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
@@ -201,6 +211,13 @@
     NSString *hString = [[NSString alloc] initWithData:[hRequest responseData] encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",hString);
     
+    
+    if (hString.length < 100)
+    {
+        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        return NO;
+    }
+    
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"homework.txt"];
     [hString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -220,6 +237,12 @@
     
     NSString *bString = [[NSString alloc] initWithData:[bRequest responseData] encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",bString);
+    
+    if (bString.length < 100)
+    {
+        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        return NO;
+    }
     
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"bulletin.txt"];
@@ -241,13 +264,31 @@
     NSString *cString = [[NSString alloc] initWithData:[cRequest responseData] encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",bString);
     
+    if (cString.length < 100)
+    {
+        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        return NO;
+    }
+    
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
     [cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    return YES;
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request{
     NSLog(@"%@",[request error]);
+}
+
+- (void) throwInternetDialog
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                                    message:@"You must be connected to the internet to synchronize with LIONeL. If you are receiving this error while on KGV wifi, try using your data connection or trying again once at home. If this error persists, please contact Lilian Luong at 16luongl1@kgv.hk."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 /*

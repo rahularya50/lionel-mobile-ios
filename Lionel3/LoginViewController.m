@@ -59,7 +59,7 @@
     //if(userData.length>500){
         KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
         
-        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil)
+        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil && false)
         {
             NSLog(@"Auto-login of user:");
             NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
@@ -107,7 +107,10 @@
 	@try{
 		NSLog(@"%@", username);
         _loginButton.titleLabel.text = @"Loading...";
-		[syncer login:username andPassword: password];
+		if (![syncer login:username andPassword: password])
+        {
+            @throw([NSException alloc]);
+        }
 	}
 	@catch(NSException *e){
         _loginButton.titleLabel.text = @"Login";

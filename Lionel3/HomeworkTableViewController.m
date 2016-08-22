@@ -335,12 +335,14 @@
 		
 		@try{
 			NSLog(@"%@", username);
-			[syncer login:username andPassword: password];
-		}
+            if (![syncer login:username andPassword: password])
+            {
+                @throw([NSException alloc]);
+            }
+        }
 		@catch(NSException *e){
 			NSLog(@"Wrong pw!");
 			NSLog(@"%@",e);
-			return;
 		}
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
