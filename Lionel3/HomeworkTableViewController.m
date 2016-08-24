@@ -331,7 +331,7 @@
         KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
         
         username = [keychainItem objectForKey:(__bridge id)kSecAttrAccount];
-        password = [keychainItem objectForKey:(__bridge id)kSecValueData];
+        password = [[NSString alloc] initWithData:[keychainItem objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
 		
 		@try{
 			NSLog(@"%@", username);
@@ -343,6 +343,13 @@
 		@catch(NSException *e){
 			NSLog(@"Wrong pw!");
 			NSLog(@"%@",e);
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                                            message:@"An unexpected error occurred. Please try logging out and reentering your LIONeL credentials. If this error persists, please contact Lilian Luong at 16luongl1@kgv.hk."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
 		}
 		
 		dispatch_async(dispatch_get_main_queue(), ^{

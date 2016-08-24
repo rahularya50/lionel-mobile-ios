@@ -80,18 +80,15 @@
     
     NSData *n = [@"" dataUsingEncoding:NSUTF8StringEncoding];
     [[NSFileManager defaultManager] changeCurrentDirectoryPath:dir];
-    BOOL tfile = [[NSFileManager defaultManager] createFileAtPath:@"./timetable.txt" contents:n attributes:nil];
-    [[NSFileManager defaultManager] createFileAtPath:@"./homework.txt" contents:n attributes:nil];
-    [[NSFileManager defaultManager] createFileAtPath:@"./bulletin.txt" contents:n attributes:nil];
-    [[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
     
-    NSLog(@"%d",tfile);
+    [ASIHTTPRequest setSessionCookies:nil];
     
     NSURL *l1Url = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
     ASIHTTPRequest *connRequest = [ASIHTTPRequest requestWithURL:l1Url];
     [connRequest setDelegate:self];
+    //[connRequest setUseCookiePersistence:NO];
     [connRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"conn",@"tag", nil]];
-    [connRequest setTimeOutSeconds:0];
+    [connRequest setTimeOutSeconds:60];
     [connRequest startSynchronous];
     
     connData = [connRequest responseData];
@@ -138,8 +135,6 @@
     
     NSRange range = [l1raw rangeOfString:@"http://lionel.kgv.edu.hk/user/view.php?id="];
     uid = [[l1raw substringWithRange:NSMakeRange(range.location+42, 4)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    
     
     //Parsing to get user ID
     
@@ -189,6 +184,8 @@
         return NO;
     }
     NSError *error = nil;
+    
+    [[NSFileManager defaultManager] createFileAtPath:@"./timetable.txt" contents:n attributes:nil];
     [tString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     if(error){
@@ -220,6 +217,7 @@
     
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"homework.txt"];
+    [[NSFileManager defaultManager] createFileAtPath:@"./homework.txt" contents:n attributes:nil];
     [hString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     NSURL *bUrl = [NSURL URLWithString:@"https://lionel2.kgv.edu.hk/local/mis/bulletin/bulletin.php"];
@@ -246,8 +244,9 @@
     
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"bulletin.txt"];
-    
+    [[NSFileManager defaultManager] createFileAtPath:@"./bulletin.txt" contents:n attributes:nil];
     [bString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
     NSURL *cUrl = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/kgv-additions/Calendar/master.php?style=small"];
     ASIHTTPRequest *cRequest = [ASIHTTPRequest requestWithURL:cUrl];
     [bRequest setRequestMethod:@"GET"];
@@ -272,6 +271,7 @@
     
     dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
+    [[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
     [cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     return YES;
