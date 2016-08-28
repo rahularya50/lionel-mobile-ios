@@ -183,18 +183,20 @@
 		
 	viewControllers = [NSArray arrayWithObjects:viewController, nil];
 	
-	
-	if (retrievedIndex < index){
+    NSLog(@"%lu", index);
+    NSLog(@"%lu", retrievedIndex);
+    
+	if (index == retrievedIndex){
 		
-		[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
+		[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
 		
-	} else if (retrievedIndex > index)
+	} else if (((int)index - (int)retrievedIndex + 10) % 10 > 5)
     {
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];
 	}
     else
     {
-        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];    }
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];    }
 } 
 
 
