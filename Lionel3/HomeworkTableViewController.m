@@ -337,7 +337,8 @@
 			NSLog(@"%@", username);
             if (![syncer login:username andPassword: password])
             {
-                @throw([NSException alloc]);
+                [sender endRefreshing];
+                return;
             }
         }
 		@catch(NSException *e){

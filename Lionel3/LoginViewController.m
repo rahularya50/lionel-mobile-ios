@@ -59,7 +59,7 @@
     //if(userData.length>500){
         KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
         
-        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil && [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
+        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil &&          [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
         {
             NSLog(@"Auto-login of user:");
             NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
@@ -123,7 +123,7 @@
 	}
 	NSLog(@"Initial synchronization concluded");
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"first_ran"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
 
     
 	//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);

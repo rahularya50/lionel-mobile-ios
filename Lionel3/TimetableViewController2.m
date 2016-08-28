@@ -175,14 +175,12 @@
     }
     
     
-    TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers   objectAtIndex:0];
+    TimetableTableViewController *theCurrentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
 	
 	NSUInteger retrievedIndex = theCurrentViewController.pageIndex;
 	
 	TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
-	
-	
-	
+		
 	viewControllers = [NSArray arrayWithObjects:viewController, nil];
 	
 	
@@ -244,11 +242,11 @@
 				
                 if([[tempElement content] length] < 5){
 					NSLog(@"Free Period!");
-                    [classDetails addObject:@""];
+                    [classDetails addObject:@"FP01"];
                     [classDetails addObject:@"Wherever you want!"];
                     [classDetails addObject:@"Free Period"];
-					[classDetails addObject:@"No one!"];
-					[classDetails addObject:@"emails!"];
+					[classDetails addObject:@"Yourself"];
+					[classDetails addObject:@"16luongl1@kgv.hk"];
                 }else{
                     NSString *classString = [tempElement raw];
                     NSString *c = [classString substringFromIndex:29];
