@@ -31,8 +31,8 @@
 
 - (void)viewDidLoad {
     item = 0;
-    [self parseHomework];
-    [super viewDidLoad];
+    //[self parseHomework];
+    //[super viewDidLoad];
     
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -41,6 +41,13 @@
     self.navigationItem.leftBarButtonItem = logOut;
     
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self parseHomework];
+    [super viewDidLoad];
+    
+    [self.tableView reloadData];
 }
 
 -(IBAction)logOut:(id)sender{

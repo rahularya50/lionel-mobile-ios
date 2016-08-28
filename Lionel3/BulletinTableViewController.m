@@ -28,8 +28,6 @@
 
 - (void)viewDidLoad {
     item = 0;
-    [self parseBulletin];
-    [super viewDidLoad];
     
 	self.tableView.separatorColor = [UIColor clearColor];
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -37,6 +35,13 @@
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self parseBulletin];
+    [super viewDidLoad];
+    
+    [self.tableView reloadData];
 }
 
 -(IBAction)logOut:(id)sender{

@@ -71,6 +71,11 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self recalcWeek];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -199,6 +204,17 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];    }
 } 
 
+- (void) recalcWeek {
+    NSString *cdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cfilepath = [cdir stringByAppendingPathComponent:@"calendar.txt"];
+    NSString *calendarString = [NSString stringWithContentsOfFile:cfilepath encoding:NSUTF8StringEncoding error:nil];
+    NSData *calendarData = [calendarString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
+    NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='smallcal']/div"] objectAtIndex:0] content];
+    NSString *cWeek = [cHeader substringFromIndex:cHeader.length-1];
+    week = [cWeek intValue];
+}
 
 - (void)parseTimetable{
     pageNames = [NSArray arrayWithObjects:@"Monday (Week 1)", @"Tuesday (Week 1)",@"Wednesday (Week 1)",@"Thursday (Week 1)", @"Friday (Week 1)", @"Monday (Week 2)", @"Tuesday (Week 2)", @"Wednesday (Week 2)", @"Thursday (Week 2)", @"Friday (Week 2)", nil];
