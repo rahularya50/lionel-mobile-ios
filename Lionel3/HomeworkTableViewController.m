@@ -187,7 +187,11 @@
         
         //tempDescription = [[tempDescription stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"] mutableCopy];
         
-        //NSLog(@"Received HTML: %@",tempDescription);
+        NSLog(@"Received HTML: %@",tempDescription);
+        
+        NSAttributedString *desc = [[NSAttributedString alloc] initWithData:[tempDescription dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes: nil error: nil];
+        
+        /*
         NSArray *splitString0 = [[tempDescription componentsSeparatedByString:@"\n"]mutableCopy];
         tempDescription = [[splitString0 componentsJoinedByString:@""]mutableCopy];
         NSArray *splitString = [[tempDescription componentsSeparatedByString:@"<br/>"]mutableCopy];
@@ -197,14 +201,15 @@
         NSArray *ss3 = [tempDescription componentsSeparatedByString:@"</p>"];
         tempDescription = [[ss3 componentsJoinedByString:@""]mutableCopy];
         [tempDescription setString:[tempDescription stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+        */
         //NSLog(@"Old: %@",tempDescription);
         NSData *tempData = [tempDescription dataUsingEncoding:NSUTF8StringEncoding];
         TFHpple *temp = [[TFHpple alloc] initWithHTMLData:tempData];
         tempDescription = [[[[temp searchWithXPathQuery:@"//*"]objectAtIndex:0]content]mutableCopy];
-        NSLog(@"New: %@",tempDescription);
+        NSLog(@"New: %@",desc);
          
         
-        [descriptions addObject:tempDescription];
+        [descriptions addObject:desc];
         TFHppleElement *tempClassDetails = [span6 objectAtIndex:i*2+1];
         [teachers addObject:[[tempClassDetails firstChildWithTagName:@"p"]content]];
     }
@@ -241,7 +246,7 @@
     cell.classLabel.text = [classNames objectAtIndex:indexPath.row];
     cell.codeLabel.text = [classCodes objectAtIndex:indexPath.row];
     cell.teacherLabel.text = [teachers objectAtIndex:indexPath.row];
-    cell.descriptionLabel.text = [descriptions objectAtIndex:indexPath.row];
+    cell.descriptionLabel.attributedText = [descriptions objectAtIndex:indexPath.row];
     cell.timeLabel.text = [times objectAtIndex:indexPath.row];
     cell.dueLabel.text = [dueDates objectAtIndex:indexPath.row];
     
