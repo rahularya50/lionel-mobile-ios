@@ -45,7 +45,7 @@
     
     UIBarButtonItem *logOut = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut:)];
     self.navigationItem.leftBarButtonItem = logOut;
-    self.navigationItem.title = @"Home";
+    self.navigationItem.title = @"Timetable";
 
 	UIBarButtonItem *today = [[UIBarButtonItem alloc] initWithTitle:@"Upcoming" style:UIBarButtonItemStylePlain target:self action:@selector(today:)];
 	self.navigationItem.rightBarButtonItem = today;
@@ -82,13 +82,29 @@
 }
 
 -(IBAction)logOut:(id)sender{
-    
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
-    [keychainItem resetKeychainItem];
+	UIAlertController* alert = [UIAlertController
+								alertControllerWithTitle:@"Are you sure you want to log out?"
+								message:@"Your saved credentials will be erased."
+								preferredStyle:UIAlertControllerStyleAlert];
 	
-	LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-	[self presentViewController:lvc animated:YES completion:nil];
+	UIAlertAction* defaultAction = [UIAlertAction
+									actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault
+         handler:^(UIAlertAction * action) {	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+			 [keychainItem resetKeychainItem];
+			 
+			 LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+			 [self presentViewController:lvc animated:YES completion:nil];}];
+
+	UIAlertAction* cancelAction = [UIAlertAction
+									actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+         handler:^(UIAlertAction * action) {}];
+	
+	[alert addAction:defaultAction];
+	[alert addAction:cancelAction];
+	[self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 - (void)genpreloads {
 	for (int i = 0; i <= 9; i++)

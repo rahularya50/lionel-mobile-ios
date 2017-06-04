@@ -51,12 +51,26 @@
 }
 
 -(IBAction)logOut:(id)sender{
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
-    [keychainItem resetKeychainItem];
-
-    
-    LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self presentViewController:lvc animated:YES completion:nil];
+	UIAlertController* alert = [UIAlertController
+								alertControllerWithTitle:@"Are you sure you want to log out?"
+								message:@"Your saved credentials will be erased."
+								preferredStyle:UIAlertControllerStyleAlert];
+	
+	UIAlertAction* defaultAction = [UIAlertAction
+									actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault
+         handler:^(UIAlertAction * action) {	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+			 [keychainItem resetKeychainItem];
+			 
+			 LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+			 [self presentViewController:lvc animated:YES completion:nil];}];
+	
+	UIAlertAction* cancelAction = [UIAlertAction
+								   actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+								   handler:^(UIAlertAction * action) {}];
+	
+	[alert addAction:defaultAction];
+	[alert addAction:cancelAction];
+	[self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void) parseHomework{
