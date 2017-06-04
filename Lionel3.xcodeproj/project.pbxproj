@@ -602,7 +602,7 @@
 				TargetAttributes = {
 					33FE98BE1C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 8Z466M4R89;
+						DevelopmentTeam = 986NANM52Q;
 						ProvisioningStyle = Automatic;
 					};
 					33FE98D71C91A486004F7907 = {
@@ -890,7 +890,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8Z466M4R89;
+				DEVELOPMENT_TEAM = 986NANM52Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
@@ -898,7 +898,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -912,7 +912,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8Z466M4R89;
+				DEVELOPMENT_TEAM = 986NANM52Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
@@ -920,7 +920,7 @@
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -219,7 +219,7 @@
     cell.classLabel.text = [classNames objectAtIndex:indexPath.row];
     cell.codeLabel.text = [classCodes objectAtIndex:indexPath.row];
     cell.teacherLabel.text = [teachers objectAtIndex:indexPath.row];
-    cell.descriptionLabel.attributedText = [descriptions objectAtIndex:indexPath.row];
+    cell.descriptionLabel.text = [descriptions objectAtIndex:indexPath.row];
     cell.timeLabel.text = [times objectAtIndex:indexPath.row];
     cell.dueLabel.text = [dueDates objectAtIndex:indexPath.row];
 	
