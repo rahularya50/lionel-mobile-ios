@@ -27,7 +27,7 @@
     self.teacherLabel.text = self.teacher;
     self.timeLabel.text = self.time;
     self.codeLabel.text = self.classCode;
-    self.homeworkLabel.attributedText = self.desc;
+    self.homeworkLabel.text = self.desc;
     
 	[self.homeworkLabel sizeToFit];
 	//[self.cardView resizeToFitSubviews];
