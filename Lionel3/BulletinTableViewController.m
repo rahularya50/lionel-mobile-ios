@@ -152,12 +152,15 @@
     
     //NSLog(@"%@",[texts objectAtIndex:item-1]);
     //cell.textsLabel.numberOfLines = 1;
+	
     cell.titleLabel.text = [titles objectAtIndex:index];
     cell.authorLabel.text = [authors objectAtIndex:index];
     cell.datesLabel.text = [dates objectAtIndex:index];
     cell.previewLabel.text = [previews objectAtIndex:index];
     NSString *tempDesc = [[texts objectAtIndex:index] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [cell.textsLabel setText:tempDesc];
+	cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+
 // texts objectAtIndex:item-1]];
     
     //cell.textsLabel.numberOfLines = 0;
@@ -177,6 +180,7 @@
 	bevc.desc = [[texts objectAtIndex:indexPath.row] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
     //NSLog(@"Pushing %@",hevc.className);
+
     
     
     [self.navigationController pushViewController:bevc animated:YES];

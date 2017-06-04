@@ -77,11 +77,11 @@
     
     TFHpple *timetable = [[TFHpple alloc] initWithHTMLData:timetableData];
     NSMutableArray *classByPeriod = [[NSMutableArray alloc] init];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c1']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c2']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c3']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c4']"]];
-    [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c5']"]];
+	[classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c1'] | //tr/td[@class='empty cell c1']"]];
+	[classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c2'] | //tr/td[@class='empty cell c2']"]];
+	[classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c3'] | //tr/td[@class='empty cell c3']"]];
+	[classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c4'] | //tr/td[@class='empty cell c4']"]];
+	[classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c5'] | //tr/td[@class='empty cell c5']"]];
     classes = [[NSMutableArray alloc] init];
     for(int i = 0; i<10;i++){
         for(int j = 0; j<5;j++){
@@ -89,7 +89,7 @@
                 NSArray *periodClasses = [classByPeriod objectAtIndex:j];
                 TFHppleElement *tempElement = [periodClasses objectAtIndex:i];
                 NSMutableArray *classDetails = [[NSMutableArray alloc]init];
-                if([[tempElement content]isEqualToString:@"&nbsp"]){
+				if([[tempElement content] length] < 5){
                     [classDetails addObject:@"Free"];
                     [classDetails addObject:@"Free"];
                 }else{
@@ -101,6 +101,7 @@
                     NSString *className = [b objectAtIndex:1];
                     [classDetails addObject:classCode];
                     [classDetails addObject:className];
+
                 }
                 //NSLog(@"%@",classDetails);
                 int status = 0;
@@ -126,88 +127,65 @@
     //Parsing homework
     
     TFHpple *homework = [[TFHpple alloc] initWithHTMLData:homeworkData];
-    NSMutableArray *span3 = [[homework searchWithXPathQuery:@"//div[@class=' span3']/div/div"]mutableCopy];
-    int l = 0;
-    while(l<span3.count){
-        if([[[span3 objectAtIndex:l] content] isEqual:@""]){
-            [span3 removeObject:[span3 objectAtIndex:l]];
-        }else{
-            l+=1;
-        }
-    }
-    int j;
-    int k;
-    for(int i=0;i<span3.count/3;i++){
-        //NSLog(@"i = %d",i);
-        [classCodes addObject:[[span3 objectAtIndex:i*3]content]];
-        j = 0;
-        k = 0;
-        //NSLog(@"Item: %@",[classCodes objectAtIndex:i]);
-        //NSLog(@"%@",classCodes);
-        while(k < classes.count){
-            //NSLog(@"k = %d",k);
-            //NSLog(@"j= %d",j);
-            //NSLog(@"Compare: %@",[classCodes objectAtIndex:i]);
-            if(!([[[classes objectAtIndex:j]objectAtIndex:0]isEqualToString:[classCodes objectAtIndex:i]])){
-                j+=1;
-            }
-            k+=1;
-        }
-        //NSLog(@"j = %d",j);
-        //NSLog(@"classes.count = %lu",(unsigned long)classes.count);
-        if(j<classes.count){
-            //NSLog(@"%d < %lu",j, (unsigned long)classes.count);
-            [classNames addObject:[[classes objectAtIndex:j]objectAtIndex:1]];
-        }else{
-            [classNames addObject:@"SELF"];
-        }
-        [times addObject:[[span3 objectAtIndex:i*3+1]content]];
-        NSString *due = [[span3 objectAtIndex:i*3+2]content];
-        NSString *due2;
-        if(due.length>20){
-            NSLog(@"Due in tomorrow.");
-            due2 = [due substringFromIndex:15];
-        }else{
-            //NSLog(@"Not due in tomorrow.");
-            due2 = [due substringFromIndex:7];
-        }
-        NSArray *dueArray = [due2 componentsSeparatedByString:@" "];
-        [dueDates addObject:[dueArray objectAtIndex:0]];
-    }
-    NSArray *span6 = [homework searchWithXPathQuery:@"//div[@class=' span6']/div"];
-    /*
-    for(TFHppleElement *i in span6){
-        NSLog(@"%@",[i content]);
-    }
-     */
-    for(int i=0;i<span6.count/2;i++){
-        //NSLog(@"Parsing homework item %ld",(long)i);
-        
-        NSMutableString *tempDescription = [[[span6 objectAtIndex:i*2]raw]mutableCopy];
-        
-        //tempDescription = [[tempDescription stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"] mutableCopy];
-        
-        //NSLog(@"Received HTML: %@",tempDescription);
-        NSArray *splitString0 = [[tempDescription componentsSeparatedByString:@"\n"]mutableCopy];
-        tempDescription = [[splitString0 componentsJoinedByString:@""]mutableCopy];
-        NSArray *splitString = [[tempDescription componentsSeparatedByString:@"<br/>"]mutableCopy];
-        tempDescription = [[splitString componentsJoinedByString:@"\n"]mutableCopy];
-        NSArray *ss2 = [tempDescription componentsSeparatedByString:@"<p>"];
-        tempDescription = [[ss2 componentsJoinedByString:@"\n"]mutableCopy];
-        NSArray *ss3 = [tempDescription componentsSeparatedByString:@"</p>"];
-        tempDescription = [[ss3 componentsJoinedByString:@""]mutableCopy];
-        [tempDescription setString:[tempDescription stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-        //NSLog(@"Old: %@",tempDescription);
-        NSData *tempData = [tempDescription dataUsingEncoding:NSUTF8StringEncoding];
-        TFHpple *temp = [[TFHpple alloc] initWithHTMLData:tempData];
-        tempDescription = [[[[temp searchWithXPathQuery:@"//*"]objectAtIndex:0]content]mutableCopy];
-        NSLog(@"New: %@",tempDescription);
-         
-        
-        [descriptions addObject:tempDescription];
-        TFHppleElement *tempClassDetails = [span6 objectAtIndex:i*2+1];
-        [teachers addObject:[[tempClassDetails firstChildWithTagName:@"p"]content]];
-    }
+    NSMutableArray *elements = [[homework searchWithXPathQuery:@"//div[@class=' homework']/div"]mutableCopy];
+	
+	for (int i=0; i<elements.count; i++) {
+		NSString *code;
+		NSString *className;
+		NSString *time;
+		NSString *dueDate;
+		NSString *body;
+		NSString *teacher;
+		
+		TFHppleElement *element = elements[i];
+		
+		@try {
+			code = [[[element searchWithXPathQuery:@"//div[@class=' span3']/div/div"] objectAtIndex: 1] content];
+		}
+		@catch (NSException *e) {
+			code = @"Unknown";
+		}
+		@try {
+			time = [[[element searchWithXPathQuery:@"//div[@class=' span3']/div/div"] objectAtIndex: 2] content];
+		}
+		@catch (NSException *e) {
+			time = @"Unknown";
+		}
+		@try {
+			dueDate = [[[[element searchWithXPathQuery:@"//div[@class=' span3']/div/div"] objectAtIndex: 3] content] substringFromIndex:7];
+		}
+		@catch (NSException *e) {
+			dueDate = @"Unknown";
+		}
+		@try {
+			body = [[[element searchWithXPathQuery:@"//div[@class=' span6']/div"] objectAtIndex:1] content];
+		}
+		@catch (NSException *e) {
+			body = @"Unknown";
+		}
+		@try {
+			teacher = [[[[[element searchWithXPathQuery:@"//div[@class=' span6']/div"] objectAtIndex:2] searchWithXPathQuery: @"//p"] objectAtIndex:0] content];
+		}
+		@catch (NSException *e) {
+			teacher = @"Unknown";
+		}
+		
+		className = code;
+		
+		for (int j = 0; j < classes.count; j++)
+		{
+			if ([classes[j] objectAtIndex: 0] == code) {
+				className = [classes[j] objectAtIndex: 1];
+			}
+		}
+		
+		[descriptions addObject:body];
+		[teachers addObject: teacher];
+		[classCodes addObject:code];
+		[dueDates addObject: dueDate];
+		[times addObject:time];
+		[classNames addObject:className];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -244,6 +222,8 @@
     cell.descriptionLabel.text = [descriptions objectAtIndex:indexPath.row];
     cell.timeLabel.text = [times objectAtIndex:indexPath.row];
     cell.dueLabel.text = [dueDates objectAtIndex:indexPath.row];
+	
+	cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     //cell.descriptionLabel.numberOfLines = 0;
     

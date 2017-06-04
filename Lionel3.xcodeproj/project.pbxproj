@@ -15,6 +15,7 @@
 		335266961CCC7DFB005641A2 /* TimetableExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335266941CCC7DFB005641A2 /* TimetableExpandedViewController.xib */; };
 		335266991CD5D345005641A2 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335266981CD5D345005641A2 /* LoadingViewController.m */; };
 		3353B92F1C99940F009E48A4 /* TimetableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B92E1C99940F009E48A4 /* TimetableViewCell.m */; };
+		3360A8A81EE455E3008F792F /* lionel-png-v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3360A8A71EE455E3008F792F /* lionel-png-v1.png */; };
 		336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A081C91C51200C8C40A /* libxml2.2.dylib */; };
 		336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B0A091C91C51300C8C40A /* libxml2.dylib */; };
 		339133FA1D69A6D3005F95D0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 339133F91D69A6D3005F95D0 /* Security.framework */; };
@@ -107,6 +108,7 @@
 		335266981CD5D345005641A2 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		3353B92D1C99940F009E48A4 /* TimetableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimetableViewCell.h; path = ../TimetableViewCell.h; sourceTree = "<group>"; };
 		3353B92E1C99940F009E48A4 /* TimetableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimetableViewCell.m; path = ../TimetableViewCell.m; sourceTree = "<group>"; };
+		3360A8A71EE455E3008F792F /* lionel-png-v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lionel-png-v1.png"; sourceTree = "<group>"; };
 		336B0A081C91C51200C8C40A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		336B0A091C91C51300C8C40A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		339133F91D69A6D3005F95D0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -295,6 +297,7 @@
 		3353B9251C9990EF009E48A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3360A8A71EE455E3008F792F /* lionel-png-v1.png */,
 				33E51F3F1D3548E4008365DA /* Logo.png */,
 				33A611D11D32C3F900605552 /* Calendar-50@2x.png */,
 				33A611D21D32C3F900605552 /* Desk Lamp-50@2x.png */,
@@ -594,12 +597,13 @@
 		33FE98B71C91A486004F7907 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "No Empty Promises";
 				TargetAttributes = {
 					33FE98BE1C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = RQ3Q258PV4;
+						DevelopmentTeam = 8Z466M4R89;
+						ProvisioningStyle = Automatic;
 					};
 					33FE98D71C91A486004F7907 = {
 						CreatedOnToolsVersion = 6.1;
@@ -658,6 +662,7 @@
 				33FE98D31C91A486004F7907 /* LaunchScreen.xib in Resources */,
 				33E51F401D3548E5008365DA /* Logo.png in Resources */,
 				33FE98D01C91A486004F7907 /* Images.xcassets in Resources */,
+				3360A8A81EE455E3008F792F /* lionel-png-v1.png in Resources */,
 				33A611BC1D3266D100605552 /* .gitignore in Resources */,
 				33A611BB1D3266D100605552 /* .gitattributes in Resources */,
 				33A611D41D32C3F900605552 /* Calendar-50@2x.png in Resources */,
@@ -793,6 +798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -802,8 +808,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -812,6 +820,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -837,6 +846,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -846,8 +856,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -855,6 +867,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -877,6 +890,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8Z466M4R89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
@@ -887,6 +901,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -897,6 +912,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8Z466M4R89;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
@@ -907,6 +923,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.noemptypromises.Lionel7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

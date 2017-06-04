@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *datesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *previewLabel;
+@property (weak, nonatomic) IBOutlet UITextView *previewLabel;
 @property (nonatomic, retain) IBOutlet UITextView *textsLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *cardView;

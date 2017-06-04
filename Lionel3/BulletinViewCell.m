@@ -43,9 +43,11 @@
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.cardView.bounds];
     self.cardView.layer.shadowPath = path.CGPath;
     
-    self.textsLabel.contentInset = UIEdgeInsetsMake(-4, -4, 0, 0);
-    [self.textsLabel setFont:[UIFont systemFontOfSize:16]];
-    
+	self.textsLabel.contentInset = UIEdgeInsetsMake(-4, -4, 0, 0);
+	[self.textsLabel setFont:[UIFont systemFontOfSize:16]];
+	self.previewLabel.contentInset = UIEdgeInsetsMake(-4, -4, 0, 0);
+	[self.previewLabel setFont:[UIFont systemFontOfSize:16]];
+	
     self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1]; //%%% I prefer choosing colors programmatically than on the storyboard
 }
 

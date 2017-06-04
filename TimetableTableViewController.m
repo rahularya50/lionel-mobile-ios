@@ -68,11 +68,12 @@
     
     // Configure the cell...
     cell.periodLabel.text = [@"Period " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)item+1]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.classLabel.text = [[_classes objectAtIndex:item]objectAtIndex:2];
     cell.classLabel.numberOfLines = 0;
     //cell.daycodeLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)_pageIndex];
-    
+	
+	cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+	
     return cell;
 }
 
