@@ -147,16 +147,12 @@
 				_loginButton.titleLabel.text = @"Login";
 				[_spinner stopAnimating];
 
-
-				if (![e.reason isEqual: @"nointernet"])
-				{
-					UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
-																	message:@"Your username or password was entered incorrectly. Please try again. If this problem persists, please check your network connection."
-																   delegate:nil
-														  cancelButtonTitle:@"OK"
-														  otherButtonTitles:nil];
-					[alert show];
-				}
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+																message:@"Your username or password was entered incorrectly. Please try again. If this problem persists, please check your network connection."
+															   delegate:nil
+													  cancelButtonTitle:@"OK"
+													  otherButtonTitles:nil];
+				[alert show];
 			});
 		}
 	});
