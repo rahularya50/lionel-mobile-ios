@@ -39,7 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+	
+	[_spinner stopAnimating];
 	[self setNeedsStatusBarAppearanceUpdate];
 }
 
@@ -103,8 +104,64 @@
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
     
     Sync *syncer = [[Sync alloc] init];
+	[_spinner startAnimating];
 	
-	@try{
+	
+	NSLog(@"Logging in");
+	
+	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
+	dispatch_async(queue, ^{
+		
+		/*NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+		 
+		 NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+		 NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];*/
+		
+		@try{
+			NSLog(@"%@", username);
+			if (![syncer login:username andPassword: password])
+			{
+				@throw([NSException exceptionWithName:@"network" reason:@"nointernet" userInfo:NULL]);
+			}
+			else
+			{
+				dispatch_async(dispatch_get_main_queue(), ^{
+					NSLog(@"Initial synchronization concluded");
+					
+					[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+					
+					
+					//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
+					
+					[keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
+					[keychainItem setObject:password forKey:(__bridge id)kSecValueData];
+					
+					[self presentTabBar];
+				});
+			}
+		}
+		@catch(NSException *e){
+			NSLog(@"Wrong pw!");
+			NSLog(@"%@",e);
+			dispatch_async(dispatch_get_main_queue(), ^{
+				_loginButton.titleLabel.text = @"Login";
+				[_spinner stopAnimating];
+
+
+				if (![e.reason isEqual: @"nointernet"])
+				{
+					UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+																	message:@"Your username or password was entered incorrectly. Please try again. If this problem persists, please check your network connection."
+																   delegate:nil
+														  cancelButtonTitle:@"OK"
+														  otherButtonTitles:nil];
+					[alert show];
+				}
+			});
+		}
+	});
+	
+	/*@try{
 		NSLog(@"%@", username);
         _loginButton.titleLabel.text = @"Loading...";
 		if (![syncer login:username andPassword: password])
@@ -120,18 +177,8 @@
         [self shake:_loginButton];
         NSLog(@"%@",e);
 		return;
-	}
-	NSLog(@"Initial synchronization concluded");
-    
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+	}*/
 
-    
-	//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
-	
-    [keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
-    [keychainItem setObject:password forKey:(__bridge id)kSecValueData];
-    
-    [self presentTabBar];
 }
 
 -(void)keyboardWillShow:(NSNotification*)notification {

@@ -180,7 +180,7 @@
     
     if (tString.length < 100)
     {
-        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
     }
     NSError *error = nil;
@@ -211,7 +211,7 @@
     
     if (hString.length < 100)
     {
-        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
     }
     
@@ -238,7 +238,7 @@
     
     if (bString.length < 100)
     {
-        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
     }
     
@@ -265,7 +265,7 @@
     
     if (cString.length < 100)
     {
-        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
     }
     

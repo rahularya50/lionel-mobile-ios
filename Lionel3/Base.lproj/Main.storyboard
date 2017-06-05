@@ -87,13 +87,18 @@
                                     <action selector="loginButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xcP-CT-YV4"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Vvk-qX-5aT">
+                                <rect key="frame" x="319" y="305" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Vvk-qX-5aT" firstAttribute="top" secondItem="eYj-R4-0XS" secondAttribute="bottom" constant="42" id="8bA-yG-ngV"/>
                             <constraint firstItem="LCw-qI-sph" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Bni-cc-nf2"/>
                             <constraint firstItem="1nq-kJ-agV" firstAttribute="top" secondItem="eYj-R4-0XS" secondAttribute="bottom" constant="34" id="C9e-Kc-d2W"/>
                             <constraint firstItem="LCw-qI-sph" firstAttribute="top" secondItem="MkX-3K-IFS" secondAttribute="bottom" constant="23" id="Dv9-Ye-45P"/>
                             <constraint firstItem="LCw-qI-sph" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="FB0-Xt-T1g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vvk-qX-5aT" secondAttribute="trailing" constant="20" id="K2L-AM-HVs"/>
                             <constraint firstItem="LCw-qI-sph" firstAttribute="leading" secondItem="eYj-R4-0XS" secondAttribute="leading" id="SGd-vB-GG8"/>
                             <constraint firstItem="eYj-R4-0XS" firstAttribute="trailing" secondItem="1nq-kJ-agV" secondAttribute="trailing" id="UPi-wU-lTg"/>
                             <constraint firstItem="MkX-3K-IFS" firstAttribute="top" secondItem="cdP-qI-Nn0" secondAttribute="bottom" constant="28" id="WKJ-sx-Pcm"/>
@@ -106,6 +111,7 @@
                     <connections>
                         <outlet property="loginButton" destination="1nq-kJ-agV" id="RzF-Wd-r9v"/>
                         <outlet property="passwordField" destination="eYj-R4-0XS" id="KhL-uF-8hf"/>
+                        <outlet property="spinner" destination="Vvk-qX-5aT" id="yJ4-jK-6H7"/>
                         <outlet property="usernameField" destination="LCw-qI-sph" id="ozV-me-D4o"/>
                     </connections>
                 </viewController>
@@ -210,7 +216,7 @@
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-2g-s3h">
                                                     <rect key="frame" x="16" y="84.5" width="311" height="71.5"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
