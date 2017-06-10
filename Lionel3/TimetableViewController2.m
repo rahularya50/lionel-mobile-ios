@@ -91,6 +91,8 @@
 									actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault
          handler:^(UIAlertAction * action) {	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
 			 [keychainItem resetKeychainItem];
+			 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
+
 			 
 			 LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 			 [self presentViewController:lvc animated:YES completion:nil];}];

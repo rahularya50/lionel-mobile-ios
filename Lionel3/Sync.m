@@ -73,7 +73,7 @@
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if(networkStatus == NotReachable){
-        [self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
+        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
         //NSLog(@"No internet connection.");
     }
@@ -273,7 +273,9 @@
     filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
     [[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
     [cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
+	
+	[[NSUserDefaults standardUserDefaults] setInteger:CFAbsoluteTimeGetCurrent() forKey:@"prevSyncTime"];
+
     return YES;
 }
 

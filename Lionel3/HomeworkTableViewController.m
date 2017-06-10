@@ -60,6 +60,7 @@
 									actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault
          handler:^(UIAlertAction * action) {	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
 			 [keychainItem resetKeychainItem];
+			 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
 			 
 			 LoginViewController *lvc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 			 [self presentViewController:lvc animated:YES completion:nil];}];
@@ -339,6 +340,7 @@
             if (![syncer login:username andPassword: password])
             {
                 [sender endRefreshing];
+			    @throw([NSException exceptionWithName:@"network" reason:@"nointernet" userInfo:NULL]);
                 return;
             }
         }
@@ -346,8 +348,8 @@
 			NSLog(@"Wrong pw!");
 			NSLog(@"%@",e);
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
-                                                            message:@"An unexpected error occurred. Please try logging out and reentering your LIONeL credentials. If this error persists, please contact Lilian Luong at 16luongl1@kgv.hk."
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                            message:@"A network error occurred. If this error persists, please try logging out and reentering your LIONeL credentials."
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
