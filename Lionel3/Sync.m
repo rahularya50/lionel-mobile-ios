@@ -53,29 +53,16 @@
     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
     NSLog(@"%@",filepath);
-    
-	//NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
 	
 	NSLog(@"User credentials acquired");
 	
-	//NSLog(@"%@",userData);
 	NSLog(@"%@", username);
-	//NSLog(@"%@", password);
-	
-	/*username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-	password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
-	
-	NSLog(@"User credentials parsed");
-	*/
-
 	
     NSLog(@"Login function called.");
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if(networkStatus == NotReachable){
-        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
         return NO;
-        //NSLog(@"No internet connection.");
     }
     
     NSData *n = [@"" dataUsingEncoding:NSUTF8StringEncoding];
@@ -86,7 +73,6 @@
     NSURL *l1Url = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
     ASIHTTPRequest *connRequest = [ASIHTTPRequest requestWithURL:l1Url];
     [connRequest setDelegate:self];
-    //[connRequest setUseCookiePersistence:NO];
     [connRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"conn",@"tag", nil]];
     [connRequest setTimeOutSeconds:60];
     [connRequest startSynchronous];
@@ -94,13 +80,8 @@
     connData = [connRequest responseData];
     connCookies = [connRequest responseCookies];
 	
-	NSLog(@"%@",[[NSString alloc] initWithData:connData encoding:NSUTF8StringEncoding]);
-	
-    //Send second request
-    //NSLog(@"Request 2 sending.");
     NSURL *temp = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
     ASIFormDataRequest *l1Request = [ASIFormDataRequest requestWithURL:temp];
-    //ASIHTTPRequest *l1Request = [ASIHTTPRequest requestWithURL:temp];
     [l1Request setRequestCookies:[[connRequest responseCookies]mutableCopy]];
     NSLog(@"%@",username);
     [l1Request setPostValue:username forKey:@"username"];
@@ -109,12 +90,32 @@
     [l1Request setDelegate:self];
     [l1Request setTimeOutSeconds:60];
     [l1Request startSynchronous];
-    
-    
-    
-    l1Data = [l1Request responseData];
-    NSLog(@"Received Lionel 1.");
-    NSURL *l2Url = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/auth/mnet/jump.php?hostid=10"];
+	l1Data = [l1Request responseData];
+	NSLog(@"Received Lionel 1.");
+
+	
+	NSURL *cUrl = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/kgv-additions/Calendar/master.php?style=small"];
+	ASIHTTPRequest *cRequest = [ASIHTTPRequest requestWithURL:cUrl];
+	[cRequest setRequestMethod:@"GET"];
+	//NSLog(@"%@",connCookies);
+	NSMutableArray *ccookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
+	[cRequest setRequestCookies:ccookieList];
+	[cRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"calendar",@"tag", nil]];
+	[cRequest setDelegate:self];
+	[cRequest setTimeOutSeconds:60];
+	[cRequest startSynchronous];
+	NSLog(@"Calendar received.");
+	NSString *cString = [[NSString alloc] initWithData:[cRequest responseData] encoding:NSUTF8StringEncoding];
+	if (cString.length < 100)
+		{
+		return NO;
+		}
+	dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
+	[[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
+	[cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+	NSURL *l2Url = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/auth/mnet/jump.php?hostid=10"];
     ASIHTTPRequest *l2Request = [ASIHTTPRequest requestWithURL:l2Url];
     [l2Request setRequestMethod:@"GET"];
     //NSLog(@"%@",connCookies);
@@ -126,36 +127,14 @@
     [l2Request setDelegate:self];
     [l2Request setTimeOutSeconds:60];
     [l2Request startSynchronous];
-
-    NSLog(@"Lionel 2 works!!!!!!!");
+	NSLog(@"Lionel 2 works!!!!!!!");
     l2Data = [l2Request responseData];
     NSString* l1raw = [[NSString alloc] initWithData:l1Data encoding:NSUTF8StringEncoding];
 	
-    NSLog(@"%@",l1raw);
-    
     NSRange range = [l1raw rangeOfString:@"http://lionel.kgv.edu.hk/user/view.php?id="];
     uid = [[l1raw substringWithRange:NSMakeRange(range.location+42, 4)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    //Parsing to get user ID
-    
-    /*TFHpple *l1doc = [[TFHpple alloc] initWithHTMLData:l1Data];
-    NSArray *menus = [l1doc searchWithXPathQuery:@"//div[contains(@class, 'menu clearfix')]"];
-    TFHppleElement *l1menu = [menus objectAtIndex:0];
-    NSString *a = [l1menu text];
-    if(a.length < 13){
-        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-        [@"" writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-		
-		[NSException raise:@"Invalid user id" format:@"UID or PW likely incorrect"];
-
-        return;
-    }
-    */
-    
-    //uid = @"8522";//[a substringWithRange:NSMakeRange(a.length - 13, a.length-10)];
-    
-    NSLog(@"Your student id is #%@",uid);
+	
+	NSLog(@"Your student id is #%@",uid);
     
     NSURL *tUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://lionel2.kgv.edu.hk/local/mis/misc/printtimetable.php?sid=%@", uid]];
     ASIHTTPRequest *tRequest = [ASIHTTPRequest requestWithURL:tUrl];
@@ -246,33 +225,6 @@
     filepath = [dir stringByAppendingPathComponent:@"bulletin.txt"];
     [[NSFileManager defaultManager] createFileAtPath:@"./bulletin.txt" contents:n attributes:nil];
     [bString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    NSURL *cUrl = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/kgv-additions/Calendar/master.php?style=small"];
-    ASIHTTPRequest *cRequest = [ASIHTTPRequest requestWithURL:cUrl];
-    [bRequest setRequestMethod:@"GET"];
-    //NSLog(@"%@",connCookies);
-    NSMutableArray *ccookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
-    [cRequest setRequestCookies:ccookieList];
-    [cRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"calendar",@"tag", nil]];
-    [cRequest setDelegate:self];
-    [cRequest setTimeOutSeconds:60];
-    [cRequest startSynchronous];
-
-    NSLog(@"Calendar received.");
-    
-    NSString *cString = [[NSString alloc] initWithData:[cRequest responseData] encoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",bString);
-    
-    if (cString.length < 100)
-    {
-        //[self performSelectorOnMainThread:@selector(throwInternetDialog) withObject:NULL waitUntilDone:YES];
-        return NO;
-    }
-    
-    dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
-    [[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
-    [cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	
 	[[NSUserDefaults standardUserDefaults] setInteger:CFAbsoluteTimeGetCurrent() forKey:@"prevSyncTime"];
 

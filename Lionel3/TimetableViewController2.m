@@ -278,7 +278,7 @@
 				
                 if([[tempElement content] length] < 5){
 					NSLog(@"Free Period!");
-                    [classDetails addObject:@"FP01"];
+                    [classDetails addObject:@"Free Period"];
                     [classDetails addObject:@"Wherever you want!"];
                     [classDetails addObject:@"Free Period"];
 					[classDetails addObject:@"Yourself"];

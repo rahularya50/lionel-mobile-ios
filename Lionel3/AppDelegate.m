@@ -27,7 +27,9 @@
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
-    
+	
+	[application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+	
     return YES;
 }
 
@@ -46,11 +48,22 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	CFAbsoluteTime timeInSeconds = CFAbsoluteTimeGetCurrent();
-	NSInteger prevSyncTime = [[NSUserDefaults standardUserDefaults] integerForKey:@"prevSyncTime"];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+	NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:25 repeats:NO block:^(NSTimer *timer) {
+		completionHandler(UIBackgroundFetchResultNewData);
+		return;
+	}];
+
+
 	
-	NSLog(@"Checking for sync");
-	NSLog(@"Time since previous sync: %f", timeInSeconds - prevSyncTime);
+	NSLog(@"Auto-refresh in progress");
 	
 	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
 	
@@ -59,57 +72,44 @@
 		|| [keychainItem objectForKey:(__bridge id)kSecAttrAccount] == nil
 		|| ![[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]
 		)
-	{
+		{
 		return;
-	}
-	
-	if (timeInSeconds < prevSyncTime + 3600*4)
-	{
-		return;
-	}
-	
+		}
 	
 	NSLog(@"Reloading");
 	
 	
 	Sync *syncer = [[Sync alloc] init];
 	
-	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
-	dispatch_async(queue, ^{
-		NSString *username;
-		NSString *password;
-		
-		/*NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
-		 
-		 NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-		 NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];*/
-		
-		username = [keychainItem objectForKey:(__bridge id)kSecAttrAccount];
-		password = [[NSString alloc] initWithData:[keychainItem objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
-		
-		@try{
-			NSLog(@"%@", username);
-			if (![syncer login:username andPassword: password])
-			{
-				return;
-			}
+	NSString *username;
+	NSString *password;
+	
+	/*NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+	 
+	 NSString *username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+	 NSString *password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];*/
+	
+	username = [keychainItem objectForKey:(__bridge id)kSecAttrAccount];
+	password = [[NSString alloc] initWithData:[keychainItem objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
+	
+	@try{
+		NSLog(@"%@", username);
+		if (![syncer login:username andPassword: password])
+		{
+			[timer invalidate];
+			completionHandler(UIBackgroundFetchResultFailed);
 		}
-		@catch(NSException *e){
-			NSLog(@"Wrong pw!");
-			NSLog(@"%@",e);
-			
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Synchronization Error"
-															message:@"An unexpected error occurred. Please try logging out and reentering your LIONeL credentials. If this error persists, please contact Lilian Luong at 16luongl1@kgv.hk."
-														   delegate:nil
-												  cancelButtonTitle:@"OK"
-												  otherButtonTitles:nil];
-			[alert show];
+		else {
+			[timer invalidate];
+			completionHandler(UIBackgroundFetchResultNewData);
 		}
-	});
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+	}
+	@catch(NSException *e){
+		NSLog(@"Wrong pw!");
+		NSLog(@"%@",e);
+		[timer invalidate];
+		completionHandler(UIBackgroundFetchResultFailed);
+	}
 }
 
 @end

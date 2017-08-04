@@ -134,6 +134,8 @@
 					
 					//NSLog(@"%@", [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil]);
 					
+					[keychainItem setObject:(__bridge id)kSecAttrAccessibleAlways forKey:(__bridge id)kSecAttrAccount];
+					[keychainItem setObject:(__bridge id)kSecAttrAccessibleAlways forKey:(__bridge id)kSecValueData];
 					[keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
 					[keychainItem setObject:password forKey:(__bridge id)kSecValueData];
 					
