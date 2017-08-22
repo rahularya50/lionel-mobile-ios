@@ -70,7 +70,7 @@
     
     [ASIHTTPRequest setSessionCookies:nil];
     
-    NSURL *l1Url = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
+    NSURL *l1Url = [NSURL URLWithString:@"https://lionel2.kgv.edu.hk/login/index.php"];
     ASIHTTPRequest *connRequest = [ASIHTTPRequest requestWithURL:l1Url];
     [connRequest setDelegate:self];
     [connRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"conn",@"tag", nil]];
@@ -80,25 +80,28 @@
     connData = [connRequest responseData];
     connCookies = [connRequest responseCookies];
 	
-    NSURL *temp = [NSURL URLWithString:@"https://lionel.kgv.edu.hk/login/index.php"];
+    NSURL *temp = [NSURL URLWithString:@"https://lionel2.kgv.edu.hk/login/index.php"];
     ASIFormDataRequest *l1Request = [ASIFormDataRequest requestWithURL:temp];
-    [l1Request setRequestCookies:[[connRequest responseCookies]mutableCopy]];
+    [l1Request setRequestCookies:[connCookies mutableCopy]];
     NSLog(@"%@",username);
     [l1Request setPostValue:username forKey:@"username"];
-    [l1Request setPostValue:password forKey:@"password"];
+	[l1Request setPostValue:password forKey:@"password"];
+	[l1Request setPostValue:@"0" forKey:@"rememberusername"];
     [l1Request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"l1",@"tag", nil]];
     [l1Request setDelegate:self];
     [l1Request setTimeOutSeconds:60];
     [l1Request startSynchronous];
 	l1Data = [l1Request responseData];
 	NSLog(@"Received Lionel 1.");
+	
+	connCookies = [l1Request responseCookies];
 
 	
 	NSURL *cUrl = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/kgv-additions/Calendar/master.php?style=small"];
 	ASIHTTPRequest *cRequest = [ASIHTTPRequest requestWithURL:cUrl];
 	[cRequest setRequestMethod:@"GET"];
 	//NSLog(@"%@",connCookies);
-	NSMutableArray *ccookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
+	NSMutableArray *ccookieList = [connCookies mutableCopy];
 	[cRequest setRequestCookies:ccookieList];
 	[cRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"calendar",@"tag", nil]];
 	[cRequest setDelegate:self];
@@ -115,35 +118,17 @@
 	[[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
 	[cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
-	NSURL *l2Url = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/auth/mnet/jump.php?hostid=10"];
-    ASIHTTPRequest *l2Request = [ASIHTTPRequest requestWithURL:l2Url];
-    [l2Request setRequestMethod:@"GET"];
-    //NSLog(@"%@",connCookies);
-    l1Cookies = [l1Request responseCookies];
-    NSMutableArray *l2cookieList = [[l1Cookies arrayByAddingObjectsFromArray:connCookies] mutableCopy];
-    //NSLog(@"%@",l2cookieList);
-    [l2Request setRequestCookies:l2cookieList];
-    [l2Request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"l2",@"tag", nil]];
-    [l2Request setDelegate:self];
-    [l2Request setTimeOutSeconds:60];
-    [l2Request startSynchronous];
-	NSLog(@"Lionel 2 works!!!!!!!");
-    l2Data = [l2Request responseData];
     NSString* l1raw = [[NSString alloc] initWithData:l1Data encoding:NSUTF8StringEncoding];
 	
-    NSRange range = [l1raw rangeOfString:@"http://lionel.kgv.edu.hk/user/view.php?id="];
-    uid = [[l1raw substringWithRange:NSMakeRange(range.location+42, 4)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSRange range = [l1raw rangeOfString:@"<a alt=\"summary\" class=\" \" href=\"https://lionel2.kgv.edu.hk/local/mis/students/summary.php?sid="];
+    uid = [[l1raw substringWithRange:NSMakeRange(range.location+95, 4)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	
 	NSLog(@"Your student id is #%@",uid);
-    
+	
     NSURL *tUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://lionel2.kgv.edu.hk/local/mis/misc/printtimetable.php?sid=%@", uid]];
     ASIHTTPRequest *tRequest = [ASIHTTPRequest requestWithURL:tUrl];
     [tRequest setRequestMethod:@"GET"];
-    //NSLog(@"%@",connCookies);
-    l2Cookies = [l1Request responseCookies];
-    NSMutableArray *tcookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
-    //NSLog(@"%@",tcookieList);
-    [tRequest setRequestCookies:tcookieList];
+    [tRequest setRequestCookies:[connCookies mutableCopy]];
     [tRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"timetable",@"tag", nil]];
     [tRequest setDelegate:self];
     [tRequest setTimeOutSeconds:60];
@@ -174,9 +159,7 @@
     NSURL *hUrl = [NSURL URLWithString:@"https://lionel2.kgv.edu.hk/local/mis/mobile/myhomework.php"];
     ASIHTTPRequest *hRequest = [ASIHTTPRequest requestWithURL:hUrl];
     [hRequest setRequestMethod:@"GET"];
-    //NSLog(@"%@",connCookies);
-    NSMutableArray *hcookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
-    [hRequest setRequestCookies:hcookieList];
+    [hRequest setRequestCookies:[connCookies mutableCopy]];
     [hRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"homework",@"tag", nil]];
     [hRequest setDelegate:self];
     [hRequest setTimeOutSeconds:60];
@@ -202,9 +185,7 @@
     NSURL *bUrl = [NSURL URLWithString:@"https://lionel2.kgv.edu.hk/local/mis/bulletin/bulletin.php"];
     ASIHTTPRequest *bRequest = [ASIHTTPRequest requestWithURL:bUrl];
     [bRequest setRequestMethod:@"GET"];
-    //NSLog(@"%@",connCookies);
-    NSMutableArray *bcookieList = [[l1Cookies arrayByAddingObjectsFromArray:l2Cookies] mutableCopy];
-    [bRequest setRequestCookies:bcookieList];
+    [bRequest setRequestCookies:[connCookies mutableCopy]];
     [bRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"bulletin",@"tag", nil]];
     [bRequest setDelegate:self];
     [bRequest setTimeOutSeconds:60];

@@ -11,6 +11,7 @@
 @implementation TimetableViewCell
 
 - (void)awakeFromNib {
+	[super awakeFromNib];
     // Initialization code
 }
 

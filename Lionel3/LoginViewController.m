@@ -49,32 +49,20 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filepath = [dir stringByAppendingPathComponent:@"userAuth.txt"];
-    NSLog(@"%@",filepath);
-    
-    @try{
-		//NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
-		//NSLog(@"%@", userData);
-		
-    //if(userData.length>500){
-        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
-        
-        if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil &&
-		   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
-        {
-            NSLog(@"Auto-login of user:");
-            NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
-            //username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
-            //password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
-            TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-            [self presentViewController:tabBar animated:YES completion:nil];
-        }
-    }
-    @catch(NSException *e){
-        [[NSFileManager defaultManager] createFileAtPath:filepath contents:NULL attributes:nil];
-    }
-    
+	
+	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+	
+	if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil &&
+	   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
+	{
+		NSLog(@"Auto-login of user:");
+		NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
+		//username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
+		//password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];
+		TabBarController *tabBar = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+		[self presentViewController:tabBar animated:YES completion:nil];
+	}
+	
     // Do any additional setup after loading the view.
     
 }
