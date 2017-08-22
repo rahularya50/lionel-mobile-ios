@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "Sync.h"
 #import "KeychainWrapper.h"
+#import "Crashlytics/Crashlytics.h"
 
 @interface HomeworkTableViewController ()
 {
@@ -33,6 +34,11 @@
     item = 0;
     //[self parseHomework];
     //[super viewDidLoad];
+	
+	[Answers logContentViewWithName:@"Homework"
+						contentType:@"Homework"
+						  contentId:@"Homework"
+				   customAttributes:@{}];
     
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -15,6 +15,9 @@
 #import "LoadingViewController.h"
 #import "Sync.h"
 #import "KeychainWrapper.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface LoginViewController (){
     NSString *username;
@@ -56,6 +59,7 @@
 	   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
 	{
 		NSLog(@"Auto-login of user:");
+		[CrashlyticsKit setUserEmail: [keychainItem objectForKey:(__bridge id)kSecAttrAccount]];
 		NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
 		//username = [[userData componentsSeparatedByString:@"^"] objectAtIndex:0];
 		//password = [[userData componentsSeparatedByString:@"^"] objectAtIndex:1];

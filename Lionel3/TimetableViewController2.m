@@ -11,6 +11,8 @@
 #import "TimetableTableViewController.h"
 #import "TFHpple.h"
 #import "LoginViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "KeychainWrapper.h"
 
@@ -31,7 +33,14 @@
 @implementation TimetableViewController2
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+	
+	[Answers logContentViewWithName:@"Timetable"
+						contentType:@"Timetable"
+						  contentId:@"Timetable"
+				   customAttributes:@{}];
+	
+	[self recalcWeek];
+	
     [self parseTimetable];
 	
 	[self genpreloads];
@@ -155,9 +164,22 @@
     else if (weekday == 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
     {
         weekday = 1;
+		if (!isNext) {
+			week = (week + 1) % 2;
+		}
     }
+	else if (weekday == 5)
+	{
+		if (isNext)
+		{
+		week = (week + 1) % 2;
+		}
+	}
 	else if (weekday == 6 || weekday == 0)
     {
+		if (!isNext) {
+			week = (week + 1) % 2;
+		}
 		weekday = 1;
 	}
     
@@ -165,7 +187,7 @@
     
 	//[NSInteger] *targetPage = [NSInteger numberWithInt:((week-1)*5 + weekday)];
 	
-	NSUInteger targetPage = (NSUInteger)((week-1)*5 + weekday);
+	NSUInteger targetPage = (NSUInteger)(week*5 + weekday);
     
 	[self flipToPage: targetPage - 1];
 	

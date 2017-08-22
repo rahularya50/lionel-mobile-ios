@@ -46,6 +46,8 @@
 		33BBE1381CA9220700BA70F4 /* BulletinViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE1371CA9220700BA70F4 /* BulletinViewCell.m */; };
 		33BBE13C1CB17D2900BA70F4 /* BulletinExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBE13A1CB17D2900BA70F4 /* BulletinExpandedViewController.m */; };
 		33BBE13D1CB17D2900BA70F4 /* BulletinExpandedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BBE13B1CB17D2900BA70F4 /* BulletinExpandedViewController.xib */; };
+		33DDFBD21F4C8B5C00FC83B8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDFBD01F4C8B5C00FC83B8 /* Crashlytics.framework */; };
+		33DDFBD31F4C8B5C00FC83B8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDFBD11F4C8B5C00FC83B8 /* Fabric.framework */; };
 		33E51EF01D341A50008365DA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33E51EEF1D341A50008365DA /* Settings.bundle */; };
 		33E51EF21D341AB2008365DA /* SettingsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E51EF11D341AB2008365DA /* SettingsTableView.xib */; };
 		33E51EF41D341B27008365DA /* Settings-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E51EF31D341B27008365DA /* Settings-50@2x.png */; };
@@ -158,6 +160,8 @@
 		33BBE1391CB17D2900BA70F4 /* BulletinExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletinExpandedViewController.h; sourceTree = "<group>"; };
 		33BBE13A1CB17D2900BA70F4 /* BulletinExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletinExpandedViewController.m; sourceTree = "<group>"; };
 		33BBE13B1CB17D2900BA70F4 /* BulletinExpandedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulletinExpandedViewController.xib; sourceTree = "<group>"; };
+		33DDFBD01F4C8B5C00FC83B8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		33DDFBD11F4C8B5C00FC83B8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		33E51EEF1D341A50008365DA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		33E51EF11D341AB2008365DA /* SettingsTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableView.xib; sourceTree = "<group>"; };
 		33E51EF31D341B27008365DA /* Settings-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50@2x.png"; sourceTree = "<group>"; };
@@ -239,8 +243,10 @@
 			files = (
 				339133FA1D69A6D3005F95D0 /* Security.framework in Frameworks */,
 				336B0A0A1C91C51300C8C40A /* libxml2.2.dylib in Frameworks */,
+				33DDFBD21F4C8B5C00FC83B8 /* Crashlytics.framework in Frameworks */,
 				336B0A0B1C91C51300C8C40A /* libxml2.dylib in Frameworks */,
 				33FE99671C91A53E004F7907 /* libz.dylib in Frameworks */,
+				33DDFBD31F4C8B5C00FC83B8 /* Fabric.framework in Frameworks */,
 				33FE99651C91A537004F7907 /* CoreGraphics.framework in Frameworks */,
 				33FE99631C91A530004F7907 /* SystemConfiguration.framework in Frameworks */,
 				33FE99611C91A4AD004F7907 /* CFNetwork.framework in Frameworks */,
@@ -436,6 +442,8 @@
 		33FE98B61C91A486004F7907 = {
 			isa = PBXGroup;
 			children = (
+				33DDFBD01F4C8B5C00FC83B8 /* Crashlytics.framework */,
+				33DDFBD11F4C8B5C00FC83B8 /* Fabric.framework */,
 				339133FE1D69A9CC005F95D0 /* KeychainWrapper.h */,
 				339133FF1D69A9CC005F95D0 /* KeychainWrapper.m */,
 				339133F91D69A6D3005F95D0 /* Security.framework */,
@@ -560,6 +568,7 @@
 				33FE98BB1C91A486004F7907 /* Sources */,
 				33FE98BC1C91A486004F7907 /* Frameworks */,
 				33FE98BD1C91A486004F7907 /* Resources */,
+				33DDFBD41F4C8B8000FC83B8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -681,6 +690,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33DDFBD41F4C8B8000FC83B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 26af6d4ff91a5b2cb332ed93483ca6e6e336a951 190da221d6b10cee224fc437320ae7f44f732c7e44b26e827c6f1d8fd3b63116";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		33FE98BB1C91A486004F7907 /* Sources */ = {
@@ -896,6 +921,7 @@
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-MacOSX/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -918,6 +944,7 @@
 					"$(inherited)",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-iOS",
 					"/Users/rahularya/Downloads/gh-unit-master/Examples/MyTestable-MacOSX/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Lionel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

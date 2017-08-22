@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "Sync.h"
 #import "KeychainWrapper.h"
+#import "Crashlytics/Crashlytics.h"
 
 @interface BulletinTableViewController (){
     NSMutableArray *titles;
@@ -27,7 +28,12 @@
 @implementation BulletinTableViewController
 
 - (void)viewDidLoad {
-    item = 0;
+	[Answers logContentViewWithName:@"Bulletin"
+						contentType:@"Bulletin"
+						  contentId:@"Bulletin"
+				   customAttributes:@{}];
+	
+	item = 0;
     
 	self.tableView.separatorColor = [UIColor clearColor];
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

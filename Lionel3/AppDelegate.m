@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Sync.h"
 #import "KeychainWrapper.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -29,6 +31,8 @@
     pageControl.backgroundColor = [UIColor whiteColor];
 	
 	[application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+	
+	[Fabric with:@[[Crashlytics class]]];
 	
     return YES;
 }
