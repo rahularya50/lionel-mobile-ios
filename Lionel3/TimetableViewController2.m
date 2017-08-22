@@ -26,7 +26,8 @@
     
     bool firstPageLoaded;
 	
-    int week;
+	int week;
+	bool isNext;
 }
 @end
 
@@ -210,6 +211,8 @@
     
     if (!firstPageLoaded)
     {
+		NSLog(@"First page flip index: %d", index);
+	
         TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
 
         viewControllers = [NSArray arrayWithObjects:viewController, nil];
@@ -251,9 +254,12 @@
     NSData *calendarData = [calendarString dataUsingEncoding:NSUTF8StringEncoding];
     
     TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
-    NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='smallcal']/div"] objectAtIndex:0] content];
-    NSString *cWeek = [cHeader substringFromIndex:cHeader.length-1];
-    week = [cWeek intValue];
+    NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='greeting']/div"] objectAtIndex:0] content];
+	
+	isNext = [cHeader characterAtIndex:0] == 'T';
+	
+    week = [cHeader characterAtIndex:[cHeader rangeOfString:@"Week "].location + 5] - 1 - '0';
+	NSLog(@"Week is: %d", week);
 }
 
 - (void)parseTimetable{
@@ -266,12 +272,8 @@
     //NSLog(@"%@",filepath);
     NSString *timetableString = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
     NSData *timetableData = [timetableString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString *cdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *cfilepath = [cdir stringByAppendingPathComponent:@"calendar.txt"];
-    NSString *calendarString = [NSString stringWithContentsOfFile:cfilepath encoding:NSUTF8StringEncoding error:nil];
-    NSData *calendarData = [calendarString dataUsingEncoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",[[NSString alloc] initWithData:timetableData encoding:NSUTF8StringEncoding]);
+	
+	//NSLog(@"%@",[[NSString alloc] initWithData:timetableData encoding:NSUTF8StringEncoding]);
     //Parsing
     TFHpple *timetable = [[TFHpple alloc] initWithHTMLData:timetableData];
     NSMutableArray *classByPeriod = [[NSMutableArray alloc] init];
@@ -280,12 +282,7 @@
     [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c3'] | //tr/td[@class='empty cell c3']"]];
     [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c4'] | //tr/td[@class='empty cell c4']"]];
     [classByPeriod addObject:(NSArray *)[timetable searchWithXPathQuery:@"//tr/td[@class='cell c5'] | //tr/td[@class='empty cell c5']"]];
-    
-    TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
-    NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='smallcal']/div"] objectAtIndex:0] content];
-    NSString *cWeek = [cHeader substringFromIndex:cHeader.length-1];
-    week = [cWeek intValue];
-    NSLog(@"This is Week %d",week);
+	
     for(int i = 0; i<10;i++){
         NSLog(@"Creating day %d classes.",i);
         NSMutableArray *temp = [[NSMutableArray alloc] init];

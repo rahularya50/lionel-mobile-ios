@@ -96,23 +96,11 @@
 	
 	connCookies = [l1Request responseCookies];
 
-	
-	NSURL *cUrl = [NSURL URLWithString:@"http://lionel.kgv.edu.hk/kgv-additions/Calendar/master.php?style=small"];
-	ASIHTTPRequest *cRequest = [ASIHTTPRequest requestWithURL:cUrl];
-	[cRequest setRequestMethod:@"GET"];
-	//NSLog(@"%@",connCookies);
-	NSMutableArray *ccookieList = [connCookies mutableCopy];
-	[cRequest setRequestCookies:ccookieList];
-	[cRequest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"calendar",@"tag", nil]];
-	[cRequest setDelegate:self];
-	[cRequest setTimeOutSeconds:60];
-	[cRequest startSynchronous];
-	NSLog(@"Calendar received.");
-	NSString *cString = [[NSString alloc] initWithData:[cRequest responseData] encoding:NSUTF8StringEncoding];
+	NSString *cString = [[NSString alloc] initWithData:[l1Request responseData] encoding:NSUTF8StringEncoding];
 	if (cString.length < 100)
-		{
+	{
 		return NO;
-		}
+	}
 	dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
 	[[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];

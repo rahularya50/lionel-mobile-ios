@@ -56,8 +56,9 @@
 	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
 	
 	if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil &&
-	   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"])
-	{
+	   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"] &&
+	   [[NSUserDefaults standardUserDefaults] integerForKey:@"version"] == 2)
+		{
 		NSLog(@"Auto-login of user:");
 		[CrashlyticsKit setUserEmail: [keychainItem objectForKey:(__bridge id)kSecAttrAccount]];
 		NSLog(@"%@", [keychainItem objectForKey:(__bridge id)kSecAttrAccount]);
@@ -130,7 +131,9 @@
 					[keychainItem setObject:(__bridge id)kSecAttrAccessibleAlways forKey:(__bridge id)kSecValueData];
 					[keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
 					[keychainItem setObject:password forKey:(__bridge id)kSecValueData];
-					
+					[CrashlyticsKit setUserEmail: username];
+					[[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"version"];
+
 					[self presentTabBar];
 				});
 			}
