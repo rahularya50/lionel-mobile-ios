@@ -150,13 +150,15 @@
 	int weekday = (int)[comps weekday]-1;
     
     weekday = weekday % 7;
-    
+	
 	NSLog(@"Day is %d",weekday);
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
     
     NSInteger hour = [components hour];
     NSInteger minute = [components minute];
+	
+	NSInteger realWeek = week;
     
     if (weekday >= 1 && weekday < 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
     {
@@ -166,20 +168,20 @@
     {
         weekday = 1;
 		if (!isNext) {
-			week = (week + 1) % 2;
+			realWeek = (realWeek + 1) % 2;
 		}
     }
 	else if (weekday == 5)
 	{
 		if (isNext)
 		{
-		week = (week + 1) % 2;
+		realWeek = (realWeek + 1) % 2;
 		}
 	}
 	else if (weekday == 6 || weekday == 0)
     {
-		if (!isNext) {
-			week = (week + 1) % 2;
+		if (!isNext && weekday == 6) {
+			realWeek = (realWeek + 1) % 2;
 		}
 		weekday = 1;
 	}
@@ -188,7 +190,7 @@
     
 	//[NSInteger] *targetPage = [NSInteger numberWithInt:((week-1)*5 + weekday)];
 	
-	NSUInteger targetPage = (NSUInteger)(week*5 + weekday);
+	NSUInteger targetPage = (NSUInteger)(realWeek*5 + weekday);
     
 	[self flipToPage: targetPage - 1];
 	
@@ -211,14 +213,14 @@
     
     if (!firstPageLoaded)
     {
-		NSLog(@"First page flip index: %d", index);
+		NSLog(@"First page flip index: %lu", (unsigned long)index);
 	
         TimetableTableViewController *viewController = [self viewControllerAtIndex:index];
 
         viewControllers = [NSArray arrayWithObjects:viewController, nil];
         
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
-        
+	
         return;
     }
     
@@ -231,8 +233,8 @@
 		
 	viewControllers = [NSArray arrayWithObjects:viewController, nil];
 	
-    NSLog(@"%lu", index);
-    NSLog(@"%lu", retrievedIndex);
+    NSLog(@"%lu", (unsigned long)index);
+    NSLog(@"%lu", (unsigned long)retrievedIndex);
     
 	if (index == retrievedIndex){
 		
@@ -256,7 +258,7 @@
     TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
     NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='greeting']/div"] objectAtIndex:0] content];
 	
-	isNext = [cHeader characterAtIndex:0] == 'T';
+	isNext = [cHeader characterAtIndex:0] != 'T';
 	
     week = [cHeader characterAtIndex:[cHeader rangeOfString:@"Week "].location + 5] - 1 - '0';
 	NSLog(@"Week is: %d", week);
