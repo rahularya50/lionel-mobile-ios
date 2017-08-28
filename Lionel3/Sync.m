@@ -105,6 +105,41 @@
 	filepath = [dir stringByAppendingPathComponent:@"calendar.txt"];
 	[[NSFileManager defaultManager] createFileAtPath:@"./calendar.txt" contents:n attributes:nil];
 	[cString writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	
+	NSString *cdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *cfilepath = [cdir stringByAppendingPathComponent:@"calendar.txt"];
+	NSString *calendarString = [NSString stringWithContentsOfFile:cfilepath encoding:NSUTF8StringEncoding error:nil];
+	NSData *calendarData = [calendarString dataUsingEncoding:NSUTF8StringEncoding];
+	
+	TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
+	NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='greeting']/div"] objectAtIndex:0] content];
+	
+	bool isNext = [cHeader characterAtIndex:0] != 'T';
+	
+	int week = [cHeader characterAtIndex:[cHeader rangeOfString:@"Week "].location + 5] - 1 - '0';
+	NSLog(@"Week is: %d", week);
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+	int weekday = (int)[comps weekday]-1;
+	[gregorian setFirstWeekday:2];
+	NSDateComponents *dateComponent = [gregorian components:NSCalendarUnitWeekOfYear fromDate:[NSDate date]];
+	int weekNumber = (int)dateComponent.weekOfYear;
+	int parity;
+	
+	weekday = weekday % 7;
+
+	if (1 <= weekday && weekday <= 5 && !isNext)
+	{
+		parity = week + weekNumber;
+	}
+	else
+	{
+		parity = week + weekNumber + 1;
+	}
+	
+	[[NSUserDefaults standardUserDefaults] setInteger:parity forKey:@"weekParity"];
+
 
     NSString* l1raw = [[NSString alloc] initWithData:l1Data encoding:NSUTF8StringEncoding];
 	

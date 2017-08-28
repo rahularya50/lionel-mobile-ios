@@ -40,8 +40,6 @@
 						  contentId:@"Timetable"
 				   customAttributes:@{}];
 	
-	[self recalcWeek];
-	
     [self parseTimetable];
 	
 	[self genpreloads];
@@ -81,10 +79,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self recalcWeek];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -145,11 +139,18 @@
 }
 
 -(IBAction)today:(id)sender{
+
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
 	int weekday = (int)[comps weekday]-1;
     
     weekday = weekday % 7;
+	
+	[gregorian setFirstWeekday:2];
+	NSDateComponents *dateComponent = [gregorian components:NSCalendarUnitWeekOfYear fromDate:[NSDate date]];
+	week = ((int)dateComponent.weekOfYear + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
+	
+	int realWeek = week;
 	
 	NSLog(@"Day is %d",weekday);
     
@@ -158,8 +159,6 @@
     NSInteger hour = [components hour];
     NSInteger minute = [components minute];
 	
-	NSInteger realWeek = week;
-    
     if (weekday >= 1 && weekday < 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
     {
         weekday += 1;
@@ -167,23 +166,12 @@
     else if (weekday == 5 && (hour >= 15 || (hour == 14 && minute >= 45)))
     {
         weekday = 1;
-		if (!isNext) {
-			realWeek = (realWeek + 1) % 2;
-		}
-    }
-	else if (weekday == 5)
-	{
-		if (isNext)
-		{
 		realWeek = (realWeek + 1) % 2;
-		}
-	}
+    }
 	else if (weekday == 6 || weekday == 0)
     {
-		if (!isNext && weekday == 6) {
-			realWeek = (realWeek + 1) % 2;
-		}
 		weekday = 1;
+		realWeek = (realWeek + 1) % 2;
 	}
     
     NSLog(@"Real day is %d",weekday);
@@ -249,20 +237,7 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];    }
 } 
 
-- (void) recalcWeek {
-    NSString *cdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *cfilepath = [cdir stringByAppendingPathComponent:@"calendar.txt"];
-    NSString *calendarString = [NSString stringWithContentsOfFile:cfilepath encoding:NSUTF8StringEncoding error:nil];
-    NSData *calendarData = [calendarString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    TFHpple *calendar = [[TFHpple alloc] initWithHTMLData:calendarData];
-    NSString *cHeader = [[[calendar searchWithXPathQuery:@"//div[@class='greeting']/div"] objectAtIndex:0] content];
-	
-	isNext = [cHeader characterAtIndex:0] != 'T';
-	
-    week = [cHeader characterAtIndex:[cHeader rangeOfString:@"Week "].location + 5] - 1 - '0';
-	NSLog(@"Week is: %d", week);
-}
+
 
 - (void)parseTimetable{
     pageNames = [NSArray arrayWithObjects:@"Monday (Week 1)", @"Tuesday (Week 1)",@"Wednesday (Week 1)",@"Thursday (Week 1)", @"Friday (Week 1)", @"Monday (Week 2)", @"Tuesday (Week 2)", @"Wednesday (Week 2)", @"Thursday (Week 2)", @"Friday (Week 2)", nil];
