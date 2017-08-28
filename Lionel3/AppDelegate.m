@@ -34,7 +34,21 @@
 	
 	[Fabric with:@[[Crashlytics class]]];
 	
+	NSSetUncaughtExceptionHandler(&generalExceptionHandler);
+	
     return YES;
+}
+
+void generalExceptionHandler(NSException *exception)
+{
+	NSArray *stack = [exception callStackReturnAddresses];
+	NSLog(@"Stack trace: %@", stack);
+	
+	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+	[keychainItem resetKeychainItem];
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
+	[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"version"];
+	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

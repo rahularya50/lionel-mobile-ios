@@ -93,7 +93,8 @@
 	
 	UIAlertAction* defaultAction = [UIAlertAction
 									actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault
-         handler:^(UIAlertAction * action) {	KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
+         handler:^(UIAlertAction * action) {
+			 KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"LIONeL" accessGroup:nil];
 			 [keychainItem resetKeychainItem];
 			 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"logged_in"];
 
