@@ -103,7 +103,7 @@
 	
 	NSLog(@"Logging in");
 	
-	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel3", NULL);
+	dispatch_queue_t queue = dispatch_queue_create("com.noemptypromises.Lionel", NULL);
 	dispatch_async(queue, ^{
 		
 		/*NSString *userData = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
