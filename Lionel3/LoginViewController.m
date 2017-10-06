@@ -57,7 +57,7 @@
 	
 	if(![[keychainItem objectForKey:(__bridge id)kSecAttrAccount]  isEqual: @""] && [keychainItem objectForKey:(__bridge id)kSecAttrAccount] != nil &&
 	   [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"] &&
-	   [[NSUserDefaults standardUserDefaults] integerForKey:@"version"] == 3)
+	   [[NSUserDefaults standardUserDefaults] integerForKey:@"version"] == 4)
 		{
 		NSLog(@"Auto-login of user:");
 		[CrashlyticsKit setUserEmail: [keychainItem objectForKey:(__bridge id)kSecAttrAccount]];
@@ -132,7 +132,7 @@
 					[keychainItem setObject:username forKey:(__bridge id)kSecAttrAccount];
 					[keychainItem setObject:password forKey:(__bridge id)kSecValueData];
 					[CrashlyticsKit setUserEmail: username];
-					[[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"version"];
+					[[NSUserDefaults standardUserDefaults] setInteger:4 forKey:@"version"];
 
 					[self presentTabBar];
 				});
