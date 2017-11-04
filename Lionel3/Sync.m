@@ -138,6 +138,8 @@
 		parity = week + weekNumber + 1;
 	}
 	
+	NSLog(@"%d", parity);
+		
 	[[NSUserDefaults standardUserDefaults] setInteger:parity forKey:@"weekParity"];
 
 

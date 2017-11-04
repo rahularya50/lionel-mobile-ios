@@ -34,6 +34,8 @@
 @implementation TimetableViewController2
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self today:self];
+
 	
 	[Answers logContentViewWithName:@"Timetable"
 						contentType:@"Timetable"
@@ -61,7 +63,9 @@
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimetablePageViewController"];
     self.pageViewController.dataSource = self;
-    
+	
+	[self today:self];
+	
     //TimetableTableViewController *startingViewController = [self viewControllerAtIndex:0];
     
     //NSArray *viewControllers = @[startingViewController];
@@ -80,6 +84,7 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[self today:self];
+
 }
 
 
@@ -152,7 +157,7 @@
 	
 	[gregorian setFirstWeekday:2];
 	NSDateComponents *dateComponent = [gregorian components:NSCalendarUnitWeekOfYear fromDate:[NSDate date]];
-	week = ((int)dateComponent.weekOfYear + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
+	week = ((int)dateComponent.weekOfYear); // + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
 	
 	int realWeek = week;
 	
