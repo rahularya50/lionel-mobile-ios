@@ -34,7 +34,6 @@
 @implementation TimetableViewController2
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self today:self];
 
 	
 	[Answers logContentViewWithName:@"Timetable"
@@ -157,7 +156,7 @@
 	
 	[gregorian setFirstWeekday:2];
 	NSDateComponents *dateComponent = [gregorian components:NSCalendarUnitWeekOfYear fromDate:[NSDate date]];
-	week = ((int)dateComponent.weekOfYear); // + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
+	week = ((int)dateComponent.weekOfYear) % 2; // + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
 	
 	int realWeek = week;
 	
