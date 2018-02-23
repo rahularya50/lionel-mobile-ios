@@ -156,7 +156,7 @@
 	
 	[gregorian setFirstWeekday:2];
 	NSDateComponents *dateComponent = [gregorian components:NSCalendarUnitWeekOfYear fromDate:[NSDate date]];
-	week = ((int)dateComponent.weekOfYear) % 2; // + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
+	week = ((int)dateComponent.weekOfYear + 1) % 2; // + (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"weekParity"]) % 2;
 	
 	int realWeek = week;
 	
